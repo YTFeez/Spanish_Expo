@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Deforestación - Presentación Profesional</title>
+    <title>🔥 DEFORESTACIÓN - Ultra Premium Edition 🔥</title>
     <style>
         /* ==================== RESET & BASE ==================== */
         * {
@@ -18,63 +18,112 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
             background: #000;
-            color: #ffffff;
+            color: #fff;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* ==================== CURSEUR SIMPLE ROND ==================== */
+        /* ==================== CURSEUR NÉON AVANCÉ ==================== */
         .cursor {
             position: fixed;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #2ecc71;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #00ff88;
             border-radius: 50%;
             pointer-events: none;
             z-index: 10000;
             transition: all 0.15s ease;
-            box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+            box-shadow: 0 0 25px #00ff88,
+                        0 0 50px #00ff88,
+                        inset 0 0 15px rgba(0, 255, 136, 0.3);
+            animation: cursorPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes cursorPulse {
+            0%, 100% {
+                box-shadow: 0 0 25px #00ff88,
+                            0 0 50px #00ff88,
+                            inset 0 0 15px rgba(0, 255, 136, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 35px #00ff88,
+                            0 0 70px #00ff88,
+                            0 0 90px #00ff88,
+                            inset 0 0 20px rgba(0, 255, 136, 0.5);
+            }
         }
 
         .cursor.click {
-            transform: scale(0.7);
-            border-color: #e74c3c;
-            box-shadow: 0 0 20px rgba(231, 76, 60, 0.8);
+            transform: scale(0.5);
+            border-color: #ff0055;
+            box-shadow: 0 0 30px #ff0055,
+                        0 0 60px #ff0055,
+                        0 0 90px #ff0055;
+            animation: clickExplosion 0.3s ease-out;
         }
 
-        /* Masquer le curseur custom sur mobile */
+        @keyframes clickExplosion {
+            0% { transform: scale(0.5); }
+            50% { transform: scale(1.8); opacity: 0.5; }
+            100% { transform: scale(0.5); opacity: 1; }
+        }
+
         @media (max-width: 768px) {
             .cursor {
                 display: none;
             }
-            
             * {
                 cursor: auto !important;
             }
         }
 
-        /* ==================== BARRE DE PROGRESSION ==================== */
+        /* ==================== BARRE DE PROGRESSION NÉON ==================== */
         .progress-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: rgba(0, 0, 0, 0.9);
+            height: 6px;
+            background: rgba(0, 0, 0, 0.95);
             z-index: 9999;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
         }
 
         .progress-bar {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71);
+            background: linear-gradient(90deg, 
+                #ff0055 0%, 
+                #ff6b35 25%, 
+                #ffd700 50%, 
+                #00ff88 75%, 
+                #00d4ff 100%
+            );
             transition: width 0.1s ease;
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.6);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.8),
+                        0 0 60px rgba(0, 255, 136, 0.5);
+            position: relative;
         }
 
-        /* ==================== FOND DYNAMIQUE ==================== */
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8));
+            animation: progressShine 2s ease-in-out infinite;
+        }
+
+        @keyframes progressShine {
+            0%, 100% { transform: translateX(-100px); }
+            50% { transform: translateX(100px); }
+        }
+
+        /* ==================== FOND DYNAMIQUE ULTRA ==================== */
         .background-wrapper {
             position: fixed;
             top: 0;
@@ -88,50 +137,42 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            transition: opacity 1.2s ease;
+            transition: opacity 1.5s ease;
         }
 
-        /* Fond de feu - début */
+        /* Fond de feu avec animation */
         .bg-fire {
-            background: radial-gradient(
-                ellipse at 50% 100%,
-                #d32f2f 0%,
-                #c62828 15%,
-                #b71c1c 30%,
-                #7f0000 50%,
-                #1a0000 70%,
-                #000000 100%
-            );
+            background: 
+                radial-gradient(ellipse at 30% 80%, #ff0000 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, #ff6600 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, #ff3300 0%, #990000 40%, #000000 80%);
             opacity: 1;
+            animation: fireBreath 8s ease-in-out infinite;
+        }
+
+        @keyframes fireBreath {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* Fond de transition */
         .bg-transition {
-            background: radial-gradient(
-                ellipse at 50% 50%,
-                #1b5e20 0%,
-                #0d3d0f 30%,
-                #051a08 60%,
-                #000000 100%
-            );
+            background: 
+                radial-gradient(ellipse at 50% 50%, #2d5016 0%, #1a3010 40%, #000000 80%),
+                linear-gradient(180deg, #1a3010 0%, #0d1a08 50%, #000000 100%);
             opacity: 0;
         }
 
-        /* Fond de forêt - fin */
+        /* Fond de forêt avec lucioles */
         .bg-forest {
-            background: linear-gradient(
-                180deg,
-                #0a2f1a 0%,
-                #0d4d25 20%,
-                #0a3d1f 40%,
-                #072817 60%,
-                #041a10 80%,
-                #000000 100%
-            );
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(0, 255, 136, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 60%, rgba(0, 212, 255, 0.1) 0%, transparent 40%),
+                linear-gradient(180deg, #0a2f1a 0%, #0d4d25 20%, #0a3d1f 40%, #072817 60%, #041a10 80%, #000000 100%);
             opacity: 0;
         }
 
-        /* ==================== PARTICULES ==================== */
+        /* ==================== PARTICULES MAGIQUES ==================== */
         .particles {
             position: fixed;
             width: 100%;
@@ -144,70 +185,31 @@
 
         .particle {
             position: absolute;
-            background: #2ecc71;
+            background: #00ff88;
             border-radius: 50%;
             opacity: 0;
+            box-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88;
             animation: float linear infinite;
         }
 
         @keyframes float {
             0% {
-                transform: translateY(100vh) translateX(0) scale(0);
+                transform: translateY(100vh) translateX(0) scale(0) rotate(0deg);
                 opacity: 0;
             }
             10% {
+                opacity: 1;
+            }
+            90% {
                 opacity: 0.6;
             }
-            90% {
-                opacity: 0.3;
-            }
             100% {
-                transform: translateY(-150px) translateX(100px) scale(1);
+                transform: translateY(-150px) translateX(100px) scale(1.5) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* ==================== FEUILLES VOLANTES ==================== */
-        .leaves {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -4;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .leaf {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: linear-gradient(135deg, #27ae60, #229954);
-            border-radius: 0 100% 0 100%;
-            opacity: 0;
-            animation: leafFall linear infinite;
-        }
-
-        @keyframes leafFall {
-            0% {
-                transform: translateY(-100px) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.4;
-            }
-            100% {
-                transform: translateY(100vh) translateX(var(--drift)) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* ==================== BRAISES ==================== */
+        /* ==================== BRAISES ÉPIQUES ==================== */
         .embers {
             position: fixed;
             width: 100%;
@@ -221,13 +223,25 @@
 
         .ember {
             position: absolute;
-            width: 6px;
-            height: 6px;
-            background: radial-gradient(circle, #ff6b35 0%, #f7931e 30%, #d62828 70%, transparent 100%);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ffff00 0%, #ff6600 30%, #ff0000 60%, transparent 100%);
             border-radius: 50%;
-            box-shadow: 0 0 15px #ff6b35, 0 0 30px #d62828;
+            box-shadow: 0 0 20px #ff6600,
+                        0 0 40px #ff3300,
+                        0 0 60px #ff0000;
             opacity: 0;
             animation: emberRise linear infinite;
+        }
+
+        .ember::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #ffff00, transparent);
+            border-radius: 50%;
+            animation: emberPulse 0.5s ease-in-out infinite alternate;
         }
 
         @keyframes emberRise {
@@ -238,23 +252,25 @@
             10% {
                 opacity: 1;
             }
-            50% {
-                opacity: 0.8;
-            }
             90% {
-                opacity: 0.4;
+                opacity: 0.5;
             }
             100% {
-                transform: translateY(-100vh) translateX(var(--drift)) scale(0.2);
+                transform: translateY(-100vh) translateX(var(--drift)) scale(0.3) rotate(720deg);
                 opacity: 0;
             }
         }
 
-        /* ==================== FLAMMES ==================== */
+        @keyframes emberPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.5); }
+        }
+
+        /* ==================== FLAMMES RÉALISTES AVANCÉES ==================== */
         .flames {
             position: fixed;
             width: 100%;
-            height: 350px;
+            height: 400px;
             bottom: 0;
             left: 0;
             z-index: -2;
@@ -265,79 +281,181 @@
         .flame {
             position: absolute;
             bottom: -30px;
-            width: 50px;
-            height: 180px;
+            width: 60px;
+            height: 220px;
             background: linear-gradient(
                 to top,
-                #d32f2f 0%,
-                #e53935 15%,
-                #ff5722 30%,
-                #ff6f00 50%,
-                #ffa726 70%,
-                #ffd54f 85%,
+                #ff0000 0%,
+                #ff3300 10%,
+                #ff6600 25%,
+                #ff9900 40%,
+                #ffcc00 60%,
+                #ffff00 80%,
                 transparent 100%
             );
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            filter: blur(12px);
-            opacity: 0.85;
+            filter: blur(15px);
+            opacity: 0.9;
             animation: flameFlicker ease-in-out infinite;
             transform-origin: bottom center;
+            box-shadow: 0 0 50px #ff6600, 0 0 100px #ff3300;
+        }
+
+        .flame::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 60%;
+            background: linear-gradient(
+                to top,
+                #ffff00 0%,
+                #ffdd00 40%,
+                #ffffaa 70%,
+                transparent 100%
+            );
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            filter: blur(8px);
+            animation: flameCore calc(var(--speed) * 0.7) ease-in-out infinite;
         }
 
         @keyframes flameFlicker {
             0%, 100% {
                 transform: scaleY(1) scaleX(1) skewX(-3deg);
+                opacity: 0.9;
+            }
+            20% {
+                transform: scaleY(1.25) scaleX(0.85) skewX(4deg);
+                opacity: 1;
+            }
+            40% {
+                transform: scaleY(0.9) scaleX(1.15) skewX(-4deg);
                 opacity: 0.85;
             }
-            25% {
-                transform: scaleY(1.2) scaleX(0.9) skewX(3deg);
+            60% {
+                transform: scaleY(1.15) scaleX(0.9) skewX(3deg);
                 opacity: 0.95;
             }
-            50% {
-                transform: scaleY(0.9) scaleX(1.1) skewX(-2deg);
-                opacity: 0.8;
-            }
-            75% {
-                transform: scaleY(1.15) scaleX(0.85) skewX(2deg);
-                opacity: 0.9;
+            80% {
+                transform: scaleY(0.95) scaleX(1.1) skewX(-2deg);
+                opacity: 0.88;
             }
         }
 
-        /* ==================== ARBRES BACKGROUND ==================== */
-        .forest-bg {
+        @keyframes flameCore {
+            0%, 100% {
+                transform: translateX(-50%) scaleY(1) scaleX(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+                opacity: 0.8;
+            }
+        }
+
+        /* ==================== FEUILLES MAGIQUES ==================== */
+        .leaves {
             position: fixed;
             width: 100%;
             height: 100%;
-            bottom: 0;
+            top: 0;
             left: 0;
-            z-index: -6;
+            z-index: -4;
             pointer-events: none;
             opacity: 0;
             transition: opacity 1.5s ease;
         }
 
-        .tree-silhouette {
+        .leaf {
             position: absolute;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to top, #1b5e20, #0d3d0f, transparent);
-            opacity: 0.3;
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            border-radius: 0 100% 0 100%;
+            opacity: 0;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+            animation: leafFall linear infinite;
         }
 
-        /* ==================== ÉCRAN DE CHARGEMENT ==================== */
+        @keyframes leafFall {
+            0% {
+                transform: translateY(-100px) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(100vh) translateX(var(--drift)) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ==================== LUCIOLES / FIREFLIES ==================== */
+        .fireflies {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -4;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .firefly {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffff00;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ffff00, 0 0 30px #ffff00;
+            animation: fireflyFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes fireflyFloat {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            25% {
+                transform: translate(50px, -80px);
+            }
+            50% {
+                transform: translate(-30px, -150px);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translate(70px, -100px);
+            }
+            90% {
+                opacity: 1;
+            }
+        }
+
+        /* ==================== ÉCRAN DE CHARGEMENT ÉPIQUE ==================== */
         .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #000;
+            background: radial-gradient(circle, #1a1a1a, #000000);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 99999;
-            transition: opacity 0.8s ease;
+            transition: opacity 1s ease;
         }
 
         .loading-screen.hidden {
@@ -346,12 +464,14 @@
         }
 
         .loader {
-            width: 80px;
-            height: 80px;
-            border: 6px solid rgba(46, 204, 113, 0.2);
-            border-top: 6px solid #2ecc71;
+            width: 100px;
+            height: 100px;
+            border: 6px solid transparent;
+            border-top: 6px solid #00ff88;
+            border-right: 6px solid #00d4ff;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite, loaderGlow 2s ease-in-out infinite;
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
         }
 
         @keyframes spin {
@@ -359,40 +479,84 @@
             100% { transform: rotate(360deg); }
         }
 
-        .loading-text {
-            margin-top: 30px;
-            font-size: 1.2rem;
-            color: #2ecc71;
-            letter-spacing: 2px;
+        @keyframes loaderGlow {
+            0%, 100% {
+                box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 80px rgba(0, 255, 136, 0.9),
+                            0 0 120px rgba(0, 212, 255, 0.6);
+            }
         }
 
-        /* ==================== NAVIGATION ==================== */
+        .loading-text {
+            margin-top: 40px;
+            font-size: 1.5rem;
+            color: #00ff88;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                text-shadow: 0 0 20px #00ff88;
+            }
+            50% {
+                text-shadow: 0 0 40px #00ff88, 0 0 60px #00ff88;
+            }
+        }
+
+        /* ==================== NAVIGATION NÉON ==================== */
         .nav {
             position: fixed;
-            top: 20px;
-            right: 40px;
+            top: 30px;
+            right: 50px;
             z-index: 1000;
             display: flex;
             gap: 20px;
         }
 
         .nav-dot {
-            width: 12px;
-            height: 12px;
-            border: 2px solid rgba(46, 204, 113, 0.5);
+            width: 14px;
+            height: 14px;
+            border: 3px solid rgba(0, 255, 136, 0.4);
             border-radius: 50%;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             cursor: none;
+            position: relative;
+        }
+
+        .nav-dot::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #00ff88;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s ease;
         }
 
         .nav-dot.active {
-            background: #2ecc71;
-            border-color: #2ecc71;
-            box-shadow: 0 0 15px rgba(46, 204, 113, 0.8);
-            transform: scale(1.3);
+            background: #00ff88;
+            border-color: #00ff88;
+            box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
+            transform: scale(1.4);
         }
 
-        /* ==================== HERO SECTION ==================== */
+        .nav-dot.active::before {
+            opacity: 0.3;
+            transform: scale(2);
+        }
+
+        .nav-dot:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+        }
+
+        /* ==================== HERO SECTION ÉPIQUE ==================== */
         .hero {
             height: 100vh;
             display: flex;
@@ -400,18 +564,35 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            perspective: 1000px;
+            perspective: 2000px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            animation: heroAura 10s ease-in-out infinite;
+        }
+
+        @keyframes heroAura {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
         }
 
         .hero-content {
             text-align: center;
-            animation: fadeInScale 1.5s ease-out;
+            animation: fadeInScale 2s ease-out;
+            position: relative;
+            z-index: 2;
         }
 
         @keyframes fadeInScale {
             0% {
                 opacity: 0;
-                transform: scale(0.8) translateY(50px);
+                transform: scale(0.7) translateY(80px);
             }
             100% {
                 opacity: 1;
@@ -420,112 +601,171 @@
         }
 
         .hero-title {
-            font-size: 8rem;
+            font-size: 10rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #e74c3c, #f39c12, #2ecc71);
+            background: linear-gradient(135deg, #ff0055, #ff6b35, #ffd700, #00ff88, #00d4ff);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 20px;
-            letter-spacing: -4px;
+            margin-bottom: 30px;
+            letter-spacing: -5px;
             text-transform: uppercase;
-            animation: titleGlow 3s ease-in-out infinite;
+            animation: titleRainbow 5s ease-in-out infinite, titleFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(0, 255, 136, 0.6))
+                    drop-shadow(0 0 80px rgba(0, 212, 255, 0.4));
+            transform: translateZ(100px);
+            transform-style: preserve-3d;
         }
 
-        @keyframes titleGlow {
-            0%, 100% {
-                filter: drop-shadow(0 0 30px rgba(231, 76, 60, 0.6));
-            }
-            50% {
-                filter: drop-shadow(0 0 50px rgba(46, 204, 113, 0.6));
-            }
+        .hero-title::before {
+            content: 'DEFORESTACIÓN';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, #ff0055, #ff6b35, #ffd700, #00ff88, #00d4ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transform: translateZ(-50px);
+            filter: blur(30px);
+            opacity: 0.5;
+        }
+
+        @keyframes titleRainbow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .hero-subtitle {
-            font-size: 2rem;
-            color: #e74c3c;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+            font-size: 2.5rem;
+            color: #ff0055;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px #ff0055,
+                         0 0 60px #ff0055,
+                         0 0 90px #ff0055;
+            animation: subtitlePulse 2s ease-in-out infinite;
+            font-weight: 700;
+        }
+
+        @keyframes subtitlePulse {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+                text-shadow: 0 0 30px #ff0055, 0 0 60px #ff0055;
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scale(1.05);
+                text-shadow: 0 0 50px #ff0055, 0 0 100px #ff0055, 0 0 150px #ff0055;
+            }
         }
 
         .hero-description {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #bdc3c7;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.9;
+            animation: fadeIn 2s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .cta-button {
-            padding: 18px 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
+            padding: 22px 60px;
+            font-size: 1.4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #000;
             border: none;
             border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.4);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 15px 50px rgba(0, 255, 136, 0.5),
+                        0 0 50px rgba(0, 255, 136, 0.3),
+                        0 5px 0 rgba(0, 200, 100, 0.8);
             cursor: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            animation: buttonGlow 2s ease-in-out infinite;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) translateZ(30px);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) translateZ(10px);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
+            border-radius: 50px;
+            transform: translateZ(40px);
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(46, 204, 113, 0.6);
+            transform: perspective(1000px) translateY(-15px) translateZ(60px) rotateX(-8deg);
+            box-shadow: 0 30px 80px rgba(0, 255, 136, 0.7),
+                        0 0 80px rgba(0, 255, 136, 0.5),
+                        0 0 120px rgba(0, 212, 255, 0.3),
+                        0 10px 0 rgba(0, 200, 100, 1);
         }
 
         .cta-button:active {
-            transform: translateY(-2px);
+            transform: perspective(1000px) translateY(-10px) translateZ(50px) rotateX(-5deg);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.6),
+                        0 0 60px rgba(0, 255, 136, 0.4),
+                        0 3px 0 rgba(0, 200, 100, 0.9);
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            color: #95a5a6;
-            font-size: 0.9rem;
-            animation: bounce 2s infinite;
-        }
-
-        @media (max-width: 768px) {
-            .scroll-indicator {
-                bottom: 20px;
-                font-size: 0.8rem;
+        @keyframes buttonGlow {
+            0%, 100% {
+                box-shadow: 0 15px 50px rgba(0, 255, 136, 0.5),
+                            0 0 50px rgba(0, 255, 136, 0.3),
+                            0 5px 0 rgba(0, 200, 100, 0.8);
             }
-        }
-
-        @media (max-width: 480px) {
-            .scroll-indicator {
-                display: none;
+            50% {
+                box-shadow: 0 20px 60px rgba(0, 255, 136, 0.7),
+                            0 0 70px rgba(0, 255, 136, 0.5),
+                            0 0 100px rgba(0, 212, 255, 0.3),
+                            0 7px 0 rgba(0, 200, 100, 1);
             }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-15px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-7px);
-            }
-        }
-
-        .scroll-icon {
-            font-size: 2rem;
         }
 
         /* ==================== CONTAINER ==================== */
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 50px;
         }
@@ -533,146 +773,187 @@
         /* ==================== SECTIONS ==================== */
         section {
             min-height: 100vh;
-            padding: 100px 0;
+            padding: 120px 0;
             display: flex;
             align-items: center;
             position: relative;
-        }
-
-        @media (max-width: 768px) {
-            section {
-                min-height: auto;
-                padding: 80px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            section {
-                padding: 60px 0;
-            }
+            transform-style: preserve-3d;
+            perspective: 2000px;
         }
 
         .section-inner {
             width: 100%;
             opacity: 0;
-            transform: translateY(60px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(80px) rotateX(15deg);
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
         }
 
         .section-inner.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) rotateX(0deg);
         }
 
-        /* ==================== SECTION HEADER ==================== */
+        /* ==================== SECTION HEADER NÉON ==================== */
         .section-header {
             text-align: center;
-            margin-bottom: 70px;
-        }
-
-        @media (max-width: 768px) {
-            .section-header {
-                margin-bottom: 50px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section-header {
-                margin-bottom: 35px;
-            }
+            margin-bottom: 80px;
         }
 
         .section-number {
-            font-size: 1rem;
-            color: #2ecc71;
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #00ff88;
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
             text-transform: uppercase;
+            text-shadow: 0 0 20px #00ff88;
+            animation: numberGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes numberGlow {
+            0%, 100% { text-shadow: 0 0 20px #00ff88; }
+            50% { text-shadow: 0 0 40px #00ff88, 0 0 60px #00ff88; }
         }
 
         .section-title {
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 25px;
-            letter-spacing: -2px;
+            margin-bottom: 30px;
+            letter-spacing: -3px;
+            animation: titleShift 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5));
         }
 
         .section-title.danger {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            background: linear-gradient(135deg, #ff0055, #ff6b35);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            filter: drop-shadow(0 0 30px rgba(255, 0, 85, 0.5));
+        }
+
+        @keyframes titleShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .section-intro {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #95a5a6;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            line-height: 1.8;
+            line-height: 1.9;
         }
 
-        /* ==================== MAIN CARD ==================== */
+        /* ==================== MAIN CARD GLASSMORPHISM ==================== */
         .main-card {
-            background: rgba(20, 30, 25, 0.85);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 60px;
-            border: 2px solid rgba(46, 204, 113, 0.3);
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
-            transition: all 0.5s ease;
+            background: rgba(20, 40, 30, 0.4);
+            backdrop-filter: blur(30px);
+            border-radius: 30px;
+            padding: 70px;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7),
+                        0 0 60px rgba(0, 255, 136, 0.2),
+                        inset 0 0 50px rgba(0, 255, 136, 0.05);
+            transition: all 0.6s ease;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transform: perspective(2000px) rotateX(0deg);
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transform: rotate(0deg) translateZ(20px);
+            animation: cardShine 6s linear infinite;
+        }
+
+        .main-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            transform: translateZ(-10px);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        @keyframes cardShine {
+            0% { transform: rotate(0deg) translateZ(20px); }
+            100% { transform: rotate(360deg) translateZ(20px); }
         }
 
         .main-card:hover {
-            border-color: rgba(46, 204, 113, 0.6);
-            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
-            transform: translateY(-10px);
+            border-color: rgba(0, 255, 136, 0.7);
+            box-shadow: 0 50px 150px rgba(0, 0, 0, 0.9),
+                        0 0 100px rgba(0, 255, 136, 0.5),
+                        inset 0 0 80px rgba(0, 255, 136, 0.1);
+            transform: perspective(2000px) rotateX(-2deg) translateY(-20px) translateZ(30px);
+        }
+
+        .main-card:hover::after {
+            opacity: 1;
         }
 
         .main-card.danger {
-            background: rgba(40, 20, 20, 0.85);
-            border-color: rgba(231, 76, 60, 0.3);
+            background: rgba(50, 20, 20, 0.4);
+            border-color: rgba(255, 0, 85, 0.3);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7),
+                        0 0 60px rgba(255, 0, 85, 0.2),
+                        inset 0 0 50px rgba(255, 0, 85, 0.05);
+        }
+
+        .main-card.danger::before {
+            background: linear-gradient(45deg, transparent, rgba(255, 0, 85, 0.1), transparent);
+        }
+
+        .main-card.danger::after {
+            background: radial-gradient(circle at 50% 50%, rgba(255, 0, 85, 0.1) 0%, transparent 70%);
         }
 
         .main-card.danger:hover {
-            border-color: rgba(231, 76, 60, 0.6);
+            border-color: rgba(255, 0, 85, 0.7);
+            box-shadow: 0 50px 150px rgba(0, 0, 0, 0.9),
+                        0 0 100px rgba(255, 0, 85, 0.5),
+                        inset 0 0 80px rgba(255, 0, 85, 0.1);
+            transform: perspective(2000px) rotateX(2deg) translateY(-20px) translateZ(30px);
         }
 
-        /* ==================== GRILLE DE CARTES ==================== */
+        /* ==================== GRILLE DE CARTES NÉON ==================== */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 35px;
-            margin-top: 50px;
-        }
-
-        @media (max-width: 768px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .cards-grid {
-                gap: 20px;
-                margin-top: 30px;
-            }
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .card {
-            background: rgba(30, 40, 35, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            border: 2px solid rgba(46, 204, 113, 0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(30, 50, 40, 0.3);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 45px;
+            border: 2px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
         }
 
         .card::before {
@@ -682,8 +963,9 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.1), transparent);
-            transition: left 0.6s ease;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+            transition: left 0.7s ease;
+            transform: translateZ(10px);
         }
 
         .card:hover::before {
@@ -691,181 +973,205 @@
         }
 
         .card:hover {
-            border-color: rgba(46, 204, 113, 0.6);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(46, 204, 113, 0.2);
+            border-color: rgba(0, 255, 136, 0.7);
+            transform: perspective(1000px) rotateY(-8deg) rotateX(5deg) translateY(-20px) translateZ(50px);
+            box-shadow: 0 30px 90px rgba(0, 255, 136, 0.4),
+                        0 0 60px rgba(0, 255, 136, 0.3);
         }
 
         .card.danger {
-            background: rgba(40, 25, 25, 0.8);
-            border-color: rgba(231, 76, 60, 0.2);
+            background: rgba(50, 30, 30, 0.3);
+            border-color: rgba(255, 0, 85, 0.2);
         }
 
         .card.danger::before {
-            background: linear-gradient(90deg, transparent, rgba(231, 76, 60, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 85, 0.2), transparent);
         }
 
         .card.danger:hover {
-            border-color: rgba(231, 76, 60, 0.6);
-            box-shadow: 0 15px 50px rgba(231, 76, 60, 0.2);
+            border-color: rgba(255, 0, 85, 0.7);
+            transform: perspective(1000px) rotateY(8deg) rotateX(-5deg) translateY(-20px) translateZ(50px);
+            box-shadow: 0 30px 90px rgba(255, 0, 85, 0.4),
+                        0 0 60px rgba(255, 0, 85, 0.3);
         }
 
         .card-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 25px;
             display: block;
-            filter: drop-shadow(0 0 15px rgba(46, 204, 113, 0.4));
+            filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));
+            animation: iconFloat 3s ease-in-out infinite;
+            transform: translateZ(60px);
+            transform-style: preserve-3d;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateZ(60px) translateY(0px) rotateZ(0deg); }
+            50% { transform: translateZ(80px) translateY(-10px) rotateZ(5deg); }
         }
 
         .card.danger .card-icon {
-            filter: drop-shadow(0 0 15px rgba(231, 76, 60, 0.4));
+            filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.6));
         }
 
         .card-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #2ecc71;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #00ff88;
+            margin-bottom: 18px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+            transform: translateZ(40px);
         }
 
         .card.danger .card-title {
-            color: #e74c3c;
+            color: #ff0055;
+            text-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
         }
 
         .card-text {
-            font-size: 1.1rem;
-            color: #95a5a6;
-            line-height: 1.7;
+            font-size: 1.15rem;
+            color: #bdc3c7;
+            line-height: 1.8;
+            transform: translateZ(20px);
         }
 
-        /* ==================== STATS ==================== */
+        /* ==================== STATS NÉON ==================== */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin: 60px 0;
-        }
-
-        @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-                margin: 40px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-grid {
-                gap: 20px;
-            }
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 45px;
+            margin: 70px 0;
         }
 
         .stat-box {
-            background: rgba(40, 20, 20, 0.9);
-            border: 3px solid #e74c3c;
-            border-radius: 20px;
-            padding: 50px 30px;
+            background: rgba(50, 20, 20, 0.5);
+            backdrop-filter: blur(20px);
+            border: 3px solid #ff0055;
+            border-radius: 25px;
+            padding: 60px 35px;
             text-align: center;
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
+            transform: perspective(1500px) rotateX(0deg) rotateY(0deg);
         }
 
-        .stat-box::after {
+        .stat-box::before {
             content: '';
             position: absolute;
             top: 50%;
             left: 50%;
             width: 0;
             height: 0;
-            background: radial-gradient(circle, rgba(231, 76, 60, 0.2), transparent);
+            background: radial-gradient(circle, rgba(255, 0, 85, 0.3), transparent);
             border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.5s ease;
+            transform: translate(-50%, -50%) translateZ(-20px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-box::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff0055, #ff6b35, #ff0055);
+            background-size: 400% 400%;
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0;
+            animation: borderGlow 3s ease infinite;
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .stat-box:hover::before {
+            width: 500px;
+            height: 500px;
         }
 
         .stat-box:hover::after {
-            width: 400px;
-            height: 400px;
+            opacity: 1;
         }
 
         .stat-box:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 25px 60px rgba(231, 76, 60, 0.4);
-            border-color: #ff6b6b;
+            transform: perspective(1500px) rotateX(10deg) rotateY(-10deg) translateY(-25px) translateZ(60px);
+            box-shadow: 0 40px 110px rgba(255, 0, 85, 0.6),
+                        0 0 80px rgba(255, 0, 85, 0.4);
+            border-color: #ff6b35;
         }
 
         .stat-number {
-            font-size: 5rem;
+            font-size: 6rem;
             font-weight: 900;
-            color: #e74c3c;
-            text-shadow: 0 0 30px rgba(231, 76, 60, 0.6);
-            margin-bottom: 15px;
+            color: #ff0055;
+            text-shadow: 0 0 40px rgba(255, 0, 85, 0.8),
+                         0 0 80px rgba(255, 0, 85, 0.5);
+            margin-bottom: 20px;
             position: relative;
             z-index: 1;
+            animation: numberPulse 2s ease-in-out infinite;
+            transform: translateZ(80px);
+            transform-style: preserve-3d;
+        }
+
+        .stat-number::before {
+            content: attr(data-target);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #ff0055;
+            text-shadow: 0 0 60px rgba(255, 0, 85, 1);
+            transform: translateZ(-40px);
+            opacity: 0.3;
+            filter: blur(20px);
+        }
+
+        @keyframes numberPulse {
+            0%, 100% { transform: translateZ(80px) scale(1); }
+            50% { transform: translateZ(100px) scale(1.05); }
         }
 
         .stat-label {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #ecf0f1;
-            font-weight: 600;
+            font-weight: 700;
             position: relative;
             z-index: 1;
+            transform: translateZ(40px);
         }
 
-        /* ==================== LISTE STYLISÉE ==================== */
-        .styled-list {
-            list-style: none;
-            margin: 40px 0;
-        }
-
-        .styled-list li {
-            padding: 20px 25px;
-            margin: 15px 0;
-            background: rgba(30, 40, 35, 0.6);
-            border-left: 5px solid #2ecc71;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            font-size: 1.15rem;
-            color: #bdc3c7;
-        }
-
-        .styled-list li:hover {
-            background: rgba(46, 204, 113, 0.1);
-            border-left-width: 8px;
-            transform: translateX(10px);
-        }
-
-        .styled-list.danger li {
-            border-left-color: #e74c3c;
-            background: rgba(40, 25, 25, 0.6);
-        }
-
-        .styled-list.danger li:hover {
-            background: rgba(231, 76, 60, 0.1);
-        }
-
-        /* ==================== BOUTONS D'ACTION ==================== */
+        /* ==================== BOUTONS NÉON ==================== */
         .action-buttons {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-top: 50px;
+            gap: 30px;
+            margin-top: 60px;
             flex-wrap: wrap;
         }
 
         .action-btn {
-            padding: 16px 40px;
-            font-size: 1.1rem;
-            font-weight: 700;
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            font-weight: 800;
             border: none;
             border-radius: 50px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             cursor: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) translateZ(0);
         }
 
         .action-btn::before {
@@ -875,358 +1181,129 @@
             left: 50%;
             width: 0;
             height: 0;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.5s ease;
+            transform: translate(-50%, -50%) translateZ(10px);
+            transition: all 0.6s ease;
+        }
+
+        .action-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            border-radius: 50px;
+            transform: translateZ(20px);
         }
 
         .action-btn:hover::before {
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
         }
 
         .action-btn:hover {
-            transform: translateY(-5px);
+            transform: perspective(1000px) translateY(-15px) translateZ(40px) rotateX(-5deg);
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #000;
+            box-shadow: 0 12px 40px rgba(0, 255, 136, 0.5),
+                        0 0 30px rgba(0, 255, 136, 0.3);
         }
 
         .btn-primary:hover {
-            box-shadow: 0 12px 35px rgba(46, 204, 113, 0.6);
+            box-shadow: 0 25px 70px rgba(0, 255, 136, 0.7),
+                        0 0 50px rgba(0, 255, 136, 0.5);
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+            background: linear-gradient(135deg, #00d4ff, #5b86e5);
+            color: #fff;
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.5),
+                        0 0 30px rgba(0, 212, 255, 0.3);
         }
 
         .btn-secondary:hover {
-            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.6);
+            box-shadow: 0 25px 70px rgba(0, 212, 255, 0.7),
+                        0 0 50px rgba(0, 212, 255, 0.5);
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+            background: linear-gradient(135deg, #ff0055, #ff6b35);
+            color: #fff;
+            box-shadow: 0 12px 40px rgba(255, 0, 85, 0.5),
+                        0 0 30px rgba(255, 0, 85, 0.3);
         }
 
         .btn-danger:hover {
-            box-shadow: 0 12px 35px rgba(231, 76, 60, 0.6);
+            box-shadow: 0 25px 70px rgba(255, 0, 85, 0.7),
+                        0 0 50px rgba(255, 0, 85, 0.5);
         }
 
-        /* ==================== QUOTE ==================== */
-        .quote {
-            background: rgba(46, 204, 113, 0.1);
-            border-left: 5px solid #2ecc71;
-            padding: 30px 40px;
-            margin: 40px 0;
-            border-radius: 10px;
-            font-size: 1.3rem;
-            font-style: italic;
-            color: #ecf0f1;
-        }
-
-        .quote-author {
-            margin-top: 15px;
-            font-size: 1rem;
-            color: #2ecc71;
-            font-style: normal;
-            font-weight: 600;
-        }
-
-        /* ==================== IMAGE PLACEHOLDER ==================== */
-        .image-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(46, 204, 113, 0.2), rgba(39, 174, 96, 0.1));
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            margin: 40px 0;
-            border: 2px solid rgba(46, 204, 113, 0.3);
-        }
-
-        /* ==================== TIMELINE ==================== */
-        .timeline {
-            position: relative;
-            margin: 60px 0;
-            padding-left: 50px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #2ecc71, #27ae60);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            padding: 25px 30px;
-            background: rgba(30, 40, 35, 0.6);
-            border-radius: 10px;
-            border: 2px solid rgba(46, 204, 113, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -43px;
-            top: 30px;
-            width: 15px;
-            height: 15px;
-            background: #2ecc71;
-            border-radius: 50%;
-            border: 3px solid #000;
-            box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
-        }
-
-        .timeline-item:hover {
-            background: rgba(46, 204, 113, 0.1);
-            border-color: rgba(46, 204, 113, 0.5);
-            transform: translateX(10px);
-        }
-
-        .timeline-year {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2ecc71;
-            margin-bottom: 10px;
-        }
-
-        .timeline-text {
-            font-size: 1.1rem;
-            color: #bdc3c7;
-            line-height: 1.6;
-        }
-
-        /* ==================== IMPACT VISUAL ==================== */
-        .impact-visual {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        @media (max-width: 768px) {
-            .impact-visual {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .impact-visual {
-                margin: 30px 0;
-            }
-        }
-
-        .impact-item {
-            background: rgba(40, 20, 20, 0.8);
-            padding: 40px;
-            border-radius: 15px;
-            border: 2px solid rgba(231, 76, 60, 0.3);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .impact-item:hover {
-            border-color: rgba(231, 76, 60, 0.6);
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.3);
-        }
-
-        .impact-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px rgba(231, 76, 60, 0.5));
-        }
-
-        .impact-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #e74c3c;
-            margin-bottom: 10px;
-        }
-
-        .impact-description {
-            font-size: 1rem;
-            color: #95a5a6;
-            line-height: 1.6;
-        }
-
-        /* ==================== SOLUTION SHOWCASE ==================== */
-        .solution-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        @media (max-width: 768px) {
-            .solution-showcase {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .solution-showcase {
-                margin: 30px 0;
-            }
-        }
-
-        .solution-item {
-            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05));
-            padding: 35px;
-            border-radius: 15px;
-            border: 2px solid rgba(46, 204, 113, 0.3);
-            text-align: center;
-            transition: all 0.4s ease;
-            cursor: none;
-        }
-
-        .solution-item:hover {
-            border-color: rgba(46, 204, 113, 0.7);
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 50px rgba(46, 204, 113, 0.3);
-        }
-
-        .solution-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #2ecc71;
-            margin-bottom: 15px;
-        }
-
-        .solution-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #2ecc71;
-            margin-bottom: 15px;
-        }
-
-        .solution-text {
-            font-size: 1rem;
-            color: #95a5a6;
-            line-height: 1.6;
-        }
-
-        /* ==================== CALL TO ACTION ==================== */
-        .cta-section {
-            background: linear-gradient(135deg, rgba(46, 204, 113, 0.2), rgba(39, 174, 96, 0.1));
-            padding: 70px 50px;
-            border-radius: 25px;
-            text-align: center;
-            margin: 80px 0;
-            border: 2px solid rgba(46, 204, 113, 0.3);
-        }
-
-        .cta-section h3 {
-            font-size: 3rem;
-            color: #2ecc71;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 1.3rem;
-            color: #bdc3c7;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ==================== FOOTER ==================== */
+        /* ==================== FOOTER NÉON ==================== */
         footer {
-            background: rgba(10, 15, 10, 0.95);
-            padding: 60px 50px;
+            background: rgba(10, 20, 15, 0.98);
+            padding: 80px 50px;
             text-align: center;
-            border-top: 3px solid #2ecc71;
+            border-top: 3px solid #00ff88;
+            box-shadow: 0 -10px 50px rgba(0, 255, 136, 0.2);
+            position: relative;
         }
 
-        .footer-content h3 {
-            font-size: 2rem;
-            color: #2ecc71;
-            margin-bottom: 20px;
+        footer h3 {
+            font-size: 2.5rem;
+            color: #00ff88;
+            margin-bottom: 30px;
+            text-shadow: 0 0 30px #00ff88;
         }
 
-        .footer-content p {
-            font-size: 1.1rem;
+        footer p {
             color: #95a5a6;
-            margin: 10px 0;
-            line-height: 1.6;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .footer-link {
-            color: #2ecc71;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: none;
-        }
-
-        .footer-link:hover {
-            color: #27ae60;
-            text-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
+            font-size: 1.2rem;
+            margin: 15px 0;
         }
 
         .footer-social {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            font-size: 1.8rem;
+            gap: 25px;
+            margin-top: 40px;
+            font-size: 2.2rem;
         }
 
         .social-icon {
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             cursor: none;
         }
 
         .social-icon:hover {
-            transform: translateY(-5px);
-            filter: drop-shadow(0 5px 15px rgba(46, 204, 113, 0.6));
+            transform: translateY(-10px) scale(1.2);
+            filter: drop-shadow(0 10px 30px rgba(0, 255, 136, 0.8));
         }
 
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 1024px) {
             .hero-title {
-                font-size: 5rem;
+                font-size: 6rem;
             }
 
             .section-title {
-                font-size: 3rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                font-size: 3.5rem;
             }
         }
 
         @media (max-width: 768px) {
+            section {
+                min-height: auto;
+                padding: 80px 0;
+            }
+
             .container {
-                padding: 0 25px;
+                padding: 0 30px;
             }
 
             .hero-title {
@@ -1235,289 +1312,95 @@
             }
 
             .hero-subtitle {
-                font-size: 1.6rem;
-            }
-
-            .hero-description {
-                font-size: 1.1rem;
+                font-size: 1.8rem;
             }
 
             .section-title {
-                font-size: 2.8rem;
-            }
-
-            .section-intro {
-                font-size: 1.15rem;
+                font-size: 3rem;
             }
 
             .main-card {
-                padding: 40px 30px;
+                padding: 50px 35px;
             }
 
             .cards-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .stat-number {
-                font-size: 4rem;
-            }
-
-            .impact-visual {
-                grid-template-columns: 1fr;
-            }
-
-            .solution-showcase {
-                grid-template-columns: 1fr;
             }
 
             .nav {
-                top: 10px;
-                right: 20px;
-                gap: 12px;
-            }
-
-            .nav-dot {
-                width: 10px;
-                height: 10px;
-            }
-
-            .card {
-                padding: 35px 25px;
-            }
-
-            .card-icon {
-                font-size: 3.2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section {
-                padding: 50px 30px;
-            }
-
-            .action-buttons {
+                top: 15px;
+                right: 25px;
                 gap: 15px;
             }
 
-            .timeline-item {
-                padding: 20px 25px;
+            .nav-dot {
+                width: 12px;
+                height: 12px;
             }
         }
 
         @media (max-width: 480px) {
+            section {
+                padding: 60px 0;
+            }
+
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
                 letter-spacing: -1px;
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-description {
-                font-size: 0.95rem;
-                padding: 0 10px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-                letter-spacing: -1px;
-            }
-
-            .section-number {
-                font-size: 0.85rem;
-            }
-
-            .section-intro {
-                font-size: 1rem;
-            }
-
-            .main-card {
-                padding: 25px 18px;
-            }
-
-            .card {
-                padding: 25px 18px;
-            }
-
-            .card-icon {
-                font-size: 2.8rem;
-            }
-
-            .card-title {
-                font-size: 1.5rem;
-            }
-
-            .card-text {
-                font-size: 1rem;
-            }
-
-            .cta-button {
-                padding: 14px 35px;
-                font-size: 1rem;
-            }
-
-            .stat-number {
-                font-size: 3rem;
-            }
-
-            .stat-label {
-                font-size: 1rem;
-            }
-
-            .quote {
-                padding: 20px 25px;
-                font-size: 1.1rem;
-            }
-
-            .timeline {
-                padding-left: 35px;
-            }
-
-            .timeline::before {
-                left: 15px;
-            }
-
-            .timeline-item::before {
-                left: -33px;
-            }
-
-            .solution-number {
-                font-size: 2rem;
-            }
-
-            .solution-title {
-                font-size: 1.2rem;
-            }
-
-            .solution-text {
-                font-size: 0.95rem;
-            }
-
-            .impact-icon {
-                font-size: 3rem;
-            }
-
-            .impact-title {
                 font-size: 1.3rem;
             }
 
-            .cta-section h3 {
-                font-size: 2rem;
-            }
-
-            .cta-section p {
-                font-size: 1.1rem;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .footer-content h3 {
-                font-size: 1.6rem;
-            }
-
-            .styled-list li {
-                font-size: 1rem;
-                padding: 15px 20px;
-            }
-
-            .action-btn {
-                padding: 14px 30px;
-                font-size: 1rem;
-            }
-
-            .image-placeholder {
-                height: 250px;
-                font-size: 3rem;
-            }
-        }
-
-        /* Très petits écrans (moins de 360px) */
-        @media (max-width: 360px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
             .hero-description {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
 
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
 
             .main-card {
-                padding: 20px 15px;
+                padding: 35px 25px;
             }
 
             .card {
-                padding: 20px 15px;
+                padding: 30px 20px;
             }
 
             .stat-number {
-                font-size: 2.5rem;
-            }
-
-            .cta-section {
-                padding: 40px 20px;
-            }
-
-            .cta-section h3 {
-                font-size: 1.7rem;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .action-btn {
-                width: 100%;
+                font-size: 3.5rem;
             }
 
             .cta-button {
-                width: 100%;
-                max-width: 300px;
+                padding: 18px 40px;
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ÉCRAN DE CHARGEMENT -->
+    <!-- ÉCRAN DE CHARGEMENT ÉPIQUE -->
     <div class="loading-screen">
         <div class="loader"></div>
-        <div class="loading-text">CARGANDO...</div>
+        <div class="loading-text">Cargando...</div>
     </div>
 
-    <!-- CURSEUR SIMPLE ROND -->
+    <!-- CURSEUR NÉON -->
     <div class="cursor"></div>
 
-    <!-- BARRE DE PROGRESSION -->
+    <!-- BARRE DE PROGRESSION NÉON -->
     <div class="progress-container">
         <div class="progress-bar"></div>
     </div>
 
-    <!-- NAVIGATION DOTS -->
+    <!-- NAVIGATION NÉON -->
     <div class="nav">
         <div class="nav-dot active" data-section="0"></div>
         <div class="nav-dot" data-section="1"></div>
         <div class="nav-dot" data-section="2"></div>
         <div class="nav-dot" data-section="3"></div>
-        <div class="nav-dot" data-section="4"></div>
     </div>
 
     <!-- FOND DYNAMIQUE -->
@@ -1539,77 +1422,21 @@
     <!-- FLAMMES -->
     <div class="flames"></div>
 
-    <!-- FORÊT BACKGROUND -->
-    <div class="forest-bg"></div>
+    <!-- LUCIOLES -->
+    <div class="fireflies"></div>
 
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">DEFORESTACIÓN</h1>
-            <p class="hero-subtitle">⚠️ Una Crisis Ambiental Global ⚠️</p>
+            <p class="hero-subtitle">⚠️ CRISIS GLOBAL ⚠️</p>
             <p class="hero-description">
                 Cada año, perdemos millones de hectáreas de bosques. 
                 Es momento de actuar antes de que sea demasiado tarde.
             </p>
-            <button class="cta-button" onclick="scrollToSection('intro')">
-                🌍 Descubrir Más
+            <button class="cta-button" onclick="scrollToSection('causas')">
+                🔥 EXPLORAR AHORA
             </button>
-        </div>
-        <div class="scroll-indicator">
-            <span>Desliza hacia abajo</span>
-            <span class="scroll-icon">↓</span>
-        </div>
-    </section>
-
-    <!-- SECTION INTRO -->
-    <section id="intro">
-        <div class="container">
-            <div class="section-inner">
-                <div class="section-header">
-                    <div class="section-number">01 — Introducción</div>
-                    <h2 class="section-title">¿Qué es la Deforestación?</h2>
-                    <p class="section-intro">
-                        La destrucción sistemática de nuestros bosques y su impacto en el planeta
-                    </p>
-                </div>
-
-                <div class="main-card">
-                    <p style="font-size: 1.2rem; line-height: 1.8; color: #bdc3c7; margin-bottom: 30px;">
-                        La <strong style="color: #2ecc71;">deforestación</strong> es el proceso de eliminación 
-                        permanente de bosques y selvas naturales. Este fenómeno ocurre cuando grandes extensiones 
-                        de árboles son talados para convertir la tierra en otros usos, como agricultura, ganadería, 
-                        urbanización o minería.
-                    </p>
-
-                    <div class="quote">
-                        "Los bosques son los pulmones de nuestro planeta. Destruirlos es como dejar de respirar."
-                        <div class="quote-author">— Científicos Ambientales</div>
-                    </div>
-
-                    <div class="image-placeholder">
-                        🌳🪓🔥
-                    </div>
-
-                    <ul class="styled-list">
-                        <li>
-                            <strong>Pérdida de biodiversidad:</strong> Los bosques albergan el 80% de las especies 
-                            terrestres del planeta.
-                        </li>
-                        <li>
-                            <strong>Cambio climático:</strong> Los árboles absorben CO₂. Sin ellos, el calentamiento 
-                            global se acelera.
-                        </li>
-                        <li>
-                            <strong>Impacto en comunidades:</strong> Millones de personas dependen de los bosques 
-                            para su supervivencia.
-                        </li>
-                        <li>
-                            <strong>Crisis del agua:</strong> Los bosques regulan el ciclo hidrológico y previenen 
-                            sequías e inundaciones.
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1618,10 +1445,10 @@
         <div class="container">
             <div class="section-inner">
                 <div class="section-header">
-                    <div class="section-number">02 — Análisis</div>
-                    <h2 class="section-title danger">Causas Principales</h2>
+                    <div class="section-number">01 — CAUSAS</div>
+                    <h2 class="section-title danger">Factores Destructivos</h2>
                     <p class="section-intro">
-                        Los factores humanos que están destruyendo nuestros bosques
+                        Los principales factores humanos que están destruyendo nuestros bosques
                     </p>
                 </div>
 
@@ -1631,9 +1458,8 @@
                             <span class="card-icon">🌾</span>
                             <h3 class="card-title">Agricultura Intensiva</h3>
                             <p class="card-text">
-                                La expansión de monocultivos como soja, palma aceitera y caña de azúcar 
-                                destruye millones de hectáreas cada año. La ganadería industrial requiere 
-                                enormes extensiones de tierra para pastos.
+                                La expansión de monocultivos destruye millones de hectáreas cada año 
+                                para cultivos de soja, palma aceitera y ganadería industrial.
                             </p>
                         </div>
 
@@ -1641,9 +1467,8 @@
                             <span class="card-icon">🪓</span>
                             <h3 class="card-title">Tala Ilegal</h3>
                             <p class="card-text">
-                                La explotación no regulada de maderas valiosas como caoba, teca y ébano 
-                                arrasa bosques enteros. Mafias madereras operan sin control en zonas 
-                                remotas, devastando ecosistemas únicos.
+                                Explotación no regulada de maderas valiosas que arrasa bosques 
+                                enteros sin control ni permisos legales.
                             </p>
                         </div>
 
@@ -1651,9 +1476,8 @@
                             <span class="card-icon">🏗️</span>
                             <h3 class="card-title">Urbanización</h3>
                             <p class="card-text">
-                                El crecimiento de ciudades, construcción de carreteras y desarrollo de 
-                                infraestructuras fragmenta los bosques. Cada año, más tierras forestales 
-                                se convierten en zonas urbanas e industriales.
+                                Construcción de ciudades, carreteras e infraestructuras que 
+                                fragmentan y destruyen hábitats naturales.
                             </p>
                         </div>
 
@@ -1661,19 +1485,17 @@
                             <span class="card-icon">⛏️</span>
                             <h3 class="card-title">Minería</h3>
                             <p class="card-text">
-                                La extracción de oro, cobre, hierro y otros minerales contamina ríos y 
-                                destruye vastas áreas forestales. La minería ilegal en la Amazonía es 
-                                especialmente devastadora para los ecosistemas.
+                                La extracción de minerales contamina ríos y arrasa con 
+                                extensas zonas forestales vírgenes.
                             </p>
                         </div>
 
                         <div class="card danger">
                             <span class="card-icon">🔥</span>
-                            <h3 class="card-title">Incendios Forestales</h3>
+                            <h3 class="card-title">Incendios</h3>
                             <p class="card-text">
-                                Quemas provocadas para limpiar terrenos agrícolas y incendios naturales 
-                                amplificados por el cambio climático arrasan millones de hectáreas. 
-                                Los incendios en Australia, Amazonía y California son cada vez más frecuentes.
+                                Quemas provocadas e incendios naturales amplificados por el 
+                                cambio climático consumen bosques completos.
                             </p>
                         </div>
 
@@ -1681,41 +1503,9 @@
                             <span class="card-icon">🌡️</span>
                             <h3 class="card-title">Cambio Climático</h3>
                             <p class="card-text">
-                                El calentamiento global genera sequías prolongadas que debilitan los bosques 
-                                y los hacen más vulnerables a plagas e incendios. Es un círculo vicioso: 
-                                la deforestación causa cambio climático, que a su vez destruye más bosques.
+                                El calentamiento global genera sequías extremas que debilitan 
+                                los bosques y facilitan su destrucción.
                             </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-year">Siglo XX</div>
-                            <div class="timeline-text">
-                                La industrialización masiva acelera la deforestación global. 
-                                Se pierden millones de hectáreas en América, África y Asia.
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">1990-2000</div>
-                            <div class="timeline-text">
-                                Década con mayor pérdida de bosques tropicales en la historia moderna. 
-                                La Amazonía pierde el equivalente a un campo de fútbol cada segundo.
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">2010-2020</div>
-                            <div class="timeline-text">
-                                A pesar de los esfuerzos de conservación, continuamos perdiendo 
-                                10 millones de hectáreas de bosques anualmente.
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">2020-2025</div>
-                            <div class="timeline-text">
-                                El cambio climático y los incendios forestales intensifican la crisis. 
-                                Punto de no retorno para algunos ecosistemas forestales.
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1728,7 +1518,7 @@
         <div class="container">
             <div class="section-inner">
                 <div class="section-header">
-                    <div class="section-number">03 — Impacto</div>
+                    <div class="section-number">02 — IMPACTO</div>
                     <h2 class="section-title danger">Consecuencias Devastadoras</h2>
                     <p class="section-intro">
                         El precio que pagamos por destruir nuestros bosques
@@ -1739,108 +1529,56 @@
                     <div class="stats-grid">
                         <div class="stat-box">
                             <div class="stat-number" data-target="10">0</div>
-                            <div class="stat-label">Millones de hectáreas perdidas cada año</div>
+                            <div class="stat-label">Millones de hectáreas perdidas/año</div>
                         </div>
 
                         <div class="stat-box">
                             <div class="stat-number" data-target="80">0</div>
-                            <div class="stat-label">% de especies terrestres viven en bosques</div>
+                            <div class="stat-label">% de especies viven en bosques</div>
                         </div>
 
                         <div class="stat-box">
                             <div class="stat-number" data-target="15">0</div>
-                            <div class="stat-label">% de emisiones globales de CO₂</div>
-                        </div>
-
-                        <div class="stat-box">
-                            <div class="stat-number" data-target="137">0</div>
-                            <div class="stat-label">Especies se extinguen cada día</div>
+                            <div class="stat-label">% de emisiones CO₂ globales</div>
                         </div>
                     </div>
 
-                    <div class="impact-visual">
-                        <div class="impact-item">
-                            <div class="impact-icon">🌍</div>
-                            <div class="impact-title">Calentamiento Global</div>
-                            <div class="impact-description">
-                                Los árboles almacenan carbono. Su destrucción libera gigatoneladas de CO₂ 
-                                a la atmósfera, acelerando el cambio climático y aumentando la temperatura 
-                                global a niveles peligrosos.
-                            </div>
-                        </div>
-
-                        <div class="impact-item">
-                            <div class="impact-icon">🐾</div>
-                            <div class="impact-title">Extinción Masiva</div>
-                            <div class="impact-description">
-                                Orangutanes, jaguares, tigres, gorilas y miles de especies pierden su hábitat. 
-                                Estamos en medio de la sexta extinción masiva, la primera causada por humanos.
-                            </div>
-                        </div>
-
-                        <div class="impact-item">
-                            <div class="impact-icon">💧</div>
-                            <div class="impact-title">Crisis Hídrica</div>
-                            <div class="impact-description">
-                                Los bosques regulan el ciclo del agua. Su destrucción provoca sequías 
-                                devastadoras en algunas regiones e inundaciones catastróficas en otras, 
-                                afectando a millones de personas.
-                            </div>
-                        </div>
-
-                        <div class="impact-item">
-                            <div class="impact-icon">🏜️</div>
-                            <div class="impact-title">Desertificación</div>
-                            <div class="impact-description">
-                                Sin raíces que sujeten el suelo, la tierra fértil desaparece. 
-                                Regiones enteras se convierten en desiertos inhabitables, creando 
-                                crisis alimentarias y migraciones masivas.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cards-grid" style="margin-top: 50px;">
+                    <div class="cards-grid" style="margin-top: 60px;">
                         <div class="card danger">
-                            <span class="card-icon">🌪️</span>
-                            <h3 class="card-title">Eventos Climáticos Extremos</h3>
+                            <span class="card-icon">🌍</span>
+                            <h3 class="card-title">Calentamiento Global</h3>
                             <p class="card-text">
-                                Huracanes, tormentas, sequías e inundaciones se vuelven más frecuentes 
-                                e intensos. Los bosques actúan como reguladores climáticos naturales.
+                                Los árboles absorben CO₂. Sin ellos, aumentan dramáticamente 
+                                los gases de efecto invernadero y el cambio climático.
                             </p>
                         </div>
 
                         <div class="card danger">
-                            <span class="card-icon">🏘️</span>
-                            <h3 class="card-title">Desplazamiento de Comunidades</h3>
+                            <span class="card-icon">🐾</span>
+                            <h3 class="card-title">Extinción Masiva</h3>
                             <p class="card-text">
-                                300 millones de personas viven en bosques. La deforestación destruye 
-                                sus hogares, culturas milenarias y formas de vida sostenibles.
+                                Miles de animales pierden su hogar. Orangutanes, jaguares 
+                                y aves tropicales en peligro crítico de extinción.
                             </p>
                         </div>
 
                         <div class="card danger">
-                            <span class="card-icon">🦠</span>
-                            <h3 class="card-title">Nuevas Enfermedades</h3>
+                            <span class="card-icon">💧</span>
+                            <h3 class="card-title">Crisis del Agua</h3>
                             <p class="card-text">
-                                La destrucción de hábitats naturales aumenta el contacto entre animales 
-                                salvajes y humanos, facilitando la aparición de pandemias como COVID-19.
+                                Los bosques regulan el ciclo hídrico. Su destrucción provoca 
+                                sequías devastadoras e inundaciones catastróficas.
                             </p>
                         </div>
 
                         <div class="card danger">
-                            <span class="card-icon">💰</span>
-                            <h3 class="card-title">Pérdidas Económicas</h3>
+                            <span class="card-icon">🏜️</span>
+                            <h3 class="card-title">Desertificación</h3>
                             <p class="card-text">
-                                Los bosques generan billones de dólares en servicios ecosistémicos: 
-                                agua limpia, aire puro, medicinas naturales y control de plagas.
+                                Sin raíces que sujeten el suelo, la tierra fértil desaparece 
+                                para siempre, creando desiertos inhabitables.
                             </p>
                         </div>
-                    </div>
-
-                    <div class="quote" style="border-left-color: #e74c3c; background: rgba(231, 76, 60, 0.1); margin-top: 50px;">
-                        "Si continuamos a este ritmo, en 100 años no quedarán bosques tropicales. 
-                        Habremos destruido el patrimonio natural de la humanidad."
-                        <div class="quote-author" style="color: #e74c3c;">— Organización de las Naciones Unidas</div>
                     </div>
                 </div>
             </div>
@@ -1852,192 +1590,81 @@
         <div class="container">
             <div class="section-inner">
                 <div class="section-header">
-                    <div class="section-number">04 — Esperanza</div>
-                    <h2 class="section-title">Soluciones y Acciones</h2>
+                    <div class="section-number">03 — ESPERANZA</div>
+                    <h2 class="section-title">Soluciones Efectivas</h2>
                     <p class="section-intro">
-                        Todavía estamos a tiempo. Estas son las soluciones que pueden salvar nuestros bosques.
+                        Juntos podemos salvar nuestros bosques. Estas son las soluciones que funcionan.
                     </p>
                 </div>
 
                 <div class="main-card">
-                    <div class="solution-showcase">
-                        <div class="solution-item">
-                            <div class="solution-number">01</div>
-                            <div class="solution-title">Reforestación Masiva</div>
-                            <div class="solution-text">
-                                Plantar miles de millones de árboles nativos. Proyectos globales como 
-                                "1 Trillion Trees" buscan restaurar ecosistemas destruidos con especies 
-                                autóctonas adaptadas a cada región.
-                            </div>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <span class="card-icon">🌳</span>
+                            <h3 class="card-title">Reforestación Masiva</h3>
+                            <p class="card-text">
+                                Plantar millones de árboles nativos y restaurar ecosistemas 
+                                dañados con proyectos comunitarios sostenibles.
+                            </p>
                         </div>
 
-                        <div class="solution-item">
-                            <div class="solution-number">02</div>
-                            <div class="solution-title">Áreas Protegidas</div>
-                            <div class="solution-text">
-                                Crear y expandir parques nacionales, reservas naturales y corredores 
-                                biológicos. Proteger al menos el 30% de los bosques del planeta 
-                                para 2030.
-                            </div>
+                        <div class="card">
+                            <span class="card-icon">♻️</span>
+                            <h3 class="card-title">Consumo Responsable</h3>
+                            <p class="card-text">
+                                Elegir productos certificados sostenibles, reducir desperdicio 
+                                y reciclar papel y madera correctamente.
+                            </p>
                         </div>
 
-                        <div class="solution-item">
-                            <div class="solution-number">03</div>
-                            <div class="solution-title">Consumo Responsable</div>
-                            <div class="solution-text">
-                                Elegir productos certificados (FSC, RSPO). Reducir el consumo de carne 
-                                de res, papel y productos con aceite de palma. Cada decisión de compra 
-                                cuenta.
-                            </div>
+                        <div class="card">
+                            <span class="card-icon">📜</span>
+                            <h3 class="card-title">Leyes Más Fuertes</h3>
+                            <p class="card-text">
+                                Implementar legislación internacional para proteger bosques 
+                                primarios y penalizar severamente la tala ilegal.
+                            </p>
                         </div>
 
-                        <div class="solution-item">
-                            <div class="solution-number">04</div>
-                            <div class="solution-title">Tecnología Verde</div>
-                            <div class="solution-text">
-                                Usar satélites, drones e inteligencia artificial para monitorear bosques 
-                                en tiempo real. Detectar tala ilegal antes de que sea demasiado tarde.
-                            </div>
+                        <div class="card">
+                            <span class="card-icon">🎓</span>
+                            <h3 class="card-title">Educación Ambiental</h3>
+                            <p class="card-text">
+                                Sensibilizar a las nuevas generaciones sobre la importancia 
+                                vital de los bosques para toda la vida.
+                            </p>
                         </div>
 
-                        <div class="solution-item">
-                            <div class="solution-number">05</div>
-                            <div class="solution-title">Leyes Más Fuertes</div>
-                            <div class="solution-text">
-                                Implementar legislación internacional que penalice severamente la 
-                                deforestación ilegal. Responsabilizar a empresas y gobiernos.
-                            </div>
+                        <div class="card">
+                            <span class="card-icon">🛡️</span>
+                            <h3 class="card-title">Áreas Protegidas</h3>
+                            <p class="card-text">
+                                Crear reservas naturales y parques nacionales con vigilancia 
+                                estricta y control permanente.
+                            </p>
                         </div>
 
-                        <div class="solution-item">
-                            <div class="solution-number">06</div>
-                            <div class="solution-title">Educación Ambiental</div>
-                            <div class="solution-text">
-                                Sensibilizar a las nuevas generaciones sobre la importancia vital de 
-                                los bosques. Integrar educación ambiental en todos los niveles escolares.
-                            </div>
-                        </div>
-
-                        <div class="solution-item">
-                            <div class="solution-number">07</div>
-                            <div class="solution-title">Apoyo a Comunidades</div>
-                            <div class="solution-text">
-                                Empoderar a pueblos indígenas y comunidades locales que protegen los 
-                                bosques de forma efectiva. Reconocer sus derechos territoriales.
-                            </div>
-                        </div>
-
-                        <div class="solution-item">
-                            <div class="solution-number">08</div>
-                            <div class="solution-title">Agricultura Sostenible</div>
-                            <div class="solution-text">
-                                Promover agroforestería, permacultura y técnicas agrícolas que 
-                                respeten los bosques. Aumentar la productividad sin expandir la 
-                                frontera agrícola.
-                            </div>
-                        </div>
-
-                        <div class="solution-item">
-                            <div class="solution-number">09</div>
-                            <div class="solution-title">Economía Verde</div>
-                            <div class="solution-text">
-                                Invertir en ecoturismo, productos forestales sostenibles y servicios 
-                                ecosistémicos. Demostrar que los bosques vivos valen más que los muertos.
-                            </div>
-                        </div>
-
-                        <div class="solution-item">
-                            <div class="solution-number">10</div>
-                            <div class="solution-title">Acción Individual</div>
-                            <div class="solution-text">
-                                Cada persona puede marcar la diferencia: reducir, reutilizar, reciclar, 
-                                plantar árboles, apoyar ONGs ambientales y exigir a gobiernos acciones 
-                                concretas.
-                            </div>
+                        <div class="card">
+                            <span class="card-icon">💡</span>
+                            <h3 class="card-title">Tecnología Verde</h3>
+                            <p class="card-text">
+                                Usar drones, satélites e IA para monitorear bosques en 
+                                tiempo real y detectar tala ilegal.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="cta-section">
-                        <h3>🌳 El Momento de Actuar es AHORA 🌳</h3>
-                        <p>
-                            No podemos esperar más. Cada día que pasa, perdemos bosques irreemplazables. 
-                            Juntos, podemos revertir esta crisis y construir un futuro sostenible.
-                        </p>
-                        <div class="action-buttons">
-                            <button class="action-btn btn-primary" onclick="celebrateAction()">
-                                ✊ Comprometerme
-                            </button>
-                            <button class="action-btn btn-secondary" onclick="shareMessage()">
-                                📢 Compartir
-                            </button>
-                            <button class="action-btn btn-danger" onclick="alertAction()">
-                                ⚡ Actuar Ya
-                            </button>
-                        </div>
+                    <div class="action-buttons">
+                        <button class="action-btn btn-primary" onclick="alert('¡Gracias por tu compromiso! 💚')">
+                            ✊ COMPROMETERSE
+                        </button>
+                        <button class="action-btn btn-secondary" onclick="alert('¡Comparte el mensaje! 📢')">
+                            📢 COMPARTIR
+                        </button>
+                        <button class="action-btn btn-danger" onclick="alert('¡Es hora de actuar! ⚡')">
+                            ⚡ ACTUAR YA
+                        </button>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION CONCLUSION -->
-    <section id="conclusion">
-        <div class="container">
-            <div class="section-inner">
-                <div class="section-header">
-                    <div class="section-number">05 — Conclusión</div>
-                    <h2 class="section-title">Un Futuro en Nuestras Manos</h2>
-                    <p class="section-intro">
-                        La deforestación no es inevitable. Podemos cambiar el rumbo.
-                    </p>
-                </div>
-
-                <div class="main-card">
-                    <p style="font-size: 1.3rem; line-height: 1.9; color: #bdc3c7; margin-bottom: 30px;">
-                        Los bosques son esenciales para la vida en la Tierra. No son solo árboles; 
-                        son ecosistemas complejos que regulan el clima, purifican el aire, protegen 
-                        el agua, albergan biodiversidad y sustentan a millones de personas.
-                    </p>
-
-                    <p style="font-size: 1.3rem; line-height: 1.9; color: #bdc3c7; margin-bottom: 30px;">
-                        La deforestación es una de las mayores amenazas ambientales de nuestro tiempo, 
-                        pero también es una de las más solucionables. A diferencia del cambio climático 
-                        o la contaminación oceánica, podemos ver resultados inmediatos: un árbol plantado 
-                        hoy comienza a absorber CO₂ mañana.
-                    </p>
-
-                    <div class="image-placeholder" style="background: linear-gradient(135deg, rgba(46, 204, 113, 0.3), rgba(39, 174, 96, 0.2));">
-                        🌍🌳💚
-                    </div>
-
-                    <ul class="styled-list">
-                        <li>
-                            <strong>Cada acción cuenta:</strong> Desde reducir el consumo de papel hasta 
-                            apoyar organizaciones que protegen bosques, todo suma.
-                        </li>
-                        <li>
-                            <strong>La juventud lidera el cambio:</strong> Movimientos como Fridays for Future 
-                            demuestran que las nuevas generaciones están comprometidas con el planeta.
-                        </li>
-                        <li>
-                            <strong>La tecnología es nuestra aliada:</strong> Drones, satélites e IA nos 
-                            permiten monitorear y proteger bosques como nunca antes.
-                        </li>
-                        <li>
-                            <strong>El tiempo se acaba:</strong> Pero todavía estamos a tiempo de revertir 
-                            el daño si actuamos ahora con determinación y unidad.
-                        </li>
-                    </ul>
-
-                    <div class="quote">
-                        "Cuando el último árbol haya sido cortado, el último río envenenado, 
-                        y el último pez capturado, nos daremos cuenta de que no podemos comer dinero."
-                        <div class="quote-author">— Proverbio Indígena</div>
-                    </div>
-
-                    <p style="font-size: 1.4rem; line-height: 1.9; color: #2ecc71; text-align: center; margin-top: 50px; font-weight: 700;">
-                        🌳 Salvemos Nuestros Bosques. Salvemos Nuestro Futuro. 🌳
-                    </p>
                 </div>
             </div>
         </div>
@@ -2046,33 +1673,15 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <h3>🌍 Juntos Por Un Planeta Verde 🌍</h3>
-                <p>
-                    Este proyecto educativo busca crear conciencia sobre la importancia de proteger 
-                    nuestros bosques y actuar contra la deforestación.
-                </p>
-                <p>
-                    Cada árbol cuenta. Cada acción importa. Cada persona puede marcar la diferencia.
-                </p>
-                
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Recursos Educativos</a>
-                    <a href="#" class="footer-link">Organizaciones</a>
-                    <a href="#" class="footer-link">Cómo Ayudar</a>
-                    <a href="#" class="footer-link">Contacto</a>
-                </div>
-
-                <div class="footer-social">
-                    <span class="social-icon">🌳</span>
-                    <span class="social-icon">🌍</span>
-                    <span class="social-icon">♻️</span>
-                    <span class="social-icon">💚</span>
-                </div>
-
-                <p style="margin-top: 40px; font-size: 0.9rem; opacity: 0.7;">
-                    © 2026 - Proyecto Educativo sobre Deforestación
-                </p>
+            <h3>🌍 SALVEMOS NUESTROS BOSQUES 🌍</h3>
+            <p>Cada árbol cuenta. Cada acción importa. Cada persona puede marcar la diferencia.</p>
+            <p style="margin-top: 30px;">© 2026 - Proyecto Educativo sobre Deforestación</p>
+            
+            <div class="footer-social">
+                <span class="social-icon">🌳</span>
+                <span class="social-icon">🌍</span>
+                <span class="social-icon">♻️</span>
+                <span class="social-icon">💚</span>
             </div>
         </div>
     </footer>
@@ -2082,10 +1691,10 @@
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.querySelector('.loading-screen').classList.add('hidden');
-            }, 1500);
+            }, 2000);
         });
 
-        // ==================== CURSEUR SIMPLE ROND ====================
+        // ==================== CURSEUR NÉON ====================
         const cursor = document.querySelector('.cursor');
         let mouseX = 0;
         let mouseY = 0;
@@ -2098,7 +1707,7 @@
         });
 
         function animateCursor() {
-            const speed = 0.15;
+            const speed = 0.2;
             cursorX += (mouseX - cursorX) * speed;
             cursorY += (mouseY - cursorY) * speed;
             
@@ -2118,73 +1727,76 @@
             cursor.classList.remove('click');
         });
 
-        // ==================== PARTICULES ====================
+        // ==================== CRÉER LES PARTICULES ====================
         function createParticles() {
             const container = document.querySelector('.particles');
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 100; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.width = (Math.random() * 3 + 2) + 'px';
+                particle.style.width = (Math.random() * 4 + 2) + 'px';
                 particle.style.height = particle.style.width;
-                particle.style.animationDuration = (Math.random() * 10 + 8) + 's';
+                particle.style.animationDuration = (Math.random() * 12 + 10) + 's';
                 particle.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(particle);
             }
         }
 
-        // ==================== FEUILLES ====================
+        // ==================== CRÉER LES FEUILLES ====================
         function createLeaves() {
             const container = document.querySelector('.leaves');
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < 50; i++) {
                 const leaf = document.createElement('div');
                 leaf.className = 'leaf';
                 leaf.style.left = Math.random() * 100 + '%';
-                leaf.style.setProperty('--drift', (Math.random() - 0.5) * 200 + 'px');
-                leaf.style.animationDuration = (Math.random() * 8 + 6) + 's';
-                leaf.style.animationDelay = Math.random() * 4 + 's';
+                leaf.style.setProperty('--drift', (Math.random() - 0.5) * 250 + 'px');
+                leaf.style.animationDuration = (Math.random() * 10 + 8) + 's';
+                leaf.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(leaf);
             }
         }
 
-        // ==================== BRAISES ====================
+        // ==================== CRÉER LES BRAISES ====================
         function createEmbers() {
             const container = document.querySelector('.embers');
-            for (let i = 0; i < 60; i++) {
+            for (let i = 0; i < 80; i++) {
                 const ember = document.createElement('div');
                 ember.className = 'ember';
                 ember.style.left = Math.random() * 100 + '%';
-                ember.style.setProperty('--drift', (Math.random() - 0.5) * 250 + 'px');
-                ember.style.animationDuration = (Math.random() * 7 + 5) + 's';
-                ember.style.animationDelay = Math.random() * 4 + 's';
+                ember.style.setProperty('--drift', (Math.random() - 0.5) * 300 + 'px');
+                ember.style.animationDuration = (Math.random() * 8 + 6) + 's';
+                ember.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(ember);
             }
         }
 
-        // ==================== FLAMMES ====================
+        // ==================== CRÉER LES FLAMMES ====================
         function createFlames() {
             const container = document.querySelector('.flames');
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < 50; i++) {
                 const flame = document.createElement('div');
                 flame.className = 'flame';
-                flame.style.left = (i * 2.5) + '%';
-                flame.style.animationDuration = (Math.random() * 0.5 + 0.3) + 's';
+                flame.style.left = (i * 2) + '%';
+                flame.style.setProperty('--speed', (Math.random() * 0.6 + 0.4) + 's');
+                flame.style.animationDuration = flame.style.getPropertyValue('--speed');
                 flame.style.animationDelay = Math.random() * 0.5 + 's';
-                flame.style.height = (Math.random() * 120 + 100) + 'px';
-                flame.style.width = (Math.random() * 30 + 40) + 'px';
+                flame.style.height = (Math.random() * 150 + 120) + 'px';
+                flame.style.width = (Math.random() * 40 + 50) + 'px';
                 container.appendChild(flame);
             }
         }
 
-        // ==================== FORÊT BACKGROUND ====================
-        function createForestBg() {
-            const container = document.querySelector('.forest-bg');
-            for (let i = 0; i < 60; i++) {
-                const tree = document.createElement('div');
-                tree.className = 'tree-silhouette';
-                tree.style.left = Math.random() * 100 + '%';
-                tree.style.height = (Math.random() * 200 + 100) + 'px';
-                container.appendChild(tree);
+        // ==================== CRÉER LES LUCIOLES ====================
+        function createFireflies() {
+            const container = document.querySelector('.fireflies');
+            for (let i = 0; i < 30; i++) {
+                const firefly = document.createElement('div');
+                firefly.className = 'firefly';
+                firefly.style.left = Math.random() * 100 + '%';
+                firefly.style.top = Math.random() * 100 + '%';
+                firefly.style.animationDuration = (Math.random() * 6 + 6) + 's';
+                firefly.style.animationDelay = Math.random() * 4 + 's';
+                container.appendChild(firefly);
             }
         }
 
@@ -2200,36 +1812,33 @@
             const embers = document.querySelector('.embers');
             const flames = document.querySelector('.flames');
             const leaves = document.querySelector('.leaves');
-            const forestBg = document.querySelector('.forest-bg');
+            const fireflies = document.querySelector('.fireflies');
 
-            if (scrollPercent < 0.25) {
-                // Phase feu
+            if (scrollPercent < 0.3) {
                 bgFire.style.opacity = 1;
                 bgTransition.style.opacity = 0;
                 bgForest.style.opacity = 0;
                 embers.style.opacity = 1;
                 flames.style.opacity = 1;
                 leaves.style.opacity = 0;
-                forestBg.style.opacity = 0;
-            } else if (scrollPercent < 0.55) {
-                // Phase transition
-                const progress = (scrollPercent - 0.25) / 0.3;
+                fireflies.style.opacity = 0;
+            } else if (scrollPercent < 0.65) {
+                const progress = (scrollPercent - 0.3) / 0.35;
                 bgFire.style.opacity = 1 - progress;
                 bgTransition.style.opacity = progress;
                 bgForest.style.opacity = 0;
                 embers.style.opacity = 1 - progress;
                 flames.style.opacity = 1 - progress;
-                leaves.style.opacity = progress * 0.6;
-                forestBg.style.opacity = progress * 0.4;
+                leaves.style.opacity = progress * 0.7;
+                fireflies.style.opacity = progress * 0.5;
             } else {
-                // Phase forêt
                 bgFire.style.opacity = 0;
                 bgTransition.style.opacity = 0;
                 bgForest.style.opacity = 1;
                 embers.style.opacity = 0;
                 flames.style.opacity = 0;
                 leaves.style.opacity = 1;
-                forestBg.style.opacity = 1;
+                fireflies.style.opacity = 1;
             }
         }
 
@@ -2259,6 +1868,39 @@
                 }
             });
         }
+
+        // ==================== SCROLL VERS SECTION ====================
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ 
+                behavior: 'smooth'
+            });
+        }
+
+        // ==================== INITIALISATION ====================
+        createParticles();
+        createLeaves();
+        createEmbers();
+        createFlames();
+        createFireflies();
+        updateBackground();
+
+        window.addEventListener('scroll', () => {
+            updateProgressBar();
+            updateBackground();
+            updateNavDots();
+        });
+
+        // Navigation dots click
+        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                const sections = document.querySelectorAll('section');
+                if (sections[index]) {
+                    sections[index].scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        updateNavDots();
 
         // ==================== RÉVÉLATION DES SECTIONS ====================
         function revealSections() {
@@ -2305,119 +1947,74 @@
             counters.forEach(counter => observer.observe(counter));
         }
 
-        // ==================== SCROLL VERS SECTION ====================
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-
-        // ==================== ACTIONS DES BOUTONS ====================
-        function celebrateAction() {
-            createExplosion();
-            setTimeout(() => {
-                alert('🌳 ¡Gracias por tu compromiso! Juntos podemos salvar nuestros bosques. 💚');
-            }, 100);
-        }
-
-        function shareMessage() {
-            const message = '🌍 La deforestación destruye 10 millones de hectáreas al año. ¡Actuemos ahora para salvar nuestros bosques! 🌳 #SalvemosLosBosques';
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Deforestación - Crisis Global',
-                    text: message
-                }).catch(() => {
-                    copyToClipboard(message);
-                });
-            } else {
-                copyToClipboard(message);
-            }
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('📋 ¡Mensaje copiado! Compártelo en tus redes sociales.');
-            });
-        }
-
-        function alertAction() {
-            alert('⚡ ¡Es hora de actuar! Reduce tu consumo, planta árboles y apoya organizaciones ambientales.');
-        }
-
-        // ==================== EXPLOSION DE PARTICULES ====================
-        function createExplosion() {
-            const colors = ['#2ecc71', '#27ae60', '#1abc9c', '#16a085'];
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.style.position = 'fixed';
-                particle.style.width = '10px';
-                particle.style.height = '10px';
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.borderRadius = '50%';
-                particle.style.left = '50%';
-                particle.style.top = '50%';
-                particle.style.pointerEvents = 'none';
-                particle.style.zIndex = '99999';
-                particle.style.boxShadow = `0 0 15px ${colors[Math.floor(Math.random() * colors.length)]}`;
-                
-                const angle = (Math.PI * 2 * i) / 50;
-                const velocity = Math.random() * 250 + 150;
-                const vx = Math.cos(angle) * velocity;
-                const vy = Math.sin(angle) * velocity;
-                
-                document.body.appendChild(particle);
-                
-                let x = 0, y = 0, gravity = 0;
-                const animate = () => {
-                    x += vx * 0.02;
-                    y += vy * 0.02;
-                    gravity += 0.5;
-                    y += gravity * 0.02;
-                    
-                    particle.style.transform = `translate(${x}px, ${y}px) rotate(${x + y}deg)`;
-                    particle.style.opacity = Math.max(0, 1 - (y / 600));
-                    
-                    if (y < 700) {
-                        requestAnimationFrame(animate);
-                    } else {
-                        particle.remove();
-                    }
-                };
-                animate();
-            }
-        }
-
-        // ==================== INITIALISATION ====================
-        createParticles();
-        createLeaves();
-        createEmbers();
-        createFlames();
-        createForestBg();
+        // Initialiser
         revealSections();
         animateCounters();
-        updateBackground();
 
-        // ==================== EVENT LISTENERS ====================
+        // ==================== PARALLAXE 3D AU SCROLL ====================
         window.addEventListener('scroll', () => {
-            updateProgressBar();
-            updateBackground();
-            updateNavDots();
-        });
+            const scrolled = window.pageYOffset;
+            
+            // Parallaxe sur le hero
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateZ(${scrolled * 0.5}px)`;
+            }
 
-        // Click sur les nav dots
-        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                const sections = document.querySelectorAll('section');
-                if (sections[index]) {
-                    sections[index].scrollIntoView({ behavior: 'smooth' });
+            // Parallaxe sur les cartes
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                const rect = card.getBoundingClientRect();
+                const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+                
+                if (scrollPercent > 0 && scrollPercent < 1) {
+                    const translateZ = scrollPercent * 50;
+                    const rotateY = (scrollPercent - 0.5) * 10;
+                    card.style.transform = `perspective(1000px) translateZ(${translateZ}px) rotateY(${rotateY}deg)`;
+                }
+            });
+
+            // Parallaxe sur les stats
+            const stats = document.querySelectorAll('.stat-box');
+            stats.forEach((stat, index) => {
+                const rect = stat.getBoundingClientRect();
+                const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+                
+                if (scrollPercent > 0 && scrollPercent < 1) {
+                    const translateZ = scrollPercent * 60;
+                    const rotateX = (scrollPercent - 0.5) * 15;
+                    stat.style.transform = `perspective(1500px) translateZ(${translateZ}px) rotateX(${rotateX}deg)`;
                 }
             });
         });
 
-        // ==================== INITIALISATION FINALE ====================
-        updateNavDots();
+        // ==================== EFFET 3D AU MOUVEMENT DE LA SOURIS ====================
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+
+            // Effet sur les main-cards
+            const mainCards = document.querySelectorAll('.main-card');
+            mainCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const rotateY = mouseX * 5;
+                    const rotateX = -mouseY * 5;
+                    card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                }
+            });
+
+            // Effet sur le hero title
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                const rect = heroTitle.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const rotateY = mouseX * 3;
+                    const rotateX = -mouseY * 3;
+                    heroTitle.style.transform = `translateZ(100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                }
+            }
+        });
     </script>
 </body>
 </html>
