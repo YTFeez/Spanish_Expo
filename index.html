@@ -1,2020 +1,2320 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 DEFORESTACIÓN - Ultra Premium Edition 🔥</title>
-    <style>
-        /* ==================== RESET & BASE ==================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: none;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', 'Roboto', sans-serif;
-            background: #000;
-            color: #fff;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* ==================== CURSEUR NÉON AVANCÉ ==================== */
-        .cursor {
-            position: fixed;
-            width: 30px;
-            height: 30px;
-            border: 3px solid #00ff88;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            transition: all 0.15s ease;
-            box-shadow: 0 0 25px #00ff88,
-                        0 0 50px #00ff88,
-                        inset 0 0 15px rgba(0, 255, 136, 0.3);
-            animation: cursorPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes cursorPulse {
-            0%, 100% {
-                box-shadow: 0 0 25px #00ff88,
-                            0 0 50px #00ff88,
-                            inset 0 0 15px rgba(0, 255, 136, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 35px #00ff88,
-                            0 0 70px #00ff88,
-                            0 0 90px #00ff88,
-                            inset 0 0 20px rgba(0, 255, 136, 0.5);
-            }
-        }
-
-        .cursor.click {
-            transform: scale(0.5);
-            border-color: #ff0055;
-            box-shadow: 0 0 30px #ff0055,
-                        0 0 60px #ff0055,
-                        0 0 90px #ff0055;
-            animation: clickExplosion 0.3s ease-out;
-        }
-
-        @keyframes clickExplosion {
-            0% { transform: scale(0.5); }
-            50% { transform: scale(1.8); opacity: 0.5; }
-            100% { transform: scale(0.5); opacity: 1; }
-        }
-
-        @media (max-width: 768px) {
-            .cursor {
-                display: none;
-            }
-            * {
-                cursor: auto !important;
-            }
-        }
-
-        /* ==================== BARRE DE PROGRESSION NÉON ==================== */
-        .progress-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, 
-                #ff0055 0%, 
-                #ff6b35 25%, 
-                #ffd700 50%, 
-                #00ff88 75%, 
-                #00d4ff 100%
-            );
-            transition: width 0.1s ease;
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.8),
-                        0 0 60px rgba(0, 255, 136, 0.5);
-            position: relative;
-        }
-
-        .progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8));
-            animation: progressShine 2s ease-in-out infinite;
-        }
-
-        @keyframes progressShine {
-            0%, 100% { transform: translateX(-100px); }
-            50% { transform: translateX(100px); }
-        }
-
-        /* ==================== FOND DYNAMIQUE ULTRA ==================== */
-        .background-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -10;
-        }
-
-        .bg-layer {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            transition: opacity 1.5s ease;
-        }
-
-        /* Fond de feu avec animation */
-        .bg-fire {
-            background: 
-                radial-gradient(ellipse at 30% 80%, #ff0000 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, #ff6600 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 100%, #ff3300 0%, #990000 40%, #000000 80%);
-            opacity: 1;
-            animation: fireBreath 8s ease-in-out infinite;
-        }
-
-        @keyframes fireBreath {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Fond de transition */
-        .bg-transition {
-            background: 
-                radial-gradient(ellipse at 50% 50%, #2d5016 0%, #1a3010 40%, #000000 80%),
-                linear-gradient(180deg, #1a3010 0%, #0d1a08 50%, #000000 100%);
-            opacity: 0;
-        }
-
-        /* Fond de forêt avec lucioles */
-        .bg-forest {
-            background: 
-                radial-gradient(ellipse at 20% 30%, rgba(0, 255, 136, 0.15) 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 60%, rgba(0, 212, 255, 0.1) 0%, transparent 40%),
-                linear-gradient(180deg, #0a2f1a 0%, #0d4d25 20%, #0a3d1f 40%, #072817 60%, #041a10 80%, #000000 100%);
-            opacity: 0;
-        }
-
-        /* ==================== PARTICULES MAGIQUES ==================== */
-        .particles {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -5;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background: #00ff88;
-            border-radius: 50%;
-            opacity: 0;
-            box-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88;
-            animation: float linear infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0) scale(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-150px) translateX(100px) scale(1.5) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* ==================== BRAISES ÉPIQUES ==================== */
-        .embers {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            bottom: 0;
-            left: 0;
-            z-index: -3;
-            pointer-events: none;
-            transition: opacity 1s ease;
-        }
-
-        .ember {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: radial-gradient(circle, #ffff00 0%, #ff6600 30%, #ff0000 60%, transparent 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 20px #ff6600,
-                        0 0 40px #ff3300,
-                        0 0 60px #ff0000;
-            opacity: 0;
-            animation: emberRise linear infinite;
-        }
-
-        .ember::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, #ffff00, transparent);
-            border-radius: 50%;
-            animation: emberPulse 0.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes emberRise {
-            0% {
-                transform: translateY(0) translateX(0) scale(1);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(var(--drift)) scale(0.3) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes emberPulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.5); }
-        }
-
-        /* ==================== FLAMMES RÉALISTES AVANCÉES ==================== */
-        .flames {
-            position: fixed;
-            width: 100%;
-            height: 400px;
-            bottom: 0;
-            left: 0;
-            z-index: -2;
-            pointer-events: none;
-            transition: opacity 1s ease;
-        }
-
-        .flame {
-            position: absolute;
-            bottom: -30px;
-            width: 60px;
-            height: 220px;
-            background: linear-gradient(
-                to top,
-                #ff0000 0%,
-                #ff3300 10%,
-                #ff6600 25%,
-                #ff9900 40%,
-                #ffcc00 60%,
-                #ffff00 80%,
-                transparent 100%
-            );
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            filter: blur(15px);
-            opacity: 0.9;
-            animation: flameFlicker ease-in-out infinite;
-            transform-origin: bottom center;
-            box-shadow: 0 0 50px #ff6600, 0 0 100px #ff3300;
-        }
-
-        .flame::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70%;
-            height: 60%;
-            background: linear-gradient(
-                to top,
-                #ffff00 0%,
-                #ffdd00 40%,
-                #ffffaa 70%,
-                transparent 100%
-            );
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            filter: blur(8px);
-            animation: flameCore calc(var(--speed) * 0.7) ease-in-out infinite;
-        }
-
-        @keyframes flameFlicker {
-            0%, 100% {
-                transform: scaleY(1) scaleX(1) skewX(-3deg);
-                opacity: 0.9;
-            }
-            20% {
-                transform: scaleY(1.25) scaleX(0.85) skewX(4deg);
-                opacity: 1;
-            }
-            40% {
-                transform: scaleY(0.9) scaleX(1.15) skewX(-4deg);
-                opacity: 0.85;
-            }
-            60% {
-                transform: scaleY(1.15) scaleX(0.9) skewX(3deg);
-                opacity: 0.95;
-            }
-            80% {
-                transform: scaleY(0.95) scaleX(1.1) skewX(-2deg);
-                opacity: 0.88;
-            }
-        }
-
-        @keyframes flameCore {
-            0%, 100% {
-                transform: translateX(-50%) scaleY(1) scaleX(1);
-                opacity: 1;
-            }
-            50% {
-                transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-                opacity: 0.8;
-            }
-        }
-
-        /* ==================== FEUILLES MAGIQUES ==================== */
-        .leaves {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -4;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 1.5s ease;
-        }
-
-        .leaf {
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            background: linear-gradient(135deg, #00ff88, #00cc66);
-            border-radius: 0 100% 0 100%;
-            opacity: 0;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
-            animation: leafFall linear infinite;
-        }
-
-        @keyframes leafFall {
-            0% {
-                transform: translateY(-100px) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(100vh) translateX(var(--drift)) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* ==================== LUCIOLES / FIREFLIES ==================== */
-        .fireflies {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -4;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 2s ease;
-        }
-
-        .firefly {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #ffff00;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #ffff00, 0 0 30px #ffff00;
-            animation: fireflyFloat 8s ease-in-out infinite;
-        }
-
-        @keyframes fireflyFloat {
-            0%, 100% {
-                transform: translate(0, 0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            25% {
-                transform: translate(50px, -80px);
-            }
-            50% {
-                transform: translate(-30px, -150px);
-                opacity: 0.8;
-            }
-            75% {
-                transform: translate(70px, -100px);
-            }
-            90% {
-                opacity: 1;
-            }
-        }
-
-        /* ==================== ÉCRAN DE CHARGEMENT ÉPIQUE ==================== */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, #1a1a1a, #000000);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            transition: opacity 1s ease;
-        }
-
-        .loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader {
-            width: 100px;
-            height: 100px;
-            border: 6px solid transparent;
-            border-top: 6px solid #00ff88;
-            border-right: 6px solid #00d4ff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite, loaderGlow 2s ease-in-out infinite;
-            box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes loaderGlow {
-            0%, 100% {
-                box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 80px rgba(0, 255, 136, 0.9),
-                            0 0 120px rgba(0, 212, 255, 0.6);
-            }
-        }
-
-        .loading-text {
-            margin-top: 40px;
-            font-size: 1.5rem;
-            color: #00ff88;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            animation: textGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes textGlow {
-            0%, 100% {
-                text-shadow: 0 0 20px #00ff88;
-            }
-            50% {
-                text-shadow: 0 0 40px #00ff88, 0 0 60px #00ff88;
-            }
-        }
-
-        /* ==================== NAVIGATION NÉON ==================== */
-        .nav {
-            position: fixed;
-            top: 30px;
-            right: 50px;
-            z-index: 1000;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-dot {
-            width: 14px;
-            height: 14px;
-            border: 3px solid rgba(0, 255, 136, 0.4);
-            border-radius: 50%;
-            transition: all 0.4s ease;
-            cursor: none;
-            position: relative;
-        }
-
-        .nav-dot::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: #00ff88;
-            opacity: 0;
-            transform: scale(0);
-            transition: all 0.4s ease;
-        }
-
-        .nav-dot.active {
-            background: #00ff88;
-            border-color: #00ff88;
-            box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
-            transform: scale(1.4);
-        }
-
-        .nav-dot.active::before {
-            opacity: 0.3;
-            transform: scale(2);
-        }
-
-        .nav-dot:hover {
-            border-color: #00ff88;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
-        }
-
-        /* ==================== HERO SECTION ÉPIQUE ==================== */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            perspective: 2000px;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
-            animation: heroAura 10s ease-in-out infinite;
-        }
-
-        @keyframes heroAura {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
-        }
-
-        .hero-content {
-            text-align: center;
-            animation: fadeInScale 2s ease-out;
-            position: relative;
-            z-index: 2;
-        }
-
-        @keyframes fadeInScale {
-            0% {
-                opacity: 0;
-                transform: scale(0.7) translateY(80px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .hero-title {
-            font-size: 10rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ff0055, #ff6b35, #ffd700, #00ff88, #00d4ff);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 30px;
-            letter-spacing: -5px;
-            text-transform: uppercase;
-            animation: titleRainbow 5s ease-in-out infinite, titleFloat 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 40px rgba(0, 255, 136, 0.6))
-                    drop-shadow(0 0 80px rgba(0, 212, 255, 0.4));
-            transform: translateZ(100px);
-            transform-style: preserve-3d;
-        }
-
-        .hero-title::before {
-            content: 'DEFORESTACIÓN';
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background: linear-gradient(135deg, #ff0055, #ff6b35, #ffd700, #00ff88, #00d4ff);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transform: translateZ(-50px);
-            filter: blur(30px);
-            opacity: 0.5;
-        }
-
-        @keyframes titleRainbow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes titleFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-subtitle {
-            font-size: 2.5rem;
-            color: #ff0055;
-            margin-bottom: 20px;
-            text-shadow: 0 0 30px #ff0055,
-                         0 0 60px #ff0055,
-                         0 0 90px #ff0055;
-            animation: subtitlePulse 2s ease-in-out infinite;
-            font-weight: 700;
-        }
-
-        @keyframes subtitlePulse {
-            0%, 100% { 
-                opacity: 1; 
-                transform: scale(1);
-                text-shadow: 0 0 30px #ff0055, 0 0 60px #ff0055;
-            }
-            50% { 
-                opacity: 0.8; 
-                transform: scale(1.05);
-                text-shadow: 0 0 50px #ff0055, 0 0 100px #ff0055, 0 0 150px #ff0055;
-            }
-        }
-
-        .hero-description {
-            font-size: 1.4rem;
-            color: #bdc3c7;
-            max-width: 800px;
-            margin: 0 auto 60px;
-            line-height: 1.9;
-            animation: fadeIn 2s ease-out 0.5s both;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .cta-button {
-            padding: 22px 60px;
-            font-size: 1.4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #00ff88, #00d4ff);
-            color: #000;
-            border: none;
-            border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 15px 50px rgba(0, 255, 136, 0.5),
-                        0 0 50px rgba(0, 255, 136, 0.3),
-                        0 5px 0 rgba(0, 200, 100, 0.8);
-            cursor: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-            animation: buttonGlow 2s ease-in-out infinite;
-            transform-style: preserve-3d;
-            transform: perspective(1000px) translateZ(30px);
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) translateZ(10px);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
-            border-radius: 50px;
-            transform: translateZ(40px);
-        }
-
-        .cta-button:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .cta-button:hover {
-            transform: perspective(1000px) translateY(-15px) translateZ(60px) rotateX(-8deg);
-            box-shadow: 0 30px 80px rgba(0, 255, 136, 0.7),
-                        0 0 80px rgba(0, 255, 136, 0.5),
-                        0 0 120px rgba(0, 212, 255, 0.3),
-                        0 10px 0 rgba(0, 200, 100, 1);
-        }
-
-        .cta-button:active {
-            transform: perspective(1000px) translateY(-10px) translateZ(50px) rotateX(-5deg);
-            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.6),
-                        0 0 60px rgba(0, 255, 136, 0.4),
-                        0 3px 0 rgba(0, 200, 100, 0.9);
-        }
-
-        @keyframes buttonGlow {
-            0%, 100% {
-                box-shadow: 0 15px 50px rgba(0, 255, 136, 0.5),
-                            0 0 50px rgba(0, 255, 136, 0.3),
-                            0 5px 0 rgba(0, 200, 100, 0.8);
-            }
-            50% {
-                box-shadow: 0 20px 60px rgba(0, 255, 136, 0.7),
-                            0 0 70px rgba(0, 255, 136, 0.5),
-                            0 0 100px rgba(0, 212, 255, 0.3),
-                            0 7px 0 rgba(0, 200, 100, 1);
-            }
-        }
-
-        /* ==================== CONTAINER ==================== */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 50px;
-        }
-
-        /* ==================== SECTIONS ==================== */
-        section {
-            min-height: 100vh;
-            padding: 120px 0;
-            display: flex;
-            align-items: center;
-            position: relative;
-            transform-style: preserve-3d;
-            perspective: 2000px;
-        }
-
-        .section-inner {
-            width: 100%;
-            opacity: 0;
-            transform: translateY(80px) rotateX(15deg);
-            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-
-        .section-inner.visible {
-            opacity: 1;
-            transform: translateY(0) rotateX(0deg);
-        }
-
-        /* ==================== SECTION HEADER NÉON ==================== */
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-number {
-            font-size: 1.1rem;
-            color: #00ff88;
-            font-weight: 900;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px #00ff88;
-            animation: numberGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes numberGlow {
-            0%, 100% { text-shadow: 0 0 20px #00ff88; }
-            50% { text-shadow: 0 0 40px #00ff88, 0 0 60px #00ff88; }
-        }
-
-        .section-title {
-            font-size: 5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #00ff88, #00d4ff);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 30px;
-            letter-spacing: -3px;
-            animation: titleShift 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5));
-        }
-
-        .section-title.danger {
-            background: linear-gradient(135deg, #ff0055, #ff6b35);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 30px rgba(255, 0, 85, 0.5));
-        }
-
-        @keyframes titleShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .section-intro {
-            font-size: 1.4rem;
-            color: #95a5a6;
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.9;
-        }
-
-        /* ==================== MAIN CARD GLASSMORPHISM ==================== */
-        .main-card {
-            background: rgba(20, 40, 30, 0.4);
-            backdrop-filter: blur(30px);
-            border-radius: 30px;
-            padding: 70px;
-            border: 2px solid rgba(0, 255, 136, 0.3);
-            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7),
-                        0 0 60px rgba(0, 255, 136, 0.2),
-                        inset 0 0 50px rgba(0, 255, 136, 0.05);
-            transition: all 0.6s ease;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transform: perspective(2000px) rotateX(0deg);
-        }
-
-        .main-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(0, 255, 136, 0.1), transparent);
-            transform: rotate(0deg) translateZ(20px);
-            animation: cardShine 6s linear infinite;
-        }
-
-        .main-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
-            transform: translateZ(-10px);
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        @keyframes cardShine {
-            0% { transform: rotate(0deg) translateZ(20px); }
-            100% { transform: rotate(360deg) translateZ(20px); }
-        }
-
-        .main-card:hover {
-            border-color: rgba(0, 255, 136, 0.7);
-            box-shadow: 0 50px 150px rgba(0, 0, 0, 0.9),
-                        0 0 100px rgba(0, 255, 136, 0.5),
-                        inset 0 0 80px rgba(0, 255, 136, 0.1);
-            transform: perspective(2000px) rotateX(-2deg) translateY(-20px) translateZ(30px);
-        }
-
-        .main-card:hover::after {
-            opacity: 1;
-        }
-
-        .main-card.danger {
-            background: rgba(50, 20, 20, 0.4);
-            border-color: rgba(255, 0, 85, 0.3);
-            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7),
-                        0 0 60px rgba(255, 0, 85, 0.2),
-                        inset 0 0 50px rgba(255, 0, 85, 0.05);
-        }
-
-        .main-card.danger::before {
-            background: linear-gradient(45deg, transparent, rgba(255, 0, 85, 0.1), transparent);
-        }
-
-        .main-card.danger::after {
-            background: radial-gradient(circle at 50% 50%, rgba(255, 0, 85, 0.1) 0%, transparent 70%);
-        }
-
-        .main-card.danger:hover {
-            border-color: rgba(255, 0, 85, 0.7);
-            box-shadow: 0 50px 150px rgba(0, 0, 0, 0.9),
-                        0 0 100px rgba(255, 0, 85, 0.5),
-                        inset 0 0 80px rgba(255, 0, 85, 0.1);
-            transform: perspective(2000px) rotateX(2deg) translateY(-20px) translateZ(30px);
-        }
-
-        /* ==================== GRILLE DE CARTES NÉON ==================== */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .card {
-            background: rgba(30, 50, 40, 0.3);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 45px;
-            border: 2px solid rgba(0, 255, 136, 0.2);
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
-            transition: left 0.7s ease;
-            transform: translateZ(10px);
-        }
-
-        .card:hover::before {
-            left: 100%;
-        }
-
-        .card:hover {
-            border-color: rgba(0, 255, 136, 0.7);
-            transform: perspective(1000px) rotateY(-8deg) rotateX(5deg) translateY(-20px) translateZ(50px);
-            box-shadow: 0 30px 90px rgba(0, 255, 136, 0.4),
-                        0 0 60px rgba(0, 255, 136, 0.3);
-        }
-
-        .card.danger {
-            background: rgba(50, 30, 30, 0.3);
-            border-color: rgba(255, 0, 85, 0.2);
-        }
-
-        .card.danger::before {
-            background: linear-gradient(90deg, transparent, rgba(255, 0, 85, 0.2), transparent);
-        }
-
-        .card.danger:hover {
-            border-color: rgba(255, 0, 85, 0.7);
-            transform: perspective(1000px) rotateY(8deg) rotateX(-5deg) translateY(-20px) translateZ(50px);
-            box-shadow: 0 30px 90px rgba(255, 0, 85, 0.4),
-                        0 0 60px rgba(255, 0, 85, 0.3);
-        }
-
-        .card-icon {
-            font-size: 4rem;
-            margin-bottom: 25px;
-            display: block;
-            filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));
-            animation: iconFloat 3s ease-in-out infinite;
-            transform: translateZ(60px);
-            transform-style: preserve-3d;
-        }
-
-        @keyframes iconFloat {
-            0%, 100% { transform: translateZ(60px) translateY(0px) rotateZ(0deg); }
-            50% { transform: translateZ(80px) translateY(-10px) rotateZ(5deg); }
-        }
-
-        .card.danger .card-icon {
-            filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.6));
-        }
-
-        .card-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #00ff88;
-            margin-bottom: 18px;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-            transform: translateZ(40px);
-        }
-
-        .card.danger .card-title {
-            color: #ff0055;
-            text-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
-        }
-
-        .card-text {
-            font-size: 1.15rem;
-            color: #bdc3c7;
-            line-height: 1.8;
-            transform: translateZ(20px);
-        }
-
-        /* ==================== STATS NÉON ==================== */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 45px;
-            margin: 70px 0;
-        }
-
-        .stat-box {
-            background: rgba(50, 20, 20, 0.5);
-            backdrop-filter: blur(20px);
-            border: 3px solid #ff0055;
-            border-radius: 25px;
-            padding: 60px 35px;
-            text-align: center;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transform: perspective(1500px) rotateX(0deg) rotateY(0deg);
-        }
-
-        .stat-box::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(255, 0, 85, 0.3), transparent);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) translateZ(-20px);
-            transition: all 0.6s ease;
-        }
-
-        .stat-box::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ff0055, #ff6b35, #ff0055);
-            background-size: 400% 400%;
-            border-radius: 25px;
-            z-index: -1;
-            opacity: 0;
-            animation: borderGlow 3s ease infinite;
-            transition: opacity 0.5s ease;
-        }
-
-        @keyframes borderGlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .stat-box:hover::before {
-            width: 500px;
-            height: 500px;
-        }
-
-        .stat-box:hover::after {
-            opacity: 1;
-        }
-
-        .stat-box:hover {
-            transform: perspective(1500px) rotateX(10deg) rotateY(-10deg) translateY(-25px) translateZ(60px);
-            box-shadow: 0 40px 110px rgba(255, 0, 85, 0.6),
-                        0 0 80px rgba(255, 0, 85, 0.4);
-            border-color: #ff6b35;
-        }
-
-        .stat-number {
-            font-size: 6rem;
-            font-weight: 900;
-            color: #ff0055;
-            text-shadow: 0 0 40px rgba(255, 0, 85, 0.8),
-                         0 0 80px rgba(255, 0, 85, 0.5);
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-            animation: numberPulse 2s ease-in-out infinite;
-            transform: translateZ(80px);
-            transform-style: preserve-3d;
-        }
-
-        .stat-number::before {
-            content: attr(data-target);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: #ff0055;
-            text-shadow: 0 0 60px rgba(255, 0, 85, 1);
-            transform: translateZ(-40px);
-            opacity: 0.3;
-            filter: blur(20px);
-        }
-
-        @keyframes numberPulse {
-            0%, 100% { transform: translateZ(80px) scale(1); }
-            50% { transform: translateZ(100px) scale(1.05); }
-        }
-
-        .stat-label {
-            font-size: 1.3rem;
-            color: #ecf0f1;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-            transform: translateZ(40px);
-        }
-
-        /* ==================== BOUTONS NÉON ==================== */
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 60px;
-            flex-wrap: wrap;
-        }
-
-        .action-btn {
-            padding: 20px 50px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            border: none;
-            border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            cursor: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transform: perspective(1000px) translateZ(0);
-        }
-
-        .action-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) translateZ(10px);
-            transition: all 0.6s ease;
-        }
-
-        .action-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
-            border-radius: 50px;
-            transform: translateZ(20px);
-        }
-
-        .action-btn:hover::before {
-            width: 350px;
-            height: 350px;
-        }
-
-        .action-btn:hover {
-            transform: perspective(1000px) translateY(-15px) translateZ(40px) rotateX(-5deg);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #00ff88, #00d4ff);
-            color: #000;
-            box-shadow: 0 12px 40px rgba(0, 255, 136, 0.5),
-                        0 0 30px rgba(0, 255, 136, 0.3);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 25px 70px rgba(0, 255, 136, 0.7),
-                        0 0 50px rgba(0, 255, 136, 0.5);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(135deg, #00d4ff, #5b86e5);
-            color: #fff;
-            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.5),
-                        0 0 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .btn-secondary:hover {
-            box-shadow: 0 25px 70px rgba(0, 212, 255, 0.7),
-                        0 0 50px rgba(0, 212, 255, 0.5);
-        }
-
-        .btn-danger {
-            background: linear-gradient(135deg, #ff0055, #ff6b35);
-            color: #fff;
-            box-shadow: 0 12px 40px rgba(255, 0, 85, 0.5),
-                        0 0 30px rgba(255, 0, 85, 0.3);
-        }
-
-        .btn-danger:hover {
-            box-shadow: 0 25px 70px rgba(255, 0, 85, 0.7),
-                        0 0 50px rgba(255, 0, 85, 0.5);
-        }
-
-        /* ==================== FOOTER NÉON ==================== */
-        footer {
-            background: rgba(10, 20, 15, 0.98);
-            padding: 80px 50px;
-            text-align: center;
-            border-top: 3px solid #00ff88;
-            box-shadow: 0 -10px 50px rgba(0, 255, 136, 0.2);
-            position: relative;
-        }
-
-        footer h3 {
-            font-size: 2.5rem;
-            color: #00ff88;
-            margin-bottom: 30px;
-            text-shadow: 0 0 30px #00ff88;
-        }
-
-        footer p {
-            color: #95a5a6;
-            font-size: 1.2rem;
-            margin: 15px 0;
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 40px;
-            font-size: 2.2rem;
-        }
-
-        .social-icon {
-            transition: all 0.4s ease;
-            cursor: none;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-10px) scale(1.2);
-            filter: drop-shadow(0 10px 30px rgba(0, 255, 136, 0.8));
-        }
-
-        /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 6rem;
-            }
-
-            .section-title {
-                font-size: 3.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            section {
-                min-height: auto;
-                padding: 80px 0;
-            }
-
-            .container {
-                padding: 0 30px;
-            }
-
-            .hero-title {
-                font-size: 4rem;
-                letter-spacing: -2px;
-            }
-
-            .hero-subtitle {
-                font-size: 1.8rem;
-            }
-
-            .section-title {
-                font-size: 3rem;
-            }
-
-            .main-card {
-                padding: 50px 35px;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav {
-                top: 15px;
-                right: 25px;
-                gap: 15px;
-            }
-
-            .nav-dot {
-                width: 12px;
-                height: 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            section {
-                padding: 60px 0;
-            }
-
-            .hero-title {
-                font-size: 2.8rem;
-                letter-spacing: -1px;
-            }
-
-            .hero-subtitle {
-                font-size: 1.3rem;
-            }
-
-            .hero-description {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .main-card {
-                padding: 35px 25px;
-            }
-
-            .card {
-                padding: 30px 20px;
-            }
-
-            .stat-number {
-                font-size: 3.5rem;
-            }
-
-            .cta-button {
-                padding: 18px 40px;
-                font-size: 1.1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔥 DEFORESTACIÓN - Ultra Premium Edition 🔥</title>
+<style>
+/* ==================== RESET & BASE ==================== */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+cursor: none;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: 'Segoe UI', 'Roboto', sans-serif;
+background: #000;
+color: #fff;
+overflow-x: hidden;
+line-height: 1.6;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimisation GPU */
+.cursor,
+.progress-bar,
+.hero-title,
+.card,
+.stat-box,
+.main-card,
+.action-btn,
+.cta-button,
+.particle,
+.ember,
+.flame,
+.leaf,
+.firefly {
+will-change: transform;
+}
+
+.progress-bar::after,
+.main-card::before,
+.card::before {
+will-change: transform, left;
+}
+
+/* Force GPU acceleration */
+.card,
+.stat-box,
+.main-card {
+transform: translateZ(0);
+-webkit-transform: translateZ(0);
+}
+
+/* ==================== CURSEUR NÉON AVANCÉ ==================== */
+.cursor {
+position: fixed;
+width: 30px;
+height: 30px;
+border: 3px solid #00ff88;
+border-radius: 50%;
+pointer-events: none;
+z-index: 10000;
+transition: all 0.15s ease;
+box-shadow: 0 0 25px #00ff88,
+0 0 50px #00ff88,
+inset 0 0 15px rgba(0, 255, 136, 0.3);
+animation: cursorPulse 2s ease-in-out infinite;
+}
+
+@keyframes cursorPulse {
+0%, 100% {
+box-shadow: 0 0 25px #00ff88,
+0 0 50px #00ff88,
+inset 0 0 15px rgba(0, 255, 136, 0.3);
+}
+50% {
+box-shadow: 0 0 35px #00ff88,
+0 0 70px #00ff88,
+0 0 90px #00ff88,
+inset 0 0 20px rgba(0, 255, 136, 0.5);
+}
+}
+
+.cursor.click {
+transform: scale(0.5);
+border-color: #ff0055;
+box-shadow: 0 0 30px #ff0055,
+0 0 60px #ff0055,
+0 0 90px #ff0055;
+animation: clickExplosion 0.3s ease-out;
+}
+
+@keyframes clickExplosion {
+0% { transform: scale(0.5); }
+50% { transform: scale(1.8); opacity: 0.5; }
+100% { transform: scale(0.5); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+.cursor {
+display: none;
+}
+* {
+cursor: auto !important;
+}
+}
+
+/* ==================== BARRE DE PROGRESSION NÉON ==================== */
+.progress-container {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 6px;
+background: rgba(0, 0, 0, 0.95);
+z-index: 9999;
+border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.progress-bar {
+height: 100%;
+width: 0%;
+background: linear-gradient(90deg,
+#ff0055 0%,
+#ff6b35 25%,
+#ffd700 50%,
+#00ff88 75%,
+#00d4ff 100%
+);
+transition: width 0.1s ease;
+box-shadow: 0 0 30px rgba(0, 255, 136, 0.8),
+0 0 60px rgba(0, 255, 136, 0.5);
+position: relative;
+}
+
+.progress-bar::after {
+content: '';
+position: absolute;
+top: 0;
+right: 0;
+width: 100px;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8));
+animation: progressShine 2s ease-in-out infinite;
+}
+
+@keyframes progressShine {
+0%, 100% { transform: translateX(-100px); }
+50% { transform: translateX(100px); }
+}
+
+/* ==================== FOND DYNAMIQUE ULTRA ==================== */
+.background-wrapper {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -10;
+}
+
+.bg-layer {
+position: absolute;
+width: 100%;
+height: 100%;
+transition: opacity 1.5s ease;
+}
+
+/* Fond de feu avec animation */
+.bg-fire {
+background:
+radial-gradient(ellipse at 30% 80%, #ff0000 0%, transparent 50%),
+radial-gradient(ellipse at 70% 80%, #ff6600 0%, transparent 50%),
+radial-gradient(ellipse at 50% 100%, #ff3300 0%, #990000 40%, #000000 80%);
+opacity: 1;
+animation: fireBreath 8s ease-in-out infinite;
+}
+
+@keyframes fireBreath {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.05); }
+}
+
+/* Fond de transition */
+.bg-transition {
+background:
+radial-gradient(ellipse at 50% 50%, #2d5016 0%, #1a3010 40%, #000000 80%),
+linear-gradient(180deg, #1a3010 0%, #0d1a08 50%, #000000 100%);
+opacity: 0;
+}
+
+/* Fond de forêt avec lucioles */
+.bg-forest {
+background:
+radial-gradient(ellipse at 20% 30%, rgba(0, 255, 136, 0.15) 0%, transparent 40%),
+radial-gradient(ellipse at 80% 60%, rgba(0, 212, 255, 0.1) 0%, transparent 40%),
+linear-gradient(180deg, #0a2f1a 0%, #0d4d25 20%, #0a3d1f 40%, #072817 60%, #041a10 80%, #000000 100%);
+opacity: 0;
+}
+
+/* ==================== PARTICULES MAGIQUES ==================== */
+.particles {
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+z-index: -5;
+pointer-events: none;
+}
+
+.particle {
+position: absolute;
+background: #00ff88;
+border-radius: 50%;
+opacity: 0;
+box-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88;
+animation: float linear infinite;
+}
+
+@keyframes float {
+0% {
+transform: translateY(100vh) translateX(0) scale(0) rotate(0deg);
+opacity: 0;
+}
+10% {
+opacity: 1;
+}
+90% {
+opacity: 0.6;
+}
+100% {
+transform: translateY(-150px) translateX(100px) scale(1.5) rotate(360deg);
+opacity: 0;
+}
+}
+
+/* ==================== BRAISES ÉPIQUES ==================== */
+.embers {
+position: fixed;
+width: 100%;
+height: 100%;
+bottom: 0;
+left: 0;
+z-index: -3;
+pointer-events: none;
+transition: opacity 1s ease;
+}
+
+.ember {
+position: absolute;
+width: 8px;
+height: 8px;
+background: radial-gradient(circle, #ffff00 0%, #ff6600 30%, #ff0000 60%, transparent 100%);
+border-radius: 50%;
+box-shadow: 0 0 20px #ff6600,
+0 0 40px #ff3300,
+0 0 60px #ff0000;
+opacity: 0;
+animation: emberRise linear infinite;
+}
+
+.ember::before {
+content: '';
+position: absolute;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle, #ffff00, transparent);
+border-radius: 50%;
+animation: emberPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes emberRise {
+0% {
+transform: translateY(0) translateX(0) scale(1);
+opacity: 0;
+}
+10% {
+opacity: 1;
+}
+90% {
+opacity: 0.5;
+}
+100% {
+transform: translateY(-100vh) translateX(var(--drift)) scale(0.3) rotate(720deg);
+opacity: 0;
+}
+}
+
+@keyframes emberPulse {
+0% { transform: scale(1); }
+100% { transform: scale(1.5); }
+}
+
+/* ==================== FLAMMES RÉALISTES AVANCÉES ==================== */
+.flames {
+position: fixed;
+width: 100%;
+height: 400px;
+bottom: 0;
+left: 0;
+z-index: -2;
+pointer-events: none;
+transition: opacity 1s ease;
+}
+
+.flame {
+position: absolute;
+bottom: -30px;
+width: 60px;
+height: 220px;
+background: linear-gradient(
+to top,
+#ff0000 0%,
+#ff3300 10%,
+#ff6600 25%,
+#ff9900 40%,
+#ffcc00 60%,
+#ffff00 80%,
+transparent 100%
+);
+border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+filter: blur(15px);
+opacity: 0.9;
+animation: flameFlicker ease-in-out infinite;
+transform-origin: bottom center;
+box-shadow: 0 0 50px #ff6600, 0 0 100px #ff3300;
+}
+
+.flame::before {
+content: '';
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 70%;
+height: 60%;
+background: linear-gradient(
+to top,
+#ffff00 0%,
+#ffdd00 40%,
+#ffffaa 70%,
+transparent 100%
+);
+border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+filter: blur(8px);
+animation: flameCore calc(var(--speed) * 0.7) ease-in-out infinite;
+}
+
+@keyframes flameFlicker {
+0%, 100% {
+transform: scaleY(1) scaleX(1) skewX(-3deg);
+opacity: 0.9;
+}
+20% {
+transform: scaleY(1.25) scaleX(0.85) skewX(4deg);
+opacity: 1;
+}
+40% {
+transform: scaleY(0.9) scaleX(1.15) skewX(-4deg);
+opacity: 0.85;
+}
+60% {
+transform: scaleY(1.15) scaleX(0.9) skewX(3deg);
+opacity: 0.95;
+}
+80% {
+transform: scaleY(0.95) scaleX(1.1) skewX(-2deg);
+opacity: 0.88;
+}
+}
+
+@keyframes flameCore {
+0%, 100% {
+transform: translateX(-50%) scaleY(1) scaleX(1);
+opacity: 1;
+}
+50% {
+transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+opacity: 0.8;
+}
+}
+
+/* ==================== FEUILLES MAGIQUES ==================== */
+.leaves {
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+z-index: -4;
+pointer-events: none;
+opacity: 0;
+transition: opacity 1.5s ease;
+}
+
+.leaf {
+position: absolute;
+width: 18px;
+height: 18px;
+background: linear-gradient(135deg, #00ff88, #00cc66);
+border-radius: 0 100% 0 100%;
+opacity: 0;
+box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+animation: leafFall linear infinite;
+}
+
+@keyframes leafFall {
+0% {
+transform: translateY(-100px) translateX(0) rotate(0deg);
+opacity: 0;
+}
+10% {
+opacity: 1;
+}
+90% {
+opacity: 0.5;
+}
+100% {
+transform: translateY(100vh) translateX(var(--drift)) rotate(720deg);
+opacity: 0;
+}
+}
+
+/* ==================== LUCIOLES / FIREFLIES ==================== */
+.fireflies {
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+z-index: -4;
+pointer-events: none;
+opacity: 0;
+transition: opacity 2s ease;
+}
+
+.firefly {
+position: absolute;
+width: 4px;
+height: 4px;
+background: #ffff00;
+border-radius: 50%;
+box-shadow: 0 0 15px #ffff00, 0 0 30px #ffff00;
+animation: fireflyFloat 8s ease-in-out infinite;
+}
+
+@keyframes fireflyFloat {
+0%, 100% {
+transform: translate(0, 0);
+opacity: 0;
+}
+10% {
+opacity: 1;
+}
+25% {
+transform: translate(50px, -80px);
+}
+50% {
+transform: translate(-30px, -150px);
+opacity: 0.8;
+}
+75% {
+transform: translate(70px, -100px);
+}
+90% {
+opacity: 1;
+}
+}
+
+/* ==================== ÉCRAN DE CHARGEMENT ÉPIQUE ==================== */
+.loading-screen {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle, #1a1a1a, #000000);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+z-index: 99999;
+transition: opacity 1s ease;
+}
+
+.loading-screen.hidden {
+opacity: 0;
+pointer-events: none;
+}
+
+.loader {
+width: 100px;
+height: 100px;
+border: 6px solid transparent;
+border-top: 6px solid #00ff88;
+border-right: 6px solid #00d4ff;
+border-radius: 50%;
+animation: spin 1s linear infinite, loaderGlow 2s ease-in-out infinite;
+box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+@keyframes loaderGlow {
+0%, 100% {
+box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
+}
+50% {
+box-shadow: 0 0 80px rgba(0, 255, 136, 0.9),
+0 0 120px rgba(0, 212, 255, 0.6);
+}
+}
+
+.loading-text {
+margin-top: 40px;
+font-size: 1.5rem;
+color: #00ff88;
+letter-spacing: 4px;
+text-transform: uppercase;
+animation: textGlow 2s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+0%, 100% {
+text-shadow: 0 0 20px #00ff88;
+}
+50% {
+text-shadow: 0 0 40px #00ff88, 0 0 60px #00ff88;
+}
+}
+
+/* ==================== NAVIGATION NÉON ==================== */
+.nav {
+position: fixed;
+top: 30px;
+right: 50px;
+z-index: 1000;
+display: flex;
+gap: 20px;
+}
+
+.nav-dot {
+width: 14px;
+height: 14px;
+border: 3px solid rgba(0, 255, 136, 0.4);
+border-radius: 50%;
+transition: all 0.4s ease;
+cursor: none;
+position: relative;
+}
+
+.nav-dot::before {
+content: '';
+position: absolute;
+width: 100%;
+height: 100%;
+border-radius: 50%;
+background: #00ff88;
+opacity: 0;
+transform: scale(0);
+transition: all 0.4s ease;
+}
+
+.nav-dot.active {
+background: #00ff88;
+border-color: #00ff88;
+box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
+transform: scale(1.4);
+}
+
+.nav-dot.active::before {
+opacity: 0.3;
+transform: scale(2);
+}
+
+.nav-dot:hover {
+border-color: #00ff88;
+box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+}
+
+/* ==================== HERO SECTION ÉPIQUE ==================== */
+.hero {
+height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+position: relative;
+perspective: 2000px;
+overflow: hidden;
+}
+
+.hero::before {
+content: '';
+position: absolute;
+width: 200%;
+height: 200%;
+background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+animation: heroAura 10s ease-in-out infinite;
+}
+
+@keyframes heroAura {
+0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+}
+
+.hero-content {
+text-align: center;
+animation: fadeInScale 2s ease-out;
+position: relative;
+z-index: 2;
+}
+
+@keyframes fadeInScale {
+0% {
+opacity: 0;
+transform: scale(0.7) translateY(80px);
+}
+100% {
+opacity: 1;
+transform: scale(1) translateY(0);
+}
+}
+
+.hero-title {
+font-size: 10rem;
+font-weight: 900;
+background: linear-gradient(135deg, #ff0055, #ff6b35, #ffd700, #00ff88, #00d4ff);
+background-size: 200% 200%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+margin-bottom: 30px;
+letter-spacing: -5px;
+text-transform: uppercase;
+animation: titleRainbow 5s ease-in-out infinite, titleFloat 3s ease-in-out infinite;
+filter: drop-shadow(0 0 40px rgba(0, 255, 136, 0.6))
+drop-shadow(0 0 80px rgba(0, 212, 255, 0.4));
+transform: translateZ(100px);
+transform-style: preserve-3d;
+}
+
+.hero-title::before {
+content: 'DEFORESTACIÓN';
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+background: linear-gradient(135deg, #ff0055, #ff6b35, #ffd700, #00ff88, #00d4ff);
+background-size: 200% 200%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+transform: translateZ(-50px);
+filter: blur(30px);
+opacity: 0.5;
+}
+
+@keyframes titleRainbow {
+0%, 100% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+}
+
+@keyframes titleFloat {
+0%, 100% { transform: translateY(0px); }
+50% { transform: translateY(-20px); }
+}
+
+.hero-subtitle {
+font-size: 2.5rem;
+color: #ff0055;
+margin-bottom: 20px;
+text-shadow: 0 0 30px #ff0055,
+0 0 60px #ff0055,
+0 0 90px #ff0055;
+animation: subtitlePulse 2s ease-in-out infinite;
+font-weight: 700;
+}
+
+@keyframes subtitlePulse {
+0%, 100% {
+opacity: 1;
+transform: scale(1);
+text-shadow: 0 0 30px #ff0055, 0 0 60px #ff0055;
+}
+50% {
+opacity: 0.8;
+transform: scale(1.05);
+text-shadow: 0 0 50px #ff0055, 0 0 100px #ff0055, 0 0 150px #ff0055;
+}
+}
+
+.hero-description {
+font-size: 1.4rem;
+color: #bdc3c7;
+max-width: 800px;
+margin: 0 auto 60px;
+line-height: 1.9;
+animation: fadeIn 2s ease-out 0.5s both;
+}
+
+@keyframes fadeIn {
+0% { opacity: 0; transform: translateY(30px); }
+100% { opacity: 1; transform: translateY(0); }
+}
+
+.cta-button {
+padding: 22px 60px;
+font-size: 1.4rem;
+font-weight: 900;
+background: linear-gradient(135deg, #00ff88, #00d4ff);
+color: #000;
+border: none;
+border-radius: 50px;
+transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+box-shadow: 0 15px 50px rgba(0, 255, 136, 0.5),
+0 0 50px rgba(0, 255, 136, 0.3),
+0 5px 0 rgba(0, 200, 100, 0.8);
+cursor: none;
+text-transform: uppercase;
+letter-spacing: 2px;
+position: relative;
+overflow: hidden;
+animation: buttonGlow 2s ease-in-out infinite;
+transform-style: preserve-3d;
+transform: perspective(1000px) translateZ(30px);
+}
+
+.cta-button::before {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+background: rgba(255, 255, 255, 0.4);
+border-radius: 50%;
+transform: translate(-50%, -50%) translateZ(10px);
+transition: width 0.6s ease, height 0.6s ease;
+}
+
+.cta-button::after {
+content: '';
+position: absolute;
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
+border-radius: 50px;
+transform: translateZ(40px);
+}
+
+.cta-button:hover::before {
+width: 300px;
+height: 300px;
+}
+
+.cta-button:hover {
+transform: perspective(1000px) translateY(-15px) translateZ(60px) rotateX(-8deg);
+box-shadow: 0 30px 80px rgba(0, 255, 136, 0.7),
+0 0 80px rgba(0, 255, 136, 0.5),
+0 0 120px rgba(0, 212, 255, 0.3),
+0 10px 0 rgba(0, 200, 100, 1);
+}
+
+.cta-button:active {
+transform: perspective(1000px) translateY(-10px) translateZ(50px) rotateX(-5deg);
+box-shadow: 0 20px 60px rgba(0, 255, 136, 0.6),
+0 0 60px rgba(0, 255, 136, 0.4),
+0 3px 0 rgba(0, 200, 100, 0.9);
+}
+
+@keyframes buttonGlow {
+0%, 100% {
+box-shadow: 0 15px 50px rgba(0, 255, 136, 0.5),
+0 0 50px rgba(0, 255, 136, 0.3),
+0 5px 0 rgba(0, 200, 100, 0.8);
+}
+50% {
+box-shadow: 0 20px 60px rgba(0, 255, 136, 0.7),
+0 0 70px rgba(0, 255, 136, 0.5),
+0 0 100px rgba(0, 212, 255, 0.3),
+0 7px 0 rgba(0, 200, 100, 1);
+}
+}
+
+/* ==================== CONTAINER ==================== */
+.container {
+max-width: 1400px;
+margin: 0 auto;
+padding: 0 50px;
+}
+
+/* ==================== SECTIONS ==================== */
+section {
+min-height: 100vh;
+padding: 120px 0;
+display: flex;
+align-items: center;
+position: relative;
+transform-style: preserve-3d;
+perspective: 2000px;
+}
+
+.section-inner {
+width: 100%;
+opacity: 0;
+transform: translateY(80px) rotateX(15deg);
+transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+transform-style: preserve-3d;
+}
+
+.section-inner.visible {
+opacity: 1;
+transform: translateY(0) rotateX(0deg);
+}
+
+/* ==================== SECTION HEADER NÉON ==================== */
+.section-header {
+text-align: center;
+margin-bottom: 80px;
+}
+
+.section-number {
+font-size: 1.1rem;
+color: #00ff88;
+font-weight: 900;
+letter-spacing: 5px;
+margin-bottom: 20px;
+text-transform: uppercase;
+text-shadow: 0 0 20px #00ff88;
+animation: numberGlow 2s ease-in-out infinite;
+}
+
+@keyframes numberGlow {
+0%, 100% { text-shadow: 0 0 20px #00ff88; }
+50% { text-shadow: 0 0 40px #00ff88, 0 0 60px #00ff88; }
+}
+
+.section-title {
+font-size: 5rem;
+font-weight: 900;
+background: linear-gradient(135deg, #00ff88, #00d4ff);
+background-size: 200% 200%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+margin-bottom: 30px;
+letter-spacing: -3px;
+animation: titleShift 3s ease-in-out infinite;
+filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5));
+}
+
+.section-title.danger {
+background: linear-gradient(135deg, #ff0055, #ff6b35);
+background-size: 200% 200%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+filter: drop-shadow(0 0 30px rgba(255, 0, 85, 0.5));
+}
+
+@keyframes titleShift {
+0%, 100% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+}
+
+.section-intro {
+font-size: 1.4rem;
+color: #95a5a6;
+max-width: 900px;
+margin: 0 auto;
+line-height: 1.9;
+}
+
+/* ==================== MAIN CARD GLASSMORPHISM ==================== */
+.main-card {
+background: rgba(20, 40, 30, 0.4);
+backdrop-filter: blur(30px);
+border-radius: 30px;
+padding: 70px;
+border: 2px solid rgba(0, 255, 136, 0.3);
+box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7),
+0 0 60px rgba(0, 255, 136, 0.2),
+inset 0 0 50px rgba(0, 255, 136, 0.05);
+transition: all 0.6s ease;
+position: relative;
+overflow: hidden;
+transform-style: preserve-3d;
+transform: perspective(2000px) rotateX(0deg);
+}
+
+.main-card::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(45deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+transform: rotate(0deg) translateZ(20px);
+animation: cardShine 6s linear infinite;
+}
+
+.main-card::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+transform: translateZ(-10px);
+opacity: 0;
+transition: opacity 0.6s ease;
+}
+
+@keyframes cardShine {
+0% { transform: rotate(0deg) translateZ(20px); }
+100% { transform: rotate(360deg) translateZ(20px); }
+}
+
+.main-card:hover {
+border-color: rgba(0, 255, 136, 0.7);
+box-shadow: 0 50px 150px rgba(0, 0, 0, 0.9),
+0 0 100px rgba(0, 255, 136, 0.5),
+inset 0 0 80px rgba(0, 255, 136, 0.1);
+transform: perspective(2000px) rotateX(-2deg) translateY(-20px) translateZ(30px);
+}
+
+.main-card:hover::after {
+opacity: 1;
+}
+
+.main-card.danger {
+background: rgba(50, 20, 20, 0.4);
+border-color: rgba(255, 0, 85, 0.3);
+box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7),
+0 0 60px rgba(255, 0, 85, 0.2),
+inset 0 0 50px rgba(255, 0, 85, 0.05);
+}
+
+.main-card.danger::before {
+background: linear-gradient(45deg, transparent, rgba(255, 0, 85, 0.1), transparent);
+}
+
+.main-card.danger::after {
+background: radial-gradient(circle at 50% 50%, rgba(255, 0, 85, 0.1) 0%, transparent 70%);
+}
+
+.main-card.danger:hover {
+border-color: rgba(255, 0, 85, 0.7);
+box-shadow: 0 50px 150px rgba(0, 0, 0, 0.9),
+0 0 100px rgba(255, 0, 85, 0.5),
+inset 0 0 80px rgba(255, 0, 85, 0.1);
+transform: perspective(2000px) rotateX(2deg) translateY(-20px) translateZ(30px);
+}
+
+/* ==================== GRILLE DE CARTES NÉON ==================== */
+.cards-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+gap: 40px;
+margin-top: 60px;
+}
+
+.card {
+background: rgba(30, 50, 40, 0.3);
+backdrop-filter: blur(20px);
+border-radius: 25px;
+padding: 45px;
+border: 2px solid rgba(0, 255, 136, 0.2);
+transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+position: relative;
+overflow: hidden;
+transform-style: preserve-3d;
+transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+}
+
+.card::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+transition: left 0.7s ease;
+transform: translateZ(10px);
+}
+
+.card:hover::before {
+left: 100%;
+}
+
+.card:hover {
+border-color: rgba(0, 255, 136, 0.7);
+transform: perspective(1000px) rotateY(-8deg) rotateX(5deg) translateY(-20px) translateZ(50px);
+box-shadow: 0 30px 90px rgba(0, 255, 136, 0.4),
+0 0 60px rgba(0, 255, 136, 0.3);
+}
+
+.card.danger {
+background: rgba(50, 30, 30, 0.3);
+border-color: rgba(255, 0, 85, 0.2);
+}
+
+.card.danger::before {
+background: linear-gradient(90deg, transparent, rgba(255, 0, 85, 0.2), transparent);
+}
+
+.card.danger:hover {
+border-color: rgba(255, 0, 85, 0.7);
+transform: perspective(1000px) rotateY(8deg) rotateX(-5deg) translateY(-20px) translateZ(50px);
+box-shadow: 0 30px 90px rgba(255, 0, 85, 0.4),
+0 0 60px rgba(255, 0, 85, 0.3);
+}
+
+.card-icon {
+font-size: 4rem;
+margin-bottom: 25px;
+display: block;
+filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));
+animation: iconFloat 3s ease-in-out infinite;
+transform: translateZ(60px);
+transform-style: preserve-3d;
+}
+
+@keyframes iconFloat {
+0%, 100% { transform: translateZ(60px) translateY(0px) rotateZ(0deg); }
+50% { transform: translateZ(80px) translateY(-10px) rotateZ(5deg); }
+}
+
+.card.danger .card-icon {
+filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.6));
+}
+
+.card-title {
+font-size: 2rem;
+font-weight: 800;
+color: #00ff88;
+margin-bottom: 18px;
+text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+transform: translateZ(40px);
+}
+
+.card.danger .card-title {
+color: #ff0055;
+text-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+}
+
+.card-text {
+font-size: 1.15rem;
+color: #bdc3c7;
+line-height: 1.8;
+transform: translateZ(20px);
+}
+
+/* ==================== STATS NÉON ==================== */
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 45px;
+margin: 70px 0;
+}
+
+.stat-box {
+background: rgba(50, 20, 20, 0.5);
+backdrop-filter: blur(20px);
+border: 3px solid #ff0055;
+border-radius: 25px;
+padding: 60px 35px;
+text-align: center;
+transition: all 0.5s ease;
+position: relative;
+overflow: hidden;
+transform-style: preserve-3d;
+transform: perspective(1500px) rotateX(0deg) rotateY(0deg);
+}
+
+.stat-box::before {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+background: radial-gradient(circle, rgba(255, 0, 85, 0.3), transparent);
+border-radius: 50%;
+transform: translate(-50%, -50%) translateZ(-20px);
+transition: all 0.6s ease;
+}
+
+.stat-box::after {
+content: '';
+position: absolute;
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+background: linear-gradient(45deg, #ff0055, #ff6b35, #ff0055);
+background-size: 400% 400%;
+border-radius: 25px;
+z-index: -1;
+opacity: 0;
+animation: borderGlow 3s ease infinite;
+transition: opacity 0.5s ease;
+}
+
+@keyframes borderGlow {
+0%, 100% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+}
+
+.stat-box:hover::before {
+width: 500px;
+height: 500px;
+}
+
+.stat-box:hover::after {
+opacity: 1;
+}
+
+.stat-box:hover {
+transform: perspective(1500px) rotateX(10deg) rotateY(-10deg) translateY(-25px) translateZ(60px);
+box-shadow: 0 40px 110px rgba(255, 0, 85, 0.6),
+0 0 80px rgba(255, 0, 85, 0.4);
+border-color: #ff6b35;
+}
+
+.stat-number {
+font-size: 6rem;
+font-weight: 900;
+color: #ff0055;
+text-shadow: 0 0 40px rgba(255, 0, 85, 0.8),
+0 0 80px rgba(255, 0, 85, 0.5);
+margin-bottom: 20px;
+position: relative;
+z-index: 1;
+animation: numberPulse 2s ease-in-out infinite;
+transform: translateZ(80px);
+transform-style: preserve-3d;
+}
+
+.stat-number::before {
+content: attr(data-target);
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+color: #ff0055;
+text-shadow: 0 0 60px rgba(255, 0, 85, 1);
+transform: translateZ(-40px);
+opacity: 0.3;
+filter: blur(20px);
+}
+
+@keyframes numberPulse {
+0%, 100% { transform: translateZ(80px) scale(1); }
+50% { transform: translateZ(100px) scale(1.05); }
+}
+
+.stat-label {
+font-size: 1.3rem;
+color: #ecf0f1;
+font-weight: 700;
+position: relative;
+z-index: 1;
+transform: translateZ(40px);
+}
+
+/* ==================== BOUTONS NÉON ==================== */
+.action-buttons {
+display: flex;
+justify-content: center;
+gap: 30px;
+margin-top: 60px;
+flex-wrap: wrap;
+}
+
+.action-btn {
+padding: 20px 50px;
+font-size: 1.2rem;
+font-weight: 800;
+border: none;
+border-radius: 50px;
+transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+cursor: none;
+text-transform: uppercase;
+letter-spacing: 2px;
+position: relative;
+overflow: hidden;
+transform-style: preserve-3d;
+transform: perspective(1000px) translateZ(0);
+}
+
+.action-btn::before {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+background: rgba(255, 255, 255, 0.3);
+border-radius: 50%;
+transform: translate(-50%, -50%) translateZ(10px);
+transition: all 0.6s ease;
+}
+
+.action-btn::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+border-radius: 50px;
+transform: translateZ(20px);
+}
+
+.action-btn:hover::before {
+width: 350px;
+height: 350px;
+}
+
+.action-btn:hover {
+transform: perspective(1000px) translateY(-15px) translateZ(40px) rotateX(-5deg);
+}
+
+.btn-primary {
+background: linear-gradient(135deg, #00ff88, #00d4ff);
+color: #000;
+box-shadow: 0 12px 40px rgba(0, 255, 136, 0.5),
+0 0 30px rgba(0, 255, 136, 0.3);
+}
+
+.btn-primary:hover {
+box-shadow: 0 25px 70px rgba(0, 255, 136, 0.7),
+0 0 50px rgba(0, 255, 136, 0.5);
+}
+
+.btn-secondary {
+background: linear-gradient(135deg, #00d4ff, #5b86e5);
+color: #fff;
+box-shadow: 0 12px 40px rgba(0, 212, 255, 0.5),
+0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+.btn-secondary:hover {
+box-shadow: 0 25px 70px rgba(0, 212, 255, 0.7),
+0 0 50px rgba(0, 212, 255, 0.5);
+}
+
+.btn-danger {
+background: linear-gradient(135deg, #ff0055, #ff6b35);
+color: #fff;
+box-shadow: 0 12px 40px rgba(255, 0, 85, 0.5),
+0 0 30px rgba(255, 0, 85, 0.3);
+}
+
+.btn-danger:hover {
+box-shadow: 0 25px 70px rgba(255, 0, 85, 0.7),
+0 0 50px rgba(255, 0, 85, 0.5);
+}
+
+/* ==================== FOOTER NÉON ==================== */
+footer {
+background: rgba(10, 20, 15, 0.98);
+padding: 80px 50px;
+text-align: center;
+border-top: 3px solid #00ff88;
+box-shadow: 0 -10px 50px rgba(0, 255, 136, 0.2);
+position: relative;
+}
+
+footer h3 {
+font-size: 2.5rem;
+color: #00ff88;
+margin-bottom: 30px;
+text-shadow: 0 0 30px #00ff88;
+}
+
+footer p {
+color: #95a5a6;
+font-size: 1.2rem;
+margin: 15px 0;
+}
+
+.footer-social {
+display: flex;
+justify-content: center;
+gap: 25px;
+margin-top: 40px;
+font-size: 2.2rem;
+}
+
+.social-icon {
+transition: all 0.4s ease;
+cursor: none;
+}
+
+.social-icon:hover {
+transform: translateY(-10px) scale(1.2);
+filter: drop-shadow(0 10px 30px rgba(0, 255, 136, 0.8));
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+.hero-title {
+font-size: 6rem;
+}
+
+.section-title {
+font-size: 3.5rem;
+}
+
+/* Désactiver les effets 3D lourds sur tablettes */
+.card,
+.stat-box,
+.main-card,
+.action-btn {
+transform: none !important;
+transform-style: flat !important;
+}
+
+.card:hover {
+transform: translateY(-10px) !important;
+}
+
+.stat-box:hover {
+transform: translateY(-15px) scale(1.03) !important;
+}
+}
+
+@media (max-width: 768px) {
+section {
+min-height: auto;
+padding: 80px 0;
+perspective: none;
+}
+
+.container {
+padding: 0 30px;
+}
+
+.hero-title {
+font-size: 4rem;
+letter-spacing: -2px;
+transform: none !important;
+}
+
+.hero-title::before {
+display: none; /* Supprimer layer shadow */
+}
+
+.hero-subtitle {
+font-size: 1.8rem;
+}
+
+.section-title {
+font-size: 3rem;
+}
+
+.main-card {
+padding: 50px 35px;
+transform: none !important;
+}
+
+.main-card::before,
+.main-card::after {
+display: none; /* Supprimer animations lourdes */
+}
+
+.cards-grid {
+grid-template-columns: 1fr;
+}
+
+.card {
+transform: none !important;
+transform-style: flat !important;
+}
+
+.card::before {
+display: none;
+}
+
+.card-icon {
+animation: none; /* Désactiver float animation */
+transform: none !important;
+}
+
+.card-title,
+.card-text {
+transform: none !important;
+}
+
+.stat-box {
+transform: none !important;
+transform-style: flat !important;
+}
+
+.stat-box::after {
+display: none; /* Supprimer border glow animé */
+}
+
+.stat-number::before {
+display: none; /* Supprimer shadow layer */
+}
+
+.action-btn {
+transform: none !important;
+}
+
+.action-btn::after {
+display: none;
+}
+
+.cta-button {
+transform: none !important;
+}
+
+.cta-button::after {
+display: none;
+}
+
+.nav {
+top: 15px;
+right: 25px;
+gap: 15px;
+}
+
+.nav-dot {
+width: 12px;
+height: 12px;
+}
+
+/* Réduire le nombre de particules */
+.particle:nth-child(n+40),
+.ember:nth-child(n+30),
+.flame:nth-child(n+25),
+.leaf:nth-child(n+20),
+.firefly:nth-child(n+10) {
+display: none;
+}
+
+/* Simplifier les animations */
+@keyframes float {
+0% { transform: translateY(100vh); opacity: 0; }
+100% { transform: translateY(-100px); opacity: 0; }
+}
+
+@keyframes emberRise {
+0% { transform: translateY(0); opacity: 0; }
+100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Désactiver blur lourd */
+.main-card,
+.card,
+.stat-box {
+backdrop-filter: none !important;
+background: rgba(20, 40, 30, 0.85) !important;
+}
+
+.card.danger,
+.main-card.danger,
+.stat-box {
+background: rgba(50, 20, 20, 0.85) !important;
+}
+}
+
+@media (max-width: 480px) {
+section {
+padding: 60px 0;
+}
+
+.hero-title {
+font-size: 2.8rem;
+letter-spacing: -1px;
+animation: none; /* Désactiver animations */
+}
+
+.hero-subtitle {
+font-size: 1.3rem;
+animation: none;
+}
+
+.hero-description {
+font-size: 1rem;
+}
+
+.hero::before {
+display: none; /* Supprimer aura */
+}
+
+.section-title {
+font-size: 2.2rem;
+animation: none;
+}
+
+.section-number {
+animation: none;
+}
+
+.main-card {
+padding: 35px 25px;
+}
+
+.card {
+padding: 30px 20px;
+}
+
+.stat-number {
+font-size: 3.5rem;
+animation: none;
+}
+
+.cta-button {
+padding: 18px 40px;
+font-size: 1.1rem;
+animation: none;
+box-shadow: 0 10px 30px rgba(0, 255, 136, 0.5);
+}
+
+.action-btn {
+padding: 16px 35px;
+font-size: 1rem;
+}
+
+.action-btn:hover,
+.cta-button:hover {
+transform: translateY(-5px) !important;
+}
+
+/* Masquer encore plus de particules */
+.particle:nth-child(n+20),
+.ember:nth-child(n+15),
+.flame:nth-child(n+15),
+.leaf:nth-child(n+10),
+.firefly {
+display: none !important;
+}
+
+/* Simplifier drastiquement les animations */
+.loader {
+animation: spin 1.5s linear infinite;
+}
+
+.progress-bar::after {
+display: none; /* Supprimer shine effect */
+}
+
+/* Désactiver toutes les ombres multiples lourdes */
+.hero-title,
+.hero-subtitle,
+.section-title,
+.card-title,
+.stat-number {
+text-shadow: 0 0 10px currentColor !important;
+}
+}
+
+/* Optimisation pour très petits écrans */
+@media (max-width: 360px) {
+.hero-title {
+font-size: 2.2rem;
+}
+
+.hero-subtitle {
+font-size: 1.1rem;
+}
+
+.section-title {
+font-size: 1.9rem;
+}
+
+.main-card,
+.card {
+padding: 25px 20px;
+}
+
+.stat-number {
+font-size: 2.8rem;
+}
+
+/* Masquer presque toutes les particules */
+.particle:nth-child(n+10),
+.ember:nth-child(n+8),
+.flame:nth-child(n+10),
+.leaf,
+.firefly {
+display: none !important;
+}
+}
+
+/* Réduire animations sur devices lents */
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+
+.particle,
+.ember,
+.flame,
+.leaf,
+.firefly {
+display: none !important;
+}
+}
+</style>
 </head>
 <body>
-    <!-- ÉCRAN DE CHARGEMENT ÉPIQUE -->
-    <div class="loading-screen">
-        <div class="loader"></div>
-        <div class="loading-text">Cargando...</div>
-    </div>
-
-    <!-- CURSEUR NÉON -->
-    <div class="cursor"></div>
-
-    <!-- BARRE DE PROGRESSION NÉON -->
-    <div class="progress-container">
-        <div class="progress-bar"></div>
-    </div>
-
-    <!-- NAVIGATION NÉON -->
-    <div class="nav">
-        <div class="nav-dot active" data-section="0"></div>
-        <div class="nav-dot" data-section="1"></div>
-        <div class="nav-dot" data-section="2"></div>
-        <div class="nav-dot" data-section="3"></div>
-    </div>
-
-    <!-- FOND DYNAMIQUE -->
-    <div class="background-wrapper">
-        <div class="bg-layer bg-fire"></div>
-        <div class="bg-layer bg-transition"></div>
-        <div class="bg-layer bg-forest"></div>
-    </div>
-
-    <!-- PARTICULES -->
-    <div class="particles"></div>
-
-    <!-- FEUILLES -->
-    <div class="leaves"></div>
-
-    <!-- BRAISES -->
-    <div class="embers"></div>
-
-    <!-- FLAMMES -->
-    <div class="flames"></div>
-
-    <!-- LUCIOLES -->
-    <div class="fireflies"></div>
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">DEFORESTACIÓN</h1>
-            <p class="hero-subtitle">⚠️ CRISIS GLOBAL ⚠️</p>
-            <p class="hero-description">
-                Cada año, perdemos millones de hectáreas de bosques. 
-                Es momento de actuar antes de que sea demasiado tarde.
-            </p>
-            <button class="cta-button" onclick="scrollToSection('causas')">
-                🔥 EXPLORAR AHORA
-            </button>
-        </div>
-    </section>
-
-    <!-- SECTION CAUSAS -->
-    <section id="causas">
-        <div class="container">
-            <div class="section-inner">
-                <div class="section-header">
-                    <div class="section-number">01 — CAUSAS</div>
-                    <h2 class="section-title danger">Factores Destructivos</h2>
-                    <p class="section-intro">
-                        Los principales factores humanos que están destruyendo nuestros bosques
-                    </p>
-                </div>
-
-                <div class="main-card danger">
-                    <div class="cards-grid">
-                        <div class="card danger">
-                            <span class="card-icon">🌾</span>
-                            <h3 class="card-title">Agricultura Intensiva</h3>
-                            <p class="card-text">
-                                La expansión de monocultivos destruye millones de hectáreas cada año 
-                                para cultivos de soja, palma aceitera y ganadería industrial.
-                            </p>
-                        </div>
-
-                        <div class="card danger">
-                            <span class="card-icon">🪓</span>
-                            <h3 class="card-title">Tala Ilegal</h3>
-                            <p class="card-text">
-                                Explotación no regulada de maderas valiosas que arrasa bosques 
-                                enteros sin control ni permisos legales.
-                            </p>
-                        </div>
-
-                        <div class="card danger">
-                            <span class="card-icon">🏗️</span>
-                            <h3 class="card-title">Urbanización</h3>
-                            <p class="card-text">
-                                Construcción de ciudades, carreteras e infraestructuras que 
-                                fragmentan y destruyen hábitats naturales.
-                            </p>
-                        </div>
-
-                        <div class="card danger">
-                            <span class="card-icon">⛏️</span>
-                            <h3 class="card-title">Minería</h3>
-                            <p class="card-text">
-                                La extracción de minerales contamina ríos y arrasa con 
-                                extensas zonas forestales vírgenes.
-                            </p>
-                        </div>
-
-                        <div class="card danger">
-                            <span class="card-icon">🔥</span>
-                            <h3 class="card-title">Incendios</h3>
-                            <p class="card-text">
-                                Quemas provocadas e incendios naturales amplificados por el 
-                                cambio climático consumen bosques completos.
-                            </p>
-                        </div>
-
-                        <div class="card danger">
-                            <span class="card-icon">🌡️</span>
-                            <h3 class="card-title">Cambio Climático</h3>
-                            <p class="card-text">
-                                El calentamiento global genera sequías extremas que debilitan 
-                                los bosques y facilitan su destrucción.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION CONSECUENCIAS -->
-    <section id="consecuencias">
-        <div class="container">
-            <div class="section-inner">
-                <div class="section-header">
-                    <div class="section-number">02 — IMPACTO</div>
-                    <h2 class="section-title danger">Consecuencias Devastadoras</h2>
-                    <p class="section-intro">
-                        El precio que pagamos por destruir nuestros bosques
-                    </p>
-                </div>
-
-                <div class="main-card danger">
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <div class="stat-number" data-target="10">0</div>
-                            <div class="stat-label">Millones de hectáreas perdidas/año</div>
-                        </div>
-
-                        <div class="stat-box">
-                            <div class="stat-number" data-target="80">0</div>
-                            <div class="stat-label">% de especies viven en bosques</div>
-                        </div>
-
-                        <div class="stat-box">
-                            <div class="stat-number" data-target="15">0</div>
-                            <div class="stat-label">% de emisiones CO₂ globales</div>
-                        </div>
-                    </div>
-
-                    <div class="cards-grid" style="margin-top: 60px;">
-                        <div class="card danger">
-                            <span class="card-icon">🌍</span>
-                            <h3 class="card-title">Calentamiento Global</h3>
-                            <p class="card-text">
-                                Los árboles absorben CO₂. Sin ellos, aumentan dramáticamente 
-                                los gases de efecto invernadero y el cambio climático.
-                            </p>
-                        </div>
-
-                        <div class="card danger">
-                            <span class="card-icon">🐾</span>
-                            <h3 class="card-title">Extinción Masiva</h3>
-                            <p class="card-text">
-                                Miles de animales pierden su hogar. Orangutanes, jaguares 
-                                y aves tropicales en peligro crítico de extinción.
-                            </p>
-                        </div>
-
-                        <div class="card danger">
-                            <span class="card-icon">💧</span>
-                            <h3 class="card-title">Crisis del Agua</h3>
-                            <p class="card-text">
-                                Los bosques regulan el ciclo hídrico. Su destrucción provoca 
-                                sequías devastadoras e inundaciones catastróficas.
-                            </p>
-                        </div>
-
-                        <div class="card danger">
-                            <span class="card-icon">🏜️</span>
-                            <h3 class="card-title">Desertificación</h3>
-                            <p class="card-text">
-                                Sin raíces que sujeten el suelo, la tierra fértil desaparece 
-                                para siempre, creando desiertos inhabitables.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION SOLUCIONES -->
-    <section id="soluciones">
-        <div class="container">
-            <div class="section-inner">
-                <div class="section-header">
-                    <div class="section-number">03 — ESPERANZA</div>
-                    <h2 class="section-title">Soluciones Efectivas</h2>
-                    <p class="section-intro">
-                        Juntos podemos salvar nuestros bosques. Estas son las soluciones que funcionan.
-                    </p>
-                </div>
-
-                <div class="main-card">
-                    <div class="cards-grid">
-                        <div class="card">
-                            <span class="card-icon">🌳</span>
-                            <h3 class="card-title">Reforestación Masiva</h3>
-                            <p class="card-text">
-                                Plantar millones de árboles nativos y restaurar ecosistemas 
-                                dañados con proyectos comunitarios sostenibles.
-                            </p>
-                        </div>
-
-                        <div class="card">
-                            <span class="card-icon">♻️</span>
-                            <h3 class="card-title">Consumo Responsable</h3>
-                            <p class="card-text">
-                                Elegir productos certificados sostenibles, reducir desperdicio 
-                                y reciclar papel y madera correctamente.
-                            </p>
-                        </div>
-
-                        <div class="card">
-                            <span class="card-icon">📜</span>
-                            <h3 class="card-title">Leyes Más Fuertes</h3>
-                            <p class="card-text">
-                                Implementar legislación internacional para proteger bosques 
-                                primarios y penalizar severamente la tala ilegal.
-                            </p>
-                        </div>
-
-                        <div class="card">
-                            <span class="card-icon">🎓</span>
-                            <h3 class="card-title">Educación Ambiental</h3>
-                            <p class="card-text">
-                                Sensibilizar a las nuevas generaciones sobre la importancia 
-                                vital de los bosques para toda la vida.
-                            </p>
-                        </div>
-
-                        <div class="card">
-                            <span class="card-icon">🛡️</span>
-                            <h3 class="card-title">Áreas Protegidas</h3>
-                            <p class="card-text">
-                                Crear reservas naturales y parques nacionales con vigilancia 
-                                estricta y control permanente.
-                            </p>
-                        </div>
-
-                        <div class="card">
-                            <span class="card-icon">💡</span>
-                            <h3 class="card-title">Tecnología Verde</h3>
-                            <p class="card-text">
-                                Usar drones, satélites e IA para monitorear bosques en 
-                                tiempo real y detectar tala ilegal.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="action-buttons">
-                        <button class="action-btn btn-primary" onclick="alert('¡Gracias por tu compromiso! 💚')">
-                            ✊ COMPROMETERSE
-                        </button>
-                        <button class="action-btn btn-secondary" onclick="alert('¡Comparte el mensaje! 📢')">
-                            📢 COMPARTIR
-                        </button>
-                        <button class="action-btn btn-danger" onclick="alert('¡Es hora de actuar! ⚡')">
-                            ⚡ ACTUAR YA
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <h3>🌍 SALVEMOS NUESTROS BOSQUES 🌍</h3>
-            <p>Cada árbol cuenta. Cada acción importa. Cada persona puede marcar la diferencia.</p>
-            <p style="margin-top: 30px;">© 2026 - Proyecto Educativo sobre Deforestación</p>
-            
-            <div class="footer-social">
-                <span class="social-icon">🌳</span>
-                <span class="social-icon">🌍</span>
-                <span class="social-icon">♻️</span>
-                <span class="social-icon">💚</span>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // ==================== ÉCRAN DE CHARGEMENT ====================
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.querySelector('.loading-screen').classList.add('hidden');
-            }, 2000);
-        });
-
-        // ==================== CURSEUR NÉON ====================
-        const cursor = document.querySelector('.cursor');
-        let mouseX = 0;
-        let mouseY = 0;
-        let cursorX = 0;
-        let cursorY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateCursor() {
-            const speed = 0.2;
-            cursorX += (mouseX - cursorX) * speed;
-            cursorY += (mouseY - cursorY) * speed;
-            
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            
-            requestAnimationFrame(animateCursor);
-        }
-
-        animateCursor();
-
-        document.addEventListener('mousedown', () => {
-            cursor.classList.add('click');
-        });
-
-        document.addEventListener('mouseup', () => {
-            cursor.classList.remove('click');
-        });
-
-        // ==================== CRÉER LES PARTICULES ====================
-        function createParticles() {
-            const container = document.querySelector('.particles');
-            for (let i = 0; i < 100; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.width = (Math.random() * 4 + 2) + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.animationDuration = (Math.random() * 12 + 10) + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(particle);
-            }
-        }
-
-        // ==================== CRÉER LES FEUILLES ====================
-        function createLeaves() {
-            const container = document.querySelector('.leaves');
-            for (let i = 0; i < 50; i++) {
-                const leaf = document.createElement('div');
-                leaf.className = 'leaf';
-                leaf.style.left = Math.random() * 100 + '%';
-                leaf.style.setProperty('--drift', (Math.random() - 0.5) * 250 + 'px');
-                leaf.style.animationDuration = (Math.random() * 10 + 8) + 's';
-                leaf.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(leaf);
-            }
-        }
-
-        // ==================== CRÉER LES BRAISES ====================
-        function createEmbers() {
-            const container = document.querySelector('.embers');
-            for (let i = 0; i < 80; i++) {
-                const ember = document.createElement('div');
-                ember.className = 'ember';
-                ember.style.left = Math.random() * 100 + '%';
-                ember.style.setProperty('--drift', (Math.random() - 0.5) * 300 + 'px');
-                ember.style.animationDuration = (Math.random() * 8 + 6) + 's';
-                ember.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(ember);
-            }
-        }
-
-        // ==================== CRÉER LES FLAMMES ====================
-        function createFlames() {
-            const container = document.querySelector('.flames');
-            for (let i = 0; i < 50; i++) {
-                const flame = document.createElement('div');
-                flame.className = 'flame';
-                flame.style.left = (i * 2) + '%';
-                flame.style.setProperty('--speed', (Math.random() * 0.6 + 0.4) + 's');
-                flame.style.animationDuration = flame.style.getPropertyValue('--speed');
-                flame.style.animationDelay = Math.random() * 0.5 + 's';
-                flame.style.height = (Math.random() * 150 + 120) + 'px';
-                flame.style.width = (Math.random() * 40 + 50) + 'px';
-                container.appendChild(flame);
-            }
-        }
-
-        // ==================== CRÉER LES LUCIOLES ====================
-        function createFireflies() {
-            const container = document.querySelector('.fireflies');
-            for (let i = 0; i < 30; i++) {
-                const firefly = document.createElement('div');
-                firefly.className = 'firefly';
-                firefly.style.left = Math.random() * 100 + '%';
-                firefly.style.top = Math.random() * 100 + '%';
-                firefly.style.animationDuration = (Math.random() * 6 + 6) + 's';
-                firefly.style.animationDelay = Math.random() * 4 + 's';
-                container.appendChild(firefly);
-            }
-        }
-
-        // ==================== TRANSITION DU FOND ====================
-        function updateBackground() {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = scrollTop / docHeight;
-
-            const bgFire = document.querySelector('.bg-fire');
-            const bgTransition = document.querySelector('.bg-transition');
-            const bgForest = document.querySelector('.bg-forest');
-            const embers = document.querySelector('.embers');
-            const flames = document.querySelector('.flames');
-            const leaves = document.querySelector('.leaves');
-            const fireflies = document.querySelector('.fireflies');
-
-            if (scrollPercent < 0.3) {
-                bgFire.style.opacity = 1;
-                bgTransition.style.opacity = 0;
-                bgForest.style.opacity = 0;
-                embers.style.opacity = 1;
-                flames.style.opacity = 1;
-                leaves.style.opacity = 0;
-                fireflies.style.opacity = 0;
-            } else if (scrollPercent < 0.65) {
-                const progress = (scrollPercent - 0.3) / 0.35;
-                bgFire.style.opacity = 1 - progress;
-                bgTransition.style.opacity = progress;
-                bgForest.style.opacity = 0;
-                embers.style.opacity = 1 - progress;
-                flames.style.opacity = 1 - progress;
-                leaves.style.opacity = progress * 0.7;
-                fireflies.style.opacity = progress * 0.5;
-            } else {
-                bgFire.style.opacity = 0;
-                bgTransition.style.opacity = 0;
-                bgForest.style.opacity = 1;
-                embers.style.opacity = 0;
-                flames.style.opacity = 0;
-                leaves.style.opacity = 1;
-                fireflies.style.opacity = 1;
-            }
-        }
-
-        // ==================== BARRE DE PROGRESSION ====================
-        function updateProgressBar() {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrollTop / docHeight) * 100;
-            document.querySelector('.progress-bar').style.width = progress + '%';
-        }
-
-        // ==================== NAVIGATION DOTS ====================
-        function updateNavDots() {
-            const sections = document.querySelectorAll('section');
-            const dots = document.querySelectorAll('.nav-dot');
-            const scrollPos = window.pageYOffset + window.innerHeight / 2;
-
-            sections.forEach((section, index) => {
-                const sectionTop = section.offsetTop;
-                const sectionBottom = sectionTop + section.offsetHeight;
-
-                if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-                    dots.forEach(dot => dot.classList.remove('active'));
-                    if (dots[index]) {
-                        dots[index].classList.add('active');
-                    }
-                }
-            });
-        }
-
-        // ==================== SCROLL VERS SECTION ====================
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ 
-                behavior: 'smooth'
-            });
-        }
-
-        // ==================== INITIALISATION ====================
-        createParticles();
-        createLeaves();
-        createEmbers();
-        createFlames();
-        createFireflies();
-        updateBackground();
-
-        window.addEventListener('scroll', () => {
-            updateProgressBar();
-            updateBackground();
-            updateNavDots();
-        });
-
-        // Navigation dots click
-        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                const sections = document.querySelectorAll('section');
-                if (sections[index]) {
-                    sections[index].scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        updateNavDots();
-
-        // ==================== RÉVÉLATION DES SECTIONS ====================
-        function revealSections() {
-            const sections = document.querySelectorAll('.section-inner');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.15 });
-
-            sections.forEach(section => observer.observe(section));
-        }
-
-        // ==================== COMPTEURS ANIMÉS ====================
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counter = entry.target;
-                        const target = parseInt(counter.getAttribute('data-target'));
-                        let current = 0;
-                        const increment = target / 150;
-                        
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                counter.textContent = target;
-                                clearInterval(timer);
-                            } else {
-                                counter.textContent = Math.floor(current);
-                            }
-                        }, 15);
-
-                        observer.unobserve(counter);
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            counters.forEach(counter => observer.observe(counter));
-        }
-
-        // Initialiser
-        revealSections();
-        animateCounters();
-
-        // ==================== PARALLAXE 3D AU SCROLL ====================
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            
-            // Parallaxe sur le hero
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateZ(${scrolled * 0.5}px)`;
-            }
-
-            // Parallaxe sur les cartes
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-                const rect = card.getBoundingClientRect();
-                const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
-                
-                if (scrollPercent > 0 && scrollPercent < 1) {
-                    const translateZ = scrollPercent * 50;
-                    const rotateY = (scrollPercent - 0.5) * 10;
-                    card.style.transform = `perspective(1000px) translateZ(${translateZ}px) rotateY(${rotateY}deg)`;
-                }
-            });
-
-            // Parallaxe sur les stats
-            const stats = document.querySelectorAll('.stat-box');
-            stats.forEach((stat, index) => {
-                const rect = stat.getBoundingClientRect();
-                const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
-                
-                if (scrollPercent > 0 && scrollPercent < 1) {
-                    const translateZ = scrollPercent * 60;
-                    const rotateX = (scrollPercent - 0.5) * 15;
-                    stat.style.transform = `perspective(1500px) translateZ(${translateZ}px) rotateX(${rotateX}deg)`;
-                }
-            });
-        });
-
-        // ==================== EFFET 3D AU MOUVEMENT DE LA SOURIS ====================
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-            const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-
-            // Effet sur les main-cards
-            const mainCards = document.querySelectorAll('.main-card');
-            mainCards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    const rotateY = mouseX * 5;
-                    const rotateX = -mouseY * 5;
-                    card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                }
-            });
-
-            // Effet sur le hero title
-            const heroTitle = document.querySelector('.hero-title');
-            if (heroTitle) {
-                const rect = heroTitle.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    const rotateY = mouseX * 3;
-                    const rotateX = -mouseY * 3;
-                    heroTitle.style.transform = `translateZ(100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                }
-            }
-        });
-    </script>
+<!-- ÉCRAN DE CHARGEMENT ÉPIQUE -->
+<div class="loading-screen">
+<div class="loader"></div>
+<div class="loading-text">Cargando...</div>
+</div>
+
+<!-- CURSEUR NÉON -->
+<div class="cursor"></div>
+
+<!-- BARRE DE PROGRESSION NÉON -->
+<div class="progress-container">
+<div class="progress-bar"></div>
+</div>
+
+<!-- NAVIGATION NÉON -->
+<div class="nav">
+<div class="nav-dot active" data-section="0"></div>
+<div class="nav-dot" data-section="1"></div>
+<div class="nav-dot" data-section="2"></div>
+<div class="nav-dot" data-section="3"></div>
+</div>
+
+<!-- FOND DYNAMIQUE -->
+<div class="background-wrapper">
+<div class="bg-layer bg-fire"></div>
+<div class="bg-layer bg-transition"></div>
+<div class="bg-layer bg-forest"></div>
+</div>
+
+<!-- PARTICULES -->
+<div class="particles"></div>
+
+<!-- FEUILLES -->
+<div class="leaves"></div>
+
+<!-- BRAISES -->
+<div class="embers"></div>
+
+<!-- FLAMMES -->
+<div class="flames"></div>
+
+<!-- LUCIOLES -->
+<div class="fireflies"></div>
+
+<!-- HERO SECTION -->
+<section class="hero">
+<div class="hero-content">
+<h1 class="hero-title">DEFORESTACIÓN</h1>
+<p class="hero-subtitle">⚠️ CRISIS GLOBAL ⚠️</p>
+<p class="hero-description">
+Cada año, perdemos millones de hectáreas de bosques.
+Es momento de actuar antes de que sea demasiado tarde.
+</p>
+<button class="cta-button" onclick="scrollToSection('causas')">
+🔥 EXPLORAR AHORA
+</button>
+</div>
+</section>
+
+<!-- SECTION CAUSAS -->
+<section id="causas">
+<div class="container">
+<div class="section-inner">
+<div class="section-header">
+<div class="section-number">01 — CAUSAS</div>
+<h2 class="section-title danger">Factores Destructivos</h2>
+<p class="section-intro">
+Los principales factores humanos que están destruyendo nuestros bosques
+</p>
+</div>
+
+<div class="main-card danger">
+<div class="cards-grid">
+<div class="card danger">
+<span class="card-icon">🌾</span>
+<h3 class="card-title">Agricultura Intensiva</h3>
+<p class="card-text">
+La expansión de monocultivos destruye millones de hectáreas cada año
+para cultivos de soja, palma aceitera y ganadería industrial.
+</p>
+</div>
+
+<div class="card danger">
+<span class="card-icon">🪓</span>
+<h3 class="card-title">Tala Ilegal</h3>
+<p class="card-text">
+Explotación no regulada de maderas valiosas que arrasa bosques
+enteros sin control ni permisos legales.
+</p>
+</div>
+
+<div class="card danger">
+<span class="card-icon">🏗️</span>
+<h3 class="card-title">Urbanización</h3>
+<p class="card-text">
+Construcción de ciudades, carreteras e infraestructuras que
+fragmentan y destruyen hábitats naturales.
+</p>
+</div>
+
+<div class="card danger">
+<span class="card-icon">⛏️</span>
+<h3 class="card-title">Minería</h3>
+<p class="card-text">
+La extracción de minerales contamina ríos y arrasa con
+extensas zonas forestales vírgenes.
+</p>
+</div>
+
+<div class="card danger">
+<span class="card-icon">🔥</span>
+<h3 class="card-title">Incendios</h3>
+<p class="card-text">
+Quemas provocadas e incendios naturales amplificados por el
+cambio climático consumen bosques completos.
+</p>
+</div>
+
+<div class="card danger">
+<span class="card-icon">🌡️</span>
+<h3 class="card-title">Cambio Climático</h3>
+<p class="card-text">
+El calentamiento global genera sequías extremas que debilitan
+los bosques y facilitan su destrucción.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION CONSECUENCIAS -->
+<section id="consecuencias">
+<div class="container">
+<div class="section-inner">
+<div class="section-header">
+<div class="section-number">02 — IMPACTO</div>
+<h2 class="section-title danger">Consecuencias Devastadoras</h2>
+<p class="section-intro">
+El precio que pagamos por destruir nuestros bosques
+</p>
+</div>
+
+<div class="main-card danger">
+<div class="stats-grid">
+<div class="stat-box">
+<div class="stat-number" data-target="10">0</div>
+<div class="stat-label">Millones de hectáreas perdidas/año</div>
+</div>
+
+<div class="stat-box">
+<div class="stat-number" data-target="80">0</div>
+<div class="stat-label">% de especies viven en bosques</div>
+</div>
+
+<div class="stat-box">
+<div class="stat-number" data-target="15">0</div>
+<div class="stat-label">% de emisiones CO₂ globales</div>
+</div>
+</div>
+
+<div class="cards-grid" style="margin-top: 60px;">
+<div class="card danger">
+<span class="card-icon">🌍</span>
+<h3 class="card-title">Calentamiento Global</h3>
+<p class="card-text">
+Los árboles absorben CO₂. Sin ellos, aumentan dramáticamente
+los gases de efecto invernadero y el cambio climático.
+</p>
+</div>
+
+<div class="card danger">
+<span class="card-icon">🐾</span>
+<h3 class="card-title">Extinción Masiva</h3>
+<p class="card-text">
+Miles de animales pierden su hogar. Orangutanes, jaguares
+y aves tropicales en peligro crítico de extinción.
+</p>
+</div>
+
+<div class="card danger">
+<span class="card-icon">💧</span>
+<h3 class="card-title">Crisis del Agua</h3>
+<p class="card-text">
+Los bosques regulan el ciclo hídrico. Su destrucción provoca
+sequías devastadoras e inundaciones catastróficas.
+</p>
+</div>
+
+<div class="card danger">
+<span class="card-icon">🏜️</span>
+<h3 class="card-title">Desertificación</h3>
+<p class="card-text">
+Sin raíces que sujeten el suelo, la tierra fértil desaparece
+para siempre, creando desiertos inhabitables.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION SOLUCIONES -->
+<section id="soluciones">
+<div class="container">
+<div class="section-inner">
+<div class="section-header">
+<div class="section-number">03 — ESPERANZA</div>
+<h2 class="section-title">Soluciones Efectivas</h2>
+<p class="section-intro">
+Juntos podemos salvar nuestros bosques. Estas son las soluciones que funcionan.
+</p>
+</div>
+
+<div class="main-card">
+<div class="cards-grid">
+<div class="card">
+<span class="card-icon">🌳</span>
+<h3 class="card-title">Reforestación Masiva</h3>
+<p class="card-text">
+Plantar millones de árboles nativos y restaurar ecosistemas
+dañados con proyectos comunitarios sostenibles.
+</p>
+</div>
+
+<div class="card">
+<span class="card-icon">♻️</span>
+<h3 class="card-title">Consumo Responsable</h3>
+<p class="card-text">
+Elegir productos certificados sostenibles, reducir desperdicio
+y reciclar papel y madera correctamente.
+</p>
+</div>
+
+<div class="card">
+<span class="card-icon">📜</span>
+<h3 class="card-title">Leyes Más Fuertes</h3>
+<p class="card-text">
+Implementar legislación internacional para proteger bosques
+primarios y penalizar severamente la tala ilegal.
+</p>
+</div>
+
+<div class="card">
+<span class="card-icon">🎓</span>
+<h3 class="card-title">Educación Ambiental</h3>
+<p class="card-text">
+Sensibilizar a las nuevas generaciones sobre la importancia
+vital de los bosques para toda la vida.
+</p>
+</div>
+
+<div class="card">
+<span class="card-icon">🛡️</span>
+<h3 class="card-title">Áreas Protegidas</h3>
+<p class="card-text">
+Crear reservas naturales y parques nacionales con vigilancia
+estricta y control permanente.
+</p>
+</div>
+
+<div class="card">
+<span class="card-icon">💡</span>
+<h3 class="card-title">Tecnología Verde</h3>
+<p class="card-text">
+Usar drones, satélites e IA para monitorear bosques en
+tiempo real y detectar tala ilegal.
+</p>
+</div>
+</div>
+
+<div class="action-buttons">
+<button class="action-btn btn-primary" onclick="alert('¡Gracias por tu compromiso! 💚')">
+✊ COMPROMETERSE
+</button>
+<button class="action-btn btn-secondary" onclick="alert('¡Comparte el mensaje! 📢')">
+📢 COMPARTIR
+</button>
+<button class="action-btn btn-danger" onclick="alert('¡Es hora de actuar! ⚡')">
+⚡ ACTUAR YA
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<h3>🌍 SALVEMOS NUESTROS BOSQUES 🌍</h3>
+<p>Cada árbol cuenta. Cada acción importa. Cada persona puede marcar la diferencia.</p>
+<p style="margin-top: 30px;">© 2026 - Proyecto Educativo sobre Deforestación</p>
+
+<div class="footer-social">
+<span class="social-icon">🌳</span>
+<span class="social-icon">🌍</span>
+<span class="social-icon">♻️</span>
+<span class="social-icon">💚</span>
+</div>
+</div>
+</footer>
+
+<script>
+// ==================== ÉCRAN DE CHARGEMENT ====================
+window.addEventListener('load', () => {
+setTimeout(() => {
+document.querySelector('.loading-screen').classList.add('hidden');
+}, 2000);
+});
+
+// ==================== CURSEUR NÉON ====================
+const cursor = document.querySelector('.cursor');
+let mouseX = 0;
+let mouseY = 0;
+let cursorX = 0;
+let cursorY = 0;
+
+document.addEventListener('mousemove', (e) => {
+mouseX = e.clientX;
+mouseY = e.clientY;
+});
+
+function animateCursor() {
+const speed = 0.2;
+cursorX += (mouseX - cursorX) * speed;
+cursorY += (mouseY - cursorY) * speed;
+
+cursor.style.left = cursorX + 'px';
+cursor.style.top = cursorY + 'px';
+
+requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+document.addEventListener('mousedown', () => {
+cursor.classList.add('click');
+});
+
+document.addEventListener('mouseup', () => {
+cursor.classList.remove('click');
+});
+
+// ==================== CRÉER LES PARTICULES ====================
+function createParticles() {
+const container = document.querySelector('.particles');
+const isMobile = window.innerWidth <= 768;
+const count = isMobile ? 20 : 100; // Réduire drastiquement sur mobile
+
+for (let i = 0; i < count; i++) {
+const particle = document.createElement('div');
+particle.className = 'particle';
+particle.style.left = Math.random() * 100 + '%';
+particle.style.width = (Math.random() * 4 + 2) + 'px';
+particle.style.height = particle.style.width;
+particle.style.animationDuration = (Math.random() * 12 + 10) + 's';
+particle.style.animationDelay = Math.random() * 5 + 's';
+container.appendChild(particle);
+}
+}
+
+// ==================== CRÉER LES FEUILLES ====================
+function createLeaves() {
+const container = document.querySelector('.leaves');
+const isMobile = window.innerWidth <= 768;
+const count = isMobile ? 10 : 50;
+
+for (let i = 0; i < count; i++) {
+const leaf = document.createElement('div');
+leaf.className = 'leaf';
+leaf.style.left = Math.random() * 100 + '%';
+leaf.style.setProperty('--drift', (Math.random() - 0.5) * 250 + 'px');
+leaf.style.animationDuration = (Math.random() * 10 + 8) + 's';
+leaf.style.animationDelay = Math.random() * 5 + 's';
+container.appendChild(leaf);
+}
+}
+
+// ==================== CRÉER LES BRAISES ====================
+function createEmbers() {
+const container = document.querySelector('.embers');
+const isMobile = window.innerWidth <= 768;
+const count = isMobile ? 15 : 80;
+
+for (let i = 0; i < count; i++) {
+const ember = document.createElement('div');
+ember.className = 'ember';
+ember.style.left = Math.random() * 100 + '%';
+ember.style.setProperty('--drift', (Math.random() - 0.5) * 300 + 'px');
+ember.style.animationDuration = (Math.random() * 8 + 6) + 's';
+ember.style.animationDelay = Math.random() * 5 + 's';
+container.appendChild(ember);
+}
+}
+
+// ==================== CRÉER LES FLAMMES ====================
+function createFlames() {
+const container = document.querySelector('.flames');
+const isMobile = window.innerWidth <= 768;
+const count = isMobile ? 15 : 50;
+
+for (let i = 0; i < count; i++) {
+const flame = document.createElement('div');
+flame.className = 'flame';
+flame.style.left = (i * (100 / count)) + '%';
+flame.style.setProperty('--speed', (Math.random() * 0.6 + 0.4) + 's');
+flame.style.animationDuration = flame.style.getPropertyValue('--speed');
+flame.style.animationDelay = Math.random() * 0.5 + 's';
+flame.style.height = (Math.random() * 150 + 120) + 'px';
+flame.style.width = (Math.random() * 40 + 50) + 'px';
+container.appendChild(flame);
+}
+}
+
+// ==================== CRÉER LES LUCIOLES ====================
+function createFireflies() {
+const container = document.querySelector('.fireflies');
+const isMobile = window.innerWidth <= 768;
+const count = isMobile ? 0 : 30; // Désactiver complètement sur mobile
+
+for (let i = 0; i < count; i++) {
+const firefly = document.createElement('div');
+firefly.className = 'firefly';
+firefly.style.left = Math.random() * 100 + '%';
+firefly.style.top = Math.random() * 100 + '%';
+firefly.style.animationDuration = (Math.random() * 6 + 6) + 's';
+firefly.style.animationDelay = Math.random() * 4 + 's';
+container.appendChild(firefly);
+}
+}
+
+// ==================== TRANSITION DU FOND ====================
+function updateBackground() {
+const scrollTop = window.pageYOffset;
+const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+const scrollPercent = scrollTop / docHeight;
+
+const bgFire = document.querySelector('.bg-fire');
+const bgTransition = document.querySelector('.bg-transition');
+const bgForest = document.querySelector('.bg-forest');
+const embers = document.querySelector('.embers');
+const flames = document.querySelector('.flames');
+const leaves = document.querySelector('.leaves');
+const fireflies = document.querySelector('.fireflies');
+
+if (scrollPercent < 0.3) {
+bgFire.style.opacity = 1;
+bgTransition.style.opacity = 0;
+bgForest.style.opacity = 0;
+embers.style.opacity = 1;
+flames.style.opacity = 1;
+leaves.style.opacity = 0;
+fireflies.style.opacity = 0;
+} else if (scrollPercent < 0.65) {
+const progress = (scrollPercent - 0.3) / 0.35;
+bgFire.style.opacity = 1 - progress;
+bgTransition.style.opacity = progress;
+bgForest.style.opacity = 0;
+embers.style.opacity = 1 - progress;
+flames.style.opacity = 1 - progress;
+leaves.style.opacity = progress * 0.7;
+fireflies.style.opacity = progress * 0.5;
+} else {
+bgFire.style.opacity = 0;
+bgTransition.style.opacity = 0;
+bgForest.style.opacity = 1;
+embers.style.opacity = 0;
+flames.style.opacity = 0;
+leaves.style.opacity = 1;
+fireflies.style.opacity = 1;
+}
+}
+
+// ==================== BARRE DE PROGRESSION ====================
+function updateProgressBar() {
+const scrollTop = window.pageYOffset;
+const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+const progress = (scrollTop / docHeight) * 100;
+document.querySelector('.progress-bar').style.width = progress + '%';
+}
+
+// ==================== NAVIGATION DOTS ====================
+function updateNavDots() {
+const sections = document.querySelectorAll('section');
+const dots = document.querySelectorAll('.nav-dot');
+const scrollPos = window.pageYOffset + window.innerHeight / 2;
+
+sections.forEach((section, index) => {
+const sectionTop = section.offsetTop;
+const sectionBottom = sectionTop + section.offsetHeight;
+
+if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+dots.forEach(dot => dot.classList.remove('active'));
+if (dots[index]) {
+dots[index].classList.add('active');
+}
+}
+});
+}
+
+// ==================== SCROLL VERS SECTION ====================
+function scrollToSection(id) {
+document.getElementById(id).scrollIntoView({
+behavior: 'smooth'
+});
+}
+
+// ==================== INITIALISATION ====================
+createParticles();
+createLeaves();
+createEmbers();
+createFlames();
+createFireflies();
+updateBackground();
+
+window.addEventListener('scroll', () => {
+updateProgressBar();
+updateBackground();
+updateNavDots();
+});
+
+// Navigation dots click
+document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+dot.addEventListener('click', () => {
+const sections = document.querySelectorAll('section');
+if (sections[index]) {
+sections[index].scrollIntoView({ behavior: 'smooth' });
+}
+});
+});
+
+updateNavDots();
+
+// ==================== RÉVÉLATION DES SECTIONS ====================
+function revealSections() {
+const sections = document.querySelectorAll('.section-inner');
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, { threshold: 0.15 });
+
+sections.forEach(section => observer.observe(section));
+}
+
+// ==================== COMPTEURS ANIMÉS ====================
+function animateCounters() {
+const counters = document.querySelectorAll('.stat-number');
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+const counter = entry.target;
+const target = parseInt(counter.getAttribute('data-target'));
+let current = 0;
+const increment = target / 150;
+
+const timer = setInterval(() => {
+current += increment;
+if (current >= target) {
+counter.textContent = target;
+clearInterval(timer);
+} else {
+counter.textContent = Math.floor(current);
+}
+}, 15);
+
+observer.unobserve(counter);
+}
+});
+}, { threshold: 0.5 });
+
+counters.forEach(counter => observer.observe(counter));
+}
+
+// Initialiser
+revealSections();
+animateCounters();
+
+// Détecter si mobile ou device lent
+const isMobile = window.innerWidth <= 768;
+const isSlowDevice = navigator.hardwareConcurrency < 4 ||
+/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// ==================== PARALLAXE 3D AU SCROLL (Desktop uniquement) ====================
+if (!isMobile && !isSlowDevice) {
+window.addEventListener('scroll', () => {
+const scrolled = window.pageYOffset;
+
+// Parallaxe sur le hero
+const hero = document.querySelector('.hero');
+if (hero) {
+hero.style.transform = `translateZ(${scrolled * 0.5}px)`;
+}
+
+// Parallaxe sur les cartes
+const cards = document.querySelectorAll('.card');
+cards.forEach((card, index) => {
+const rect = card.getBoundingClientRect();
+const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+
+if (scrollPercent > 0 && scrollPercent < 1) {
+const translateZ = scrollPercent * 50;
+const rotateY = (scrollPercent - 0.5) * 10;
+card.style.transform = `perspective(1000px) translateZ(${translateZ}px) rotateY(${rotateY}deg)`;
+}
+});
+
+// Parallaxe sur les stats
+const stats = document.querySelectorAll('.stat-box');
+stats.forEach((stat, index) => {
+const rect = stat.getBoundingClientRect();
+const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+
+if (scrollPercent > 0 && scrollPercent < 1) {
+const translateZ = scrollPercent * 60;
+const rotateX = (scrollPercent - 0.5) * 15;
+stat.style.transform = `perspective(1500px) translateZ(${translateZ}px) rotateX(${rotateX}deg)`;
+}
+});
+}, { passive: true }); // Passive pour meilleures perfs
+}
+
+// ==================== EFFET 3D AU MOUVEMENT DE LA SOURIS (Desktop uniquement) ====================
+if (!isMobile && !isSlowDevice) {
+let mouseX = 0;
+let mouseY = 0;
+let rafId = null;
+
+document.addEventListener('mousemove', (e) => {
+mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+
+// Utiliser requestAnimationFrame pour optimiser
+if (!rafId) {
+rafId = requestAnimationFrame(() => {
+// Effet sur les main-cards
+const mainCards = document.querySelectorAll('.main-card');
+mainCards.forEach(card => {
+const rect = card.getBoundingClientRect();
+if (rect.top < window.innerHeight && rect.bottom > 0) {
+const rotateY = mouseX * 5;
+const rotateX = -mouseY * 5;
+card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
+});
+
+// Effet sur le hero title
+const heroTitle = document.querySelector('.hero-title');
+if (heroTitle) {
+const rect = heroTitle.getBoundingClientRect();
+if (rect.top < window.innerHeight && rect.bottom > 0) {
+const rotateY = mouseX * 3;
+const rotateX = -mouseY * 3;
+heroTitle.style.transform = `translateZ(100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
+}
+
+rafId = null;
+});
+}
+}, { passive: true });
+}
+
+// ==================== OPTIMISATION: Pause animations hors viewport ====================
+if (!isMobile) {
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.animationPlayState = 'running';
+} else {
+entry.target.style.animationPlayState = 'paused';
+}
+});
+}, { threshold: 0.1 });
+
+// Observer les éléments animés
+document.querySelectorAll('.particle, .ember, .flame, .leaf, .firefly').forEach(el => {
+observer.observe(el);
+});
+}
+</script>
 </body>
 </html>
