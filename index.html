@@ -384,7 +384,13 @@
 
         .section-title.danger {
             background: linear-gradient(135deg, #ff1744, #ff6f00, #ffd600);
-            filter: drop-shadow(0 0 30px rgba(255, 23, 68, 0.6));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Supprimez ou modifiez le filtre si le texte disparaît */
+            filter: none; 
+            /* Utilisez text-shadow à la place de filter pour plus de stabilité */
+            text-shadow: 0 0 20px rgba(255, 23, 68, 0.3);
         }
 
         @keyframes titleShift {
