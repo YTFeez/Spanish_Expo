@@ -1137,7 +1137,7 @@
 
             // Charger normal map
             textureLoader.load(
-                'normal-map.tif',
+                'normal-map.jpg',
                 (normalTexture) => {
                     material.normalMap = normalTexture;
                     material.normalScale = new THREE.Vector2(1.5, 1.5);
@@ -1192,16 +1192,17 @@
             const starsGeometry = new THREE.BufferGeometry();
             const starsMaterial = new THREE.PointsMaterial({
                 color: 0xffffff,
-                size: 1.5,
+                size: 2,
                 transparent: true,
-                opacity: 0.8
+                opacity: 0.9
             });
 
             const starsVertices = [];
-            for (let i = 0; i < 10000; i++) {
-                const x = (Math.random() - 0.5) * 2000;
-                const y = (Math.random() - 0.5) * 2000;
-                const z = (Math.random() - 0.5) * 2000;
+            // Créer les étoiles seulement en arrière-plan (z négatif)
+            for (let i = 0; i < 8000; i++) {
+                const x = (Math.random() - 0.5) * 3000;
+                const y = (Math.random() - 0.5) * 3000;
+                const z = -Math.random() * 2000 - 300; // Toujours derrière le globe
                 starsVertices.push(x, y, z);
             }
 
@@ -1259,7 +1260,10 @@
             clouds.rotation.y = globeRotation.y + 0.001;
 
             atmosphere.rotation.y += 0.0005;
-            stars.rotation.y += 0.0001;
+            
+            // Les étoiles réagissent à la rotation du globe (effet de parallaxe)
+            stars.rotation.x = globeRotation.x * 0.15; // 15% de la rotation du globe
+            stars.rotation.y = globeRotation.y * 0.15; // Donne un effet de profondeur
 
             camera.position.z = cameraDistance;
             camera.lookAt(0, 0, 0);
