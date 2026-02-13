@@ -21,8 +21,26 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             color: #fff;
-            /* GRADIENT COMPLET FEU → VERT */
             background: #1e293b;
+        }
+
+        /* ========== GLOBE 3D CONTAINER ========== */
+        .globe-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 60px auto;
+            position: relative;
+        }
+
+        #globe-3d-container {
+            width: 100%;
+            height: 700px;
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0, 255, 136, 0.3);
+            background: #0a0e1a;
+            border: 2px solid rgba(0, 255, 136, 0.2);
         }
 
         /* ========== LOADING SCREEN ========== */
@@ -141,7 +159,6 @@
             transition: opacity 1s ease;
         }
 
-        /* EMBERS */
         .ember {
             position: absolute;
             width: 6px;
@@ -170,7 +187,6 @@
             }
         }
 
-        /* FLAMES */
         .flame {
             position: absolute;
             bottom: -20px;
@@ -210,7 +226,6 @@
             }
         }
 
-        /* LEAVES */
         .leaf {
             position: absolute;
             width: 25px;
@@ -387,9 +402,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            /* Supprimez ou modifiez le filtre si le texte disparaît */
             filter: none; 
-            /* Utilisez text-shadow à la place de filter pour plus de stabilité */
             text-shadow: 0 0 20px rgba(255, 23, 68, 0.3);
         }
 
@@ -459,7 +472,6 @@
             font-weight: 700;
         }
 
-        /* IMAGE PLACEHOLDERS */
         .content-image {
             position: relative;
             border-radius: 25px;
@@ -473,8 +485,7 @@
             box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9);
         }
 
-        .content-image img,
-        .image-placeholder {
+        .content-image img {
             width: 100%;
             height: 500px;
             object-fit: cover;
@@ -483,22 +494,6 @@
 
         .content-image:hover img {
             transform: scale(1.1);
-        }
-
-        .image-placeholder {
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3em;
-            color: rgba(255, 255, 255, 0.5);
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-        }
-
-        .content-image:hover .image-placeholder {
-            border-color: rgba(255, 255, 255, 0.5);
-            color: rgba(255, 255, 255, 0.7);
         }
 
         /* ========== STATS ========== */
@@ -688,6 +683,10 @@
                 width: 12px;
                 height: 12px;
             }
+
+            #globe-3d-container {
+                height: 500px;
+            }
         }
     </style>
 </head>
@@ -752,8 +751,13 @@
                     <p>Esta práctica incluye la tala de árboles para la agricultura, la urbanización, y la extracción de recursos naturales.</p>
                 </div>
                 <div class="content-image">
-                    <img src="1.jpg" alt="1" style="width: 100%; border-radius: 8px;">
+                    <img src="1.jpg" alt="Deforestación" style="width: 100%; border-radius: 8px;">
                 </div>
+            </div>
+
+            <!-- GLOBE 3D INTERACTIF -->
+            <div class="globe-wrapper">
+                <div id="globe-3d-container"></div>
             </div>
 
             <div class="stats-grid">
@@ -798,7 +802,7 @@
                     </ul>
                 </div>
                 <div class="content-image">
-                    <img src="2.jpg" alt="1" style="width: 100%; border-radius: 8px;">
+                    <img src="2.jpg" alt="Biodiversidad" style="width: 100%; border-radius: 8px;">
                 </div>
             </div>
 
@@ -814,7 +818,7 @@
                     </ul>
                 </div>
                 <div class="content-image">
-                    <img src="3.jpeg" alt="1" style="width: 100%; border-radius: 8px;">
+                    <img src="3.jpeg" alt="Cambio Climático" style="width: 100%; border-radius: 8px;">
                 </div>
             </div>
 
@@ -829,7 +833,7 @@
                     </ul>
                 </div>
                 <div class="content-image">
-                    <img src="4.jpg" alt="1" style="width: 100%; border-radius: 8px;">
+                    <img src="4.jpg" alt="Causas" style="width: 100%; border-radius: 8px;">
                 </div>
             </div>
         </div>
@@ -858,7 +862,7 @@
                     </ul>
                 </div>
                 <div class="content-image">
-                    <img src="5.avif" alt="1" style="width: 100%; border-radius: 8px;">
+                    <img src="5.avif" alt="Reforestación" style="width: 100%; border-radius: 8px;">
                 </div>
             </div>
 
@@ -874,7 +878,7 @@
                     </ul>
                 </div>
                 <div class="content-image">
-                    <img src="6.jfif" alt="1" style="width: 100%; border-radius: 8px;">
+                    <img src="6.jfif" alt="Concienciación" style="width: 100%; border-radius: 8px;">
                 </div>
             </div>
 
@@ -898,8 +902,9 @@
         <p style="margin-top: 20px; font-size: 1.3em;">🌲 Salvemos nuestro planeta 🌍</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // LOADING SCREEN
+        // ========== PARTICLES & EFFECTS ==========
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.querySelector('.loading-screen').classList.add('hidden');
@@ -1043,6 +1048,231 @@
         // INIT
         updateVisibility();
         updateNavDots();
+
+        // ========== GLOBE 3D (SIMPLE VERSION) ==========
+        let scene, camera, renderer, globe, clouds, atmosphere, stars;
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        let globeRotation = { x: 0, y: 0 };
+        let cameraDistance = 300;
+
+        function initGlobe() {
+            const container = document.getElementById('globe-3d-container');
+            if (!container) return;
+
+            // Scene
+            scene = new THREE.Scene();
+
+            // Camera
+            camera = new THREE.PerspectiveCamera(
+                45,
+                container.clientWidth / container.clientHeight,
+                0.1,
+                2000
+            );
+            camera.position.z = cameraDistance;
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+
+            const sunLight = new THREE.DirectionalLight(0xffffff, 1.0);
+            sunLight.position.set(5, 3, 5);
+            scene.add(sunLight);
+
+            const backLight = new THREE.DirectionalLight(0x4488ff, 0.3);
+            backLight.position.set(-5, -3, -5);
+            scene.add(backLight);
+
+            // Create Globe
+            createGlobe();
+            createClouds();
+            createAtmosphere();
+            createStars();
+
+            // Mouse controls
+            setupMouseControls(container);
+
+            // Window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+
+            // Animate
+            animateGlobe();
+        }
+
+        function createGlobe() {
+            const geometry = new THREE.SphereGeometry(100, 128, 128);
+            const textureLoader = new THREE.TextureLoader();
+            
+            const material = new THREE.MeshPhongMaterial({
+                color: 0xffffff,
+                shininess: 25,
+                specular: 0x333333
+            });
+
+            // Charger texture principale
+            textureLoader.load(
+                'earth.jpg',
+                (texture) => {
+                    material.map = texture;
+                    material.needsUpdate = true;
+                },
+                undefined,
+                () => {
+                    material.color.setHex(0x2E7D32);
+                    material.emissive.setHex(0x1B5E20);
+                    material.emissiveIntensity = 0.1;
+                }
+            );
+
+            // Charger normal map
+            textureLoader.load(
+                'normal-map.jpg',
+                (normalTexture) => {
+                    material.normalMap = normalTexture;
+                    material.normalScale = new THREE.Vector2(1.5, 1.5);
+                    material.needsUpdate = true;
+                },
+                undefined,
+                () => {}
+            );
+
+            globe = new THREE.Mesh(geometry, material);
+            scene.add(globe);
+        }
+
+        function createClouds() {
+            const geometry = new THREE.SphereGeometry(101.5, 128, 128);
+            const material = new THREE.MeshPhongMaterial({
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.15,
+                side: THREE.DoubleSide
+            });
+            clouds = new THREE.Mesh(geometry, material);
+            scene.add(clouds);
+        }
+
+        function createAtmosphere() {
+            const geometry = new THREE.SphereGeometry(108, 128, 128);
+            const material = new THREE.ShaderMaterial({
+                vertexShader: `
+                    varying vec3 vNormal;
+                    void main() {
+                        vNormal = normalize(normalMatrix * normal);
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    varying vec3 vNormal;
+                    void main() {
+                        float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.0);
+                        gl_FragColor = vec4(0.3, 0.6, 1.0, 1.0) * intensity;
+                    }
+                `,
+                side: THREE.BackSide,
+                blending: THREE.AdditiveBlending,
+                transparent: true
+            });
+            atmosphere = new THREE.Mesh(geometry, material);
+            scene.add(atmosphere);
+        }
+
+        function createStars() {
+            const starsGeometry = new THREE.BufferGeometry();
+            const starsMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 1.5,
+                transparent: true,
+                opacity: 0.8
+            });
+
+            const starsVertices = [];
+            for (let i = 0; i < 10000; i++) {
+                const x = (Math.random() - 0.5) * 2000;
+                const y = (Math.random() - 0.5) * 2000;
+                const z = (Math.random() - 0.5) * 2000;
+                starsVertices.push(x, y, z);
+            }
+
+            starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+            stars = new THREE.Points(starsGeometry, starsMaterial);
+            scene.add(stars);
+        }
+
+        function setupMouseControls(container) {
+            const canvas = renderer.domElement;
+
+            canvas.addEventListener('mousedown', (e) => {
+                if (e.button === 0) {
+                    isDragging = true;
+                    previousMousePosition = { x: e.clientX, y: e.clientY };
+                }
+            });
+
+            canvas.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const deltaX = e.clientX - previousMousePosition.x;
+                    const deltaY = e.clientY - previousMousePosition.y;
+
+                    globeRotation.y += deltaX * 0.005;
+                    globeRotation.x += deltaY * 0.005;
+
+                    globeRotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, globeRotation.x));
+
+                    previousMousePosition = { x: e.clientX, y: e.clientY };
+                }
+            });
+
+            canvas.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            canvas.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+
+            canvas.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                cameraDistance += e.deltaY * 0.3;
+                cameraDistance = Math.max(150, Math.min(600, cameraDistance));
+            }, { passive: false });
+        }
+
+        function animateGlobe() {
+            requestAnimationFrame(animateGlobe);
+
+            globe.rotation.x = globeRotation.x;
+            globe.rotation.y = globeRotation.y;
+
+            clouds.rotation.x = globeRotation.x;
+            clouds.rotation.y = globeRotation.y + 0.001;
+
+            atmosphere.rotation.y += 0.0005;
+            stars.rotation.y += 0.0001;
+
+            camera.position.z = cameraDistance;
+            camera.lookAt(0, 0, 0);
+
+            renderer.render(scene, camera);
+        }
+
+        // Initialize globe when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                initGlobe();
+            }, 1600);
+        });
     </script>
 </body>
 </html>
