@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>🔥 DEFORESTACIÓN - Crisis Global 🌿</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;700&display=swap');
@@ -654,15 +656,29 @@
 
             .hero-title {
                 font-size: 3em;
+                letter-spacing: -2px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.8rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
             }
 
             .section-title {
                 font-size: 2.5em;
             }
 
+            .section-intro {
+                font-size: 1.1rem;
+            }
+
             .content-block {
                 grid-template-columns: 1fr;
                 gap: 40px;
+                margin: 50px auto;
             }
 
             .content-block.reverse {
@@ -670,22 +686,154 @@
             }
 
             .content-text {
-                padding: 30px;
+                padding: 25px;
+            }
+
+            .content-text h2 {
+                font-size: 1.8em;
+            }
+
+            .content-text p {
+                font-size: 1.05em;
+            }
+
+            .content-image img {
+                height: 300px;
             }
 
             nav {
                 top: 15px;
                 right: 20px;
-                gap: 15px;
+                gap: 12px;
             }
 
             .nav-dot {
-                width: 12px;
-                height: 12px;
+                width: 10px;
+                height: 10px;
+                border-width: 2px;
             }
 
             #globe-3d-container {
-                height: 500px;
+                height: 400px;
+                border-radius: 15px;
+            }
+
+            .globe-wrapper {
+                margin: 40px auto;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin: 50px 0;
+            }
+
+            .stat-card {
+                padding: 35px;
+            }
+
+            .stat-card .number {
+                font-size: 3em;
+            }
+
+            .stat-card h3 {
+                font-size: 1.3em;
+            }
+
+            .stat-card p {
+                font-size: 1em;
+            }
+
+            .styled-list li {
+                font-size: 1.05em;
+                padding-left: 30px;
+            }
+
+            .cta {
+                padding: 50px 25px;
+                margin: 60px auto;
+            }
+
+            .cta h2 {
+                font-size: 2em;
+            }
+
+            .cta p {
+                font-size: 1.1em;
+            }
+
+            footer {
+                padding: 40px 25px;
+            }
+
+            footer h3 {
+                font-size: 1.5rem;
+            }
+
+            footer p {
+                font-size: 1rem;
+            }
+
+            /* Optimisations pour les performances mobile */
+            .ember, .flame {
+                display: none; /* Désactiver les particules sur mobile pour meilleures performances */
+            }
+
+            .leaf {
+                animation-duration: 10s !important; /* Ralentir les feuilles */
+            }
+        }
+
+        /* Petits écrans (smartphones en portrait) */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2em;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            #globe-3d-container {
+                height: 350px;
+            }
+
+            .content-text {
+                padding: 20px;
+            }
+
+            .content-image img {
+                height: 250px;
+            }
+
+            nav {
+                top: 10px;
+                right: 15px;
+                gap: 10px;
+            }
+
+            .nav-dot {
+                width: 8px;
+                height: 8px;
+            }
+        }
+
+        /* Grands écrans */
+        @media (min-width: 1920px) {
+            .container {
+                max-width: 1600px;
+            }
+
+            #globe-3d-container {
+                height: 900px;
+            }
+
+            .hero-title {
+                font-size: 10em;
             }
         }
     </style>
@@ -1080,17 +1228,30 @@
             renderer.setPixelRatio(window.devicePixelRatio);
             container.appendChild(renderer.domElement);
 
-            // Lights
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            // Lights - Éclairage naturel et réaliste
+            // Lumière ambiante douce
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
             scene.add(ambientLight);
 
-            const sunLight = new THREE.DirectionalLight(0xffffff, 1.0);
-            sunLight.position.set(5, 3, 5);
+            // Lumière principale du soleil (côté droit)
+            const sunLight = new THREE.DirectionalLight(0xffffff, 1.2);
+            sunLight.position.set(300, 200, 300);
+            sunLight.castShadow = true;
             scene.add(sunLight);
 
-            const backLight = new THREE.DirectionalLight(0x4488ff, 0.3);
-            backLight.position.set(-5, -3, -5);
-            scene.add(backLight);
+            // Lumière de remplissage douce (côté gauche)
+            const fillLight = new THREE.DirectionalLight(0x8ab4f8, 0.3);
+            fillLight.position.set(-200, 100, 200);
+            scene.add(fillLight);
+
+            // Lumière arrière pour créer du relief
+            const rimLight = new THREE.DirectionalLight(0x6495ed, 0.4);
+            rimLight.position.set(0, -100, -300);
+            scene.add(rimLight);
+
+            // Lumière hémisphérique pour simuler la lumière du ciel
+            const hemiLight = new THREE.HemisphereLight(0x87ceeb, 0x1a1a2e, 0.5);
+            scene.add(hemiLight);
 
             // Create Globe
             createGlobe();
@@ -1118,8 +1279,9 @@
             
             const material = new THREE.MeshPhongMaterial({
                 color: 0xffffff,
-                shininess: 25,
-                specular: 0x333333
+                shininess: 20,
+                specular: 0x222222,
+                reflectivity: 0.3
             });
 
             // Charger texture principale
@@ -1132,8 +1294,8 @@
                 undefined,
                 () => {
                     material.color.setHex(0x2E7D32);
-                    material.emissive.setHex(0x1B5E20);
-                    material.emissiveIntensity = 0.1;
+                    material.emissive.setHex(0x0a1f0a);
+                    material.emissiveIntensity = 0.05;
                 }
             );
 
@@ -1150,6 +1312,8 @@
             );
 
             globe = new THREE.Mesh(geometry, material);
+            globe.receiveShadow = true;
+            globe.castShadow = true;
             scene.add(globe);
         }
 
@@ -1216,11 +1380,11 @@
         function setupMouseControls(container) {
             const canvas = renderer.domElement;
 
+            // ========== SOURIS (Desktop) ==========
             canvas.addEventListener('mousedown', (e) => {
                 if (e.button === 0) {
                     isDragging = true;
                     previousMousePosition = { x: e.clientX, y: e.clientY };
-                    // Arrêter l'inertie quand on commence à glisser
                     rotationVelocity = { x: 0, y: 0 };
                 }
             });
@@ -1230,7 +1394,6 @@
                     const deltaX = e.clientX - previousMousePosition.x;
                     const deltaY = e.clientY - previousMousePosition.y;
 
-                    // Calculer la vélocité basée sur le mouvement
                     rotationVelocity.y = deltaX * 0.005;
                     rotationVelocity.x = deltaY * 0.005;
 
@@ -1245,18 +1408,83 @@
 
             canvas.addEventListener('mouseup', () => {
                 isDragging = false;
-                // La vélocité continue après le relâchement
             });
 
             canvas.addEventListener('mouseleave', () => {
                 isDragging = false;
-                // La vélocité continue après le relâchement
             });
 
             canvas.addEventListener('wheel', (e) => {
                 e.preventDefault();
                 cameraDistance += e.deltaY * 0.3;
                 cameraDistance = Math.max(150, Math.min(600, cameraDistance));
+            }, { passive: false });
+
+            // ========== TACTILE (Mobile/Tablette) ==========
+            let touchStartDistance = 0;
+            let initialCameraDistance = cameraDistance;
+
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                
+                if (e.touches.length === 1) {
+                    // Un doigt - rotation
+                    isDragging = true;
+                    previousMousePosition = { 
+                        x: e.touches[0].clientX, 
+                        y: e.touches[0].clientY 
+                    };
+                    rotationVelocity = { x: 0, y: 0 };
+                } else if (e.touches.length === 2) {
+                    // Deux doigts - zoom pinch
+                    isDragging = false;
+                    const dx = e.touches[0].clientX - e.touches[1].clientX;
+                    const dy = e.touches[0].clientY - e.touches[1].clientY;
+                    touchStartDistance = Math.sqrt(dx * dx + dy * dy);
+                    initialCameraDistance = cameraDistance;
+                }
+            }, { passive: false });
+
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                
+                if (e.touches.length === 1 && isDragging) {
+                    // Rotation avec un doigt
+                    const deltaX = e.touches[0].clientX - previousMousePosition.x;
+                    const deltaY = e.touches[0].clientY - previousMousePosition.y;
+
+                    rotationVelocity.y = deltaX * 0.005;
+                    rotationVelocity.x = deltaY * 0.005;
+
+                    globeRotation.y += rotationVelocity.y;
+                    globeRotation.x += rotationVelocity.x;
+
+                    globeRotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, globeRotation.x));
+
+                    previousMousePosition = { 
+                        x: e.touches[0].clientX, 
+                        y: e.touches[0].clientY 
+                    };
+                } else if (e.touches.length === 2) {
+                    // Zoom avec pinch (deux doigts)
+                    const dx = e.touches[0].clientX - e.touches[1].clientX;
+                    const dy = e.touches[0].clientY - e.touches[1].clientY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    const scale = touchStartDistance / distance;
+                    cameraDistance = initialCameraDistance * scale;
+                    cameraDistance = Math.max(150, Math.min(600, cameraDistance));
+                }
+            }, { passive: false });
+
+            canvas.addEventListener('touchend', (e) => {
+                if (e.touches.length === 0) {
+                    isDragging = false;
+                }
+            }, { passive: false });
+
+            canvas.addEventListener('touchcancel', () => {
+                isDragging = false;
             }, { passive: false });
         }
 
