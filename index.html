@@ -157,8 +157,10 @@
             top: 0;
             left: 0;
             pointer-events: none;
-            z-index: 1;
+            z-index: 0; /* Derrière tout le contenu */
             transition: opacity 1s ease;
+            filter: blur(1.5px); /* Effet de flou pour l'arrière-plan */
+            opacity: 0.7; /* Un peu transparent */
         }
 
         .ember {
@@ -168,7 +170,8 @@
             background: radial-gradient(circle, #ffff00, #ff6600, #ff0000);
             border-radius: 50%;
             box-shadow: 0 0 15px #ff6600, 0 0 30px #ff3300;
-            opacity: 0;
+            box-shadow: 0 0 15px #ff6600, 0 0 30px #ff3300;
+            filter: blur(0.8px); /* Léger flou */
             animation: emberRise linear infinite;
         }
 
@@ -203,8 +206,8 @@
                 transparent 100%
             );
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            filter: blur(12px);
-            opacity: 0.8;
+            filter: blur(15px); /* Plus de flou */
+            opacity: 0.5;
             animation: flameFlicker ease-in-out infinite;
             transform-origin: bottom center;
         }
@@ -1204,7 +1207,8 @@
         let globeRotation = { x: 0, y: 0 };
         let cameraDistance = 300;
         let rotationVelocity = { x: 0, y: 0 }; // Vitesse de rotation pour l'inertie
-        let friction = 0.95; // Coefficient de friction (plus proche de 1 = plus d'inertie)
+        let friction = 0.93; // Coefficient de friction (s'arrête un peu plus vite)
+        let rotationSensitivity = 0.008; // Sensibilité de rotation augmentée
 
         function initGlobe() {
             const container = document.getElementById('globe-3d-container');
@@ -1358,21 +1362,36 @@
             const starsGeometry = new THREE.BufferGeometry();
             const starsMaterial = new THREE.PointsMaterial({
                 color: 0xffffff,
-                size: 2,
+                size: 2.5,
                 transparent: true,
-                opacity: 0.9
+                opacity: 1.0,
+                sizeAttenuation: true
             });
 
             const starsVertices = [];
-            // Créer les étoiles seulement en arrière-plan (z négatif)
-            for (let i = 0; i < 8000; i++) {
-                const x = (Math.random() - 0.5) * 3000;
-                const y = (Math.random() - 0.5) * 3000;
-                const z = -Math.random() * 2000 - 300; // Toujours derrière le globe
+            const starsColors = [];
+            
+            for (let i = 0; i < 12000; i++) {
+                const x = (Math.random() - 0.5) * 2500;
+                const y = (Math.random() - 0.5) * 2500;
+                const z = -Math.random() * 1500 - 200;
                 starsVertices.push(x, y, z);
+                
+                const colorVariation = Math.random();
+                if (colorVariation > 0.95) {
+                    starsColors.push(1.0, 0.9, 0.7);
+                } else if (colorVariation > 0.85) {
+                    starsColors.push(0.7, 0.8, 1.0);
+                } else {
+                    starsColors.push(1.0, 1.0, 1.0);
+                }
             }
 
             starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+            starsGeometry.setAttribute('color', new THREE.Float32BufferAttribute(starsColors, 3));
+            
+            starsMaterial.vertexColors = true;
+            
             stars = new THREE.Points(starsGeometry, starsMaterial);
             scene.add(stars);
         }
@@ -1394,8 +1413,8 @@
                     const deltaX = e.clientX - previousMousePosition.x;
                     const deltaY = e.clientY - previousMousePosition.y;
 
-                    rotationVelocity.y = deltaX * 0.005;
-                    rotationVelocity.x = deltaY * 0.005;
+                    rotationVelocity.y = deltaX * rotationSensitivity;
+                    rotationVelocity.x = deltaY * rotationSensitivity;
 
                     globeRotation.y += rotationVelocity.y;
                     globeRotation.x += rotationVelocity.x;
@@ -1416,7 +1435,7 @@
 
             canvas.addEventListener('wheel', (e) => {
                 e.preventDefault();
-                cameraDistance += e.deltaY * 0.3;
+                cameraDistance += e.deltaY * 0.5;
                 cameraDistance = Math.max(150, Math.min(600, cameraDistance));
             }, { passive: false });
 
@@ -1453,8 +1472,8 @@
                     const deltaX = e.touches[0].clientX - previousMousePosition.x;
                     const deltaY = e.touches[0].clientY - previousMousePosition.y;
 
-                    rotationVelocity.y = deltaX * 0.005;
-                    rotationVelocity.x = deltaY * 0.005;
+                    rotationVelocity.y = deltaX * rotationSensitivity;
+                    rotationVelocity.x = deltaY * rotationSensitivity;
 
                     globeRotation.y += rotationVelocity.y;
                     globeRotation.x += rotationVelocity.x;
