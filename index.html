@@ -1055,6 +1055,8 @@
         let previousMousePosition = { x: 0, y: 0 };
         let globeRotation = { x: 0, y: 0 };
         let cameraDistance = 300;
+        let rotationVelocity = { x: 0, y: 0 }; // Vitesse de rotation pour l'inertie
+        let friction = 0.95; // Coefficient de friction (plus proche de 1 = plus d'inertie)
 
         function initGlobe() {
             const container = document.getElementById('globe-3d-container');
@@ -1218,6 +1220,8 @@
                 if (e.button === 0) {
                     isDragging = true;
                     previousMousePosition = { x: e.clientX, y: e.clientY };
+                    // Arrêter l'inertie quand on commence à glisser
+                    rotationVelocity = { x: 0, y: 0 };
                 }
             });
 
@@ -1226,8 +1230,12 @@
                     const deltaX = e.clientX - previousMousePosition.x;
                     const deltaY = e.clientY - previousMousePosition.y;
 
-                    globeRotation.y += deltaX * 0.005;
-                    globeRotation.x += deltaY * 0.005;
+                    // Calculer la vélocité basée sur le mouvement
+                    rotationVelocity.y = deltaX * 0.005;
+                    rotationVelocity.x = deltaY * 0.005;
+
+                    globeRotation.y += rotationVelocity.y;
+                    globeRotation.x += rotationVelocity.x;
 
                     globeRotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, globeRotation.x));
 
@@ -1237,10 +1245,12 @@
 
             canvas.addEventListener('mouseup', () => {
                 isDragging = false;
+                // La vélocité continue après le relâchement
             });
 
             canvas.addEventListener('mouseleave', () => {
                 isDragging = false;
+                // La vélocité continue après le relâchement
             });
 
             canvas.addEventListener('wheel', (e) => {
@@ -1252,6 +1262,24 @@
 
         function animateGlobe() {
             requestAnimationFrame(animateGlobe);
+
+            // Appliquer l'inertie si on ne glisse pas
+            if (!isDragging) {
+                // Continuer la rotation avec la vélocité actuelle
+                globeRotation.y += rotationVelocity.y;
+                globeRotation.x += rotationVelocity.x;
+
+                // Limiter la rotation verticale
+                globeRotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, globeRotation.x));
+
+                // Appliquer la friction pour ralentir progressivement
+                rotationVelocity.x *= friction;
+                rotationVelocity.y *= friction;
+
+                // Arrêter complètement si la vitesse est très faible
+                if (Math.abs(rotationVelocity.x) < 0.0001) rotationVelocity.x = 0;
+                if (Math.abs(rotationVelocity.y) < 0.0001) rotationVelocity.y = 0;
+            }
 
             globe.rotation.x = globeRotation.x;
             globe.rotation.y = globeRotation.y;
